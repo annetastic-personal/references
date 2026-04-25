@@ -7,10 +7,11 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // ==== CONFIGURATION ==== //
-const GITHUB_USERNAME = process.env.GITHUB_USERNAME;
-const GITHUB_PAT = process.env.GITHUB_PAT;
-const WIKI_REMOTE = `https://${GITHUB_USERNAME}:${GITHUB_PAT}@github.com/odomaf/references.wiki.git`;
-const WIKI_DIR = path.join(__dirname, "wiki");
+const WIKI_PUSH_USERNAME = process.env.WIKI_PUSH_USERNAME;
+const WIKI_PUSH_PAT = process.env.WIKI_PUSH_PAT;
+const WIKI_REMOTE = `https://${WIKI_PUSH_USERNAME}:${WIKI_PUSH_PAT}@github.com/odomaf/references.wiki.git`;
+const SOURCE_DIR = path.join(__dirname, "wiki");
+const BUILD_DIR = path.join(__dirname, ".wiki-build");
 
 const pages = {
   "Home.md": `# References Wiki
@@ -29,21 +30,22 @@ A collection of processes, patterns, and practices I've learned and want to refe
 };
 
 (async () => {
-  // Ensure wiki directory exists (for local development)
-  await fs.ensureDir(WIKI_DIR);
+  // Keep wiki source files separate from the cloned .wiki repo.
+  await fs.ensureDir(SOURCE_DIR);
+  await fs.remove(BUILD_DIR);
 
   const git = simpleGit();
 
   // Clone wiki
-  await git.clone(WIKI_REMOTE, WIKI_DIR);
+  await git.clone(WIKI_REMOTE, BUILD_DIR);
 
   // Write all markdown files
   for (const [name, content] of Object.entries(pages)) {
-    await fs.writeFile(path.join(WIKI_DIR, name), content.trim());
+    await fs.writeFile(path.join(BUILD_DIR, name), content.trim());
   }
 
   // Commit & push
-  const wikiGit = simpleGit(WIKI_DIR);
+  const wikiGit = simpleGit(BUILD_DIR);
   await wikiGit.add(".");
   await wikiGit.commit("Scaffold wiki pages with starter templates");
   await wikiGit.push();
