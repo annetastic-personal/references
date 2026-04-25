@@ -17,9 +17,9 @@ Run the scaffold process in CI and push updated wiki pages.
 
 ## Actions Taken
 
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 ## Validation
 
@@ -29,4 +29,4 @@ Run the scaffold process in CI and push updated wiki pages.
 
 ## Open Questions
 
-- 
+-

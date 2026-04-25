@@ -17,9 +17,9 @@ Ensure the workflow handles no-change runs safely without failing.
 
 ## Actions Taken
 
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 ## Validation
 
@@ -28,4 +28,4 @@ Ensure the workflow handles no-change runs safely without failing.
 
 ## Open Questions
 
-- 
+-
