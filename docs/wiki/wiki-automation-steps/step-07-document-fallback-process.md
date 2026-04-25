@@ -1,4 +1,4 @@
-# Step 09: Document Fallback Process
+# Step 07: Document Fallback Process
 
 ## Checklist Link
 

@@ -1,4 +1,4 @@
-# Step 08: Harden and Operationalize
+# Step 06: Harden and Operationalize
 
 ## Checklist Link
 

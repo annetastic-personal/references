@@ -1,4 +1,4 @@
-# Step 04: Prepare Workflow Runtime
+# Step 02: Prepare Workflow Runtime
 
 ## Checklist Link
 
