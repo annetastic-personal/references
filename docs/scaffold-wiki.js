@@ -13,23 +13,13 @@ const WIKI_REMOTE = `https://${WIKI_PUSH_USERNAME}:${WIKI_PUSH_PAT}@github.com/o
 const SOURCE_DIR = path.join(__dirname, "wiki");
 const BUILD_DIR = path.join(__dirname, ".wiki-build");
 
-const pages = {
-  "Home.md": `# References Wiki
-
-A collection of processes, patterns, and practices I've learned and want to refer to later.
-
-## Processes
-
-- CI/CD
-- Wiki Scaffolding
-
----
-
-[Repository](https://github.com/odomaf/references)
-`,
-};
-
 (async () => {
+  if (!WIKI_PUSH_USERNAME || !WIKI_PUSH_PAT) {
+    throw new Error(
+      "Missing WIKI_PUSH_USERNAME or WIKI_PUSH_PAT environment variables.",
+    );
+  }
+
   // Keep wiki source files separate from the cloned .wiki repo.
   await fs.ensureDir(SOURCE_DIR);
   await fs.remove(BUILD_DIR);
@@ -39,14 +29,22 @@ A collection of processes, patterns, and practices I've learned and want to refe
   // Clone wiki
   await git.clone(WIKI_REMOTE, BUILD_DIR);
 
-  // Write all markdown files
-  for (const [name, content] of Object.entries(pages)) {
-    await fs.writeFile(path.join(BUILD_DIR, name), content.trim());
-  }
+  // Copy source wiki files into the cloned .wiki repo while preserving its .git directory.
+  await fs.copy(SOURCE_DIR, BUILD_DIR, {
+    overwrite: true,
+    recursive: true,
+  });
 
   // Commit & push
   const wikiGit = simpleGit(BUILD_DIR);
   await wikiGit.add(".");
+  const status = await wikiGit.status();
+
+  if (status.files.length === 0) {
+    console.log("No wiki changes to publish.");
+    return;
+  }
+
   await wikiGit.commit("Scaffold wiki pages with starter templates");
   await wikiGit.push();
 
