@@ -1,4 +1,4 @@
-# Step 05: Execute Wiki Publish Step in CI
+# Step 03: Execute Wiki Publish Step in CI
 
 ## Checklist Link
 

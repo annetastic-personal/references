@@ -1,4 +1,4 @@
-# Step 03: Add Required Repository Secrets
+# Step 01: Add Required Repository Secrets
 
 ## Checklist Link
 

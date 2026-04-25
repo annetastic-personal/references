@@ -1,4 +1,4 @@
-# Step 06: Make Runs Idempotent
+# Step 04: Make Runs Idempotent
 
 ## Checklist Link
 

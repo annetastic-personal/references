@@ -1,4 +1,4 @@
-# Step 07: Validate End-to-End
+# Step 05: Validate End-to-End
 
 ## Checklist Link
 
