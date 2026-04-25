@@ -17,9 +17,9 @@ Document the manual recovery path when wiki automation fails.
 
 ## Actions Taken
 
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 ## Validation
 
@@ -28,4 +28,4 @@ Document the manual recovery path when wiki automation fails.
 
 ## Open Questions
 
-- 
+-

@@ -17,9 +17,9 @@ Verify end-to-end wiki automation from source change to visible wiki update.
 
 ## Actions Taken
 
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 ## Validation
 
@@ -29,4 +29,4 @@ Verify end-to-end wiki automation from source change to visible wiki update.
 
 ## Open Questions
 
-- 
+-

@@ -17,9 +17,9 @@ Apply security and reliability hardening to the automated wiki publishing proces
 
 ## Actions Taken
 
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 ## Validation
 
@@ -29,4 +29,4 @@ Apply security and reliability hardening to the automated wiki publishing proces
 
 ## Open Questions
 
-- 
+-
