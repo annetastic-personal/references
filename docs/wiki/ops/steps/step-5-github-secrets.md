@@ -1,6 +1,6 @@
 # Step 5: Add CI/CD Repository Secrets
 
-Worked example: [Step 5 Sample](https://github.com/<old-org>/references/wiki/ops-steps-sample-step-5-github-secrets-sample)
+Worked example: [Step 5 Sample](https://github.com/<old-org>/references/wiki/step-5-github-secrets-sample)
 
 Add all required secrets to your repository so the workflow can authenticate and deploy.
 
