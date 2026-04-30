@@ -37,6 +37,8 @@ const BUILD_DIR = path.join(__dirname, ".wiki-build");
 
   // Commit & push
   const wikiGit = simpleGit(BUILD_DIR);
+  await wikiGit.addConfig("user.email", "github-actions[bot]@users.noreply.github.com");
+  await wikiGit.addConfig("user.name", "github-actions[bot]");
   await wikiGit.add(".");
   const status = await wikiGit.status();
 
