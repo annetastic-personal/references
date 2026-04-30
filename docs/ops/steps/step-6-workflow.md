@@ -1,0 +1,60 @@
+# Step 6: Create CI/CD Workflow
+
+Worked example: [Step 6 Sample](../steps-sample/step-6-workflow-sample.md)
+
+Create, document, and approve the deployment workflow for your project (e.g., `.github/workflows/deploy.yml`).
+
+---
+
+## What the Workflow Should Do (Generalized)
+
+1. Trigger on push to your main branch or manual dispatch.
+2. Check out the repository on the runner.
+3. Set up the required runtime (e.g., Node, Python, etc.) and install dependencies.
+4. Use `ssh-agent` to load the deploy private key.
+5. Add the server host key from `SERVER_KNOWN_HOSTS` to `known_hosts`.
+6. Use `rsync` or similar to copy build output to a timestamped release directory on the server.
+7. Atomically update the `current` symlink to point to the new release.
+8. Prune old releases, keeping the most recent N.
+
+---
+
+## Example Runner Target
+
+```yaml
+runs-on: [self-hosted, linux, ARM64, deploy-lan]
+```
+
+---
+
+## Key Workflow Sections (Generalized)
+
+### Build
+
+```yaml
+- uses: actions/setup-node@v4
+  with:
+    node-version: "<node-version>"
+- run: npm ci
+- run: npm run build
+```
+
+### Deploy
+
+```yaml
+- run: |
+    RELEASE_DIR="${{ env.SERVER_PATH }}/releases/release-$(date +%Y%m%d%H%M%S)"
+    rsync -az --delete dist/ ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:$RELEASE_DIR/
+    ssh ... "ln -sfn $RELEASE_DIR ${{ env.SERVER_PATH }}/current"
+```
+
+### Prune Old Releases
+
+```yaml
+- run: |
+    ssh ... "ls -1dt ${{ env.SERVER_PATH }}/releases/release-* | tail -n +6 | xargs rm -rf"
+```
+
+---
+
+[← Step 5](step-5-github-secrets.md) | [← Back to Index](../cicd-index.md) | [Next: Step 7 →](step-7-deploy-and-verify.md)

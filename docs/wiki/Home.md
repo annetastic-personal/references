@@ -4,6 +4,19 @@ A collection of processes, patterns, and practices I've learned and want to refe
 
 ## Processes
 
+### Application CI/CD
+
+This reference documents a generalized, step-by-step process for setting up atomic, rollback-friendly CI/CD for web applications using GitHub Actions and a versioned release directory structure. Each step links to a detailed guide and a worked example.
+
+- [Step 1: Prepare Server Directory Layout](https://github.com/odomaf/references/wiki/step-1-server-layout)
+- [Step 2: Configure Nginx Site](https://github.com/odomaf/references/wiki/step-2-nginx-config)
+- [Step 3: Create Deployment SSH Key Pair](https://github.com/odomaf/references/wiki/step-3-deploy-key)
+- [Step 4: Add Deploy Public Key to Server](https://github.com/odomaf/references/wiki/step-4-authorized-keys)
+- [Step 5: Add CI/CD Repository Secrets](https://github.com/odomaf/references/wiki/step-5-github-secrets)
+- [Step 6: Create CI/CD Workflow](https://github.com/odomaf/references/wiki/step-6-workflow)
+- [Step 7: Push and Verify Deployment](https://github.com/odomaf/references/wiki/step-7-deploy-and-verify)
+- [Step 8: Confirm Rollback Procedure](https://github.com/odomaf/references/wiki/step-8-rollback)
+
 ### Wiki CI/CD with Scaffolding
 
 Use this process to publish wiki content from repository-managed markdown files under `docs/wiki/` to the GitHub wiki. The scaffold script at [docs/scaffold-wiki.js](https://github.com/odomaf/references/blob/main/docs/scaffold-wiki.js) is prepared in Step 02 and executed by CI in Step 03 when relevant changes are pushed to `main`.
