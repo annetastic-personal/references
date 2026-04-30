@@ -1,6 +1,6 @@
 # Step 6: Create CI/CD Workflow
 
-Worked example: [Step 6 Sample](../steps-sample/step-6-workflow-sample.md)
+Worked example: [Step 6 Sample](https://github.com/odomaf/references/wiki/ops-steps-sample-step-6-workflow-sample)
 
 Create, document, and approve the deployment workflow for your project (e.g., `.github/workflows/deploy.yml`).
 

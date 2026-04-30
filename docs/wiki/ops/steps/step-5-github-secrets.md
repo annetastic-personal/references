@@ -1,6 +1,6 @@
 # Step 5: Add CI/CD Repository Secrets
 
-Worked example: [Step 5 Sample](../steps-sample/step-5-github-secrets-sample.md)
+Worked example: [Step 5 Sample](https://github.com/odomaf/references/wiki/ops-steps-sample-step-5-github-secrets-sample)
 
 Add all required secrets to your repository so the workflow can authenticate and deploy.
 

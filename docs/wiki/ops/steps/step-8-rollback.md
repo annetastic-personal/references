@@ -1,6 +1,6 @@
 # Step 8: Confirm Rollback Procedure
 
-Worked example: [Step 8 Sample](../steps-sample/step-8-rollback-sample.md)
+Worked example: [Step 8 Sample](https://github.com/odomaf/references/wiki/ops-steps-sample-step-8-rollback-sample)
 
 Validate that rolling back to a previous release works correctly by switching the `current` symlink.
 

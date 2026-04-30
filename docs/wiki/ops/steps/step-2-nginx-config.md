@@ -1,6 +1,6 @@
 # Step 2: Configure Nginx Site
 
-Worked example: [Step 2 Sample](../steps-sample/step-2-nginx-config-sample.md)
+Worked example: [Step 2 Sample](https://github.com/odomaf/references/wiki/ops-steps-sample-step-2-nginx-config-sample)
 
 Create and enable the Nginx site config that serves your web app from the `current` symlink on your chosen port.
 
