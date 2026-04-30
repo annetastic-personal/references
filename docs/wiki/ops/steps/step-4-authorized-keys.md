@@ -1,6 +1,6 @@
 # Step 4: Add Deploy Public Key to Server
 
-Worked example: [Step 4 Sample](https://github.com/odomaf/references/wiki/ops-steps-sample-step-4-authorized-keys-sample)
+Worked example: [Step 4 Sample](https://github.com/odomaf/references/wiki/step-4-authorized-keys-sample)
 
 Authorize the deploy public key on the server and verify SSH key-based authentication works.
 

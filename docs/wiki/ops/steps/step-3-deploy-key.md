@@ -1,6 +1,6 @@
 # Step 3: Create Deployment SSH Key Pair
 
-Worked example: [Step 3 Sample](https://github.com/odomaf/references/wiki/ops-steps-sample-step-3-deploy-key-sample)
+Worked example: [Step 3 Sample](https://github.com/odomaf/references/wiki/step-3-deploy-key-sample)
 
 Generate a dedicated SSH key pair for your CI/CD system to authenticate with the server.
 

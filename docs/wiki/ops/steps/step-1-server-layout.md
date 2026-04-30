@@ -1,6 +1,6 @@
 # Step 1: Prepare Server Directory Layout
 
-Worked example: [Step 1 Sample](https://github.com/odomaf/references/wiki/ops-steps-sample-step-1-server-layout-sample)
+Worked example: [Step 1 Sample](https://github.com/odomaf/references/wiki/step-1-server-layout-sample)
 
 Create the versioned release directory structure and `current` symlink on your deployment server. This pattern supports atomic deployments and easy rollbacks.
 
