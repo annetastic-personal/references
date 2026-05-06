@@ -33,4 +33,11 @@ Use this process to publish wiki content from repository-managed markdown files 
 
 ---
 
+## Unit Testing
+
+- [xUnit Unit Testing in .NET](https://github.com/odomaf/references/wiki/xunit-unit-testing-dotnet)
+- [Coverage Report Script](https://github.com/odomaf/references/wiki/coverage-report-script)
+
+---
+
 [Repository](https://github.com/odomaf/references)
