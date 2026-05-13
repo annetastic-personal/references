@@ -4,6 +4,7 @@ A collection of processes, patterns, and practices I've learned and want to refe
 
 ## Processes
 
+
 ### Application CI/CD
 
 This reference documents a generalized, step-by-step process for setting up atomic, rollback-friendly CI/CD for web applications using GitHub Actions and a versioned release directory structure. Each step links to a detailed guide and a worked example.
@@ -13,9 +14,10 @@ This reference documents a generalized, step-by-step process for setting up atom
 - [Step 3: Create Deployment SSH Key Pair](https://github.com/odomaf/references/wiki/step-3-deploy-key)
 - [Step 4: Add Deploy Public Key to Server](https://github.com/odomaf/references/wiki/step-4-authorized-keys)
 - [Step 5: Add CI/CD Repository Secrets](https://github.com/odomaf/references/wiki/step-5-github-secrets)
-- [Step 6: Create CI/CD Workflow](https://github.com/odomaf/references/wiki/step-6-workflow)
-- [Step 7: Push and Verify Deployment](https://github.com/odomaf/references/wiki/step-7-deploy-and-verify)
-- [Step 8: Confirm Rollback Procedure](https://github.com/odomaf/references/wiki/step-8-rollback)
+- [Step 6: Set Up Self-Hosted GitHub Actions Runner](https://github.com/odomaf/references/wiki/step-6-runner-setup)
+- [Step 7: Create CI/CD Workflow](https://github.com/odomaf/references/wiki/step-7-workflow)
+- [Step 8: Push and Verify Deployment](https://github.com/odomaf/references/wiki/step-8-deploy-and-verify)
+- [Step 9: Confirm Rollback Procedure](https://github.com/odomaf/references/wiki/step-9-rollback)
 
 ### Wiki CI/CD with Scaffolding
 
