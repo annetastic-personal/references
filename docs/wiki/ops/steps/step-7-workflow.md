@@ -1,6 +1,6 @@
-# Step 6: Create CI/CD Workflow
+# Step 7: Create CI/CD Workflow
 
-Worked example: [Step 6 Sample](https://github.com/odomaf/references/wiki/step-6-workflow-sample)
+Worked example: [Step 7 Sample](https://github.com/odomaf/references/wiki/step-7-workflow-sample)
 
 Create, document, and approve the deployment workflow for your project (e.g., `.github/workflows/deploy.yml`).
 
@@ -57,4 +57,4 @@ runs-on: [self-hosted, linux, ARM64, deploy-lan]
 
 ---
 
-[← Step 5](step-5-github-secrets.md) | [← Back to Index](../cicd-index.md) | [Next: Step 7 →](step-7-deploy-and-verify.md)
+[← Step 6](step-6-runner-setup.md) | [← Back to Index](../cicd-index.md) | [Next: Step 8 →](step-8-deploy-and-verify.md)

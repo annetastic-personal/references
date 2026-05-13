@@ -1,6 +1,6 @@
-# Step 8: Confirm Rollback Procedure
+# Step 9: Confirm Rollback Procedure
 
-Worked example: [Step 8 Sample](https://github.com/odomaf/references/wiki/step-8-rollback-sample)
+Worked example: [Step 9 Sample](https://github.com/odomaf/references/wiki/step-9-rollback-sample)
 
 Validate that rolling back to a previous release works correctly by switching the `current` symlink.
 
@@ -57,5 +57,3 @@ ln -sfn /home/<user>/<project>/releases/<latest-release-dir> /home/<user>/<proje
 - No deployment pipeline changes are needed for a manual rollback.
 
 ---
-
-[← Step 7](step-7-deploy-and-verify.md) | [← Back to Index](../cicd-index.md)

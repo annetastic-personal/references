@@ -1,6 +1,6 @@
-# Step 7: Push and Verify Deployment
+# Step 8: Push and Verify Deployment
 
-Worked example: [Step 7 Sample](https://github.com/odomaf/references/wiki/step-7-deploy-and-verify-sample)
+Worked example: [Step 8 Sample](https://github.com/odomaf/references/wiki/step-8-deploy-and-verify-sample)
 
 Push to your main branch, verify the workflow runs successfully, and confirm the site is live.
 
@@ -36,4 +36,4 @@ See your project's troubleshooting guide for issues encountered during this step
 
 ---
 
-[← Step 6](step-6-workflow.md) | [← Back to Index](../cicd-index.md) | [Next: Step 8 →](step-8-rollback.md)
+[← Step 7](step-7-workflow.md) | [← Back to Index](../cicd-index.md) | [Next: Step 9 →](step-9-rollback.md)

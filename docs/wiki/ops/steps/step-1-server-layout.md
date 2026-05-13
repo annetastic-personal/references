@@ -2,11 +2,13 @@
 
 Worked example: [Step 1 Sample](https://github.com/odomaf/references/wiki/step-1-server-layout-sample)
 
-Create the versioned release directory structure and `current` symlink on your deployment server. This pattern supports atomic deployments and easy rollbacks.
+For multi-repo CI/CD, repeat the following structure for each project/repo you want to deploy. Each project should have its own directory under your deployment user's home directory. This pattern supports atomic deployments and easy rollbacks for multiple apps on the same server.
 
 ---
 
-## Commands (Generalized)
+## Commands (Generalized for Multi-Repo)
+
+Repeat these commands for each project (e.g., portfolio, TTG Collector):
 
 ```bash
 mkdir -p /home/<user>/<project>/releases
@@ -17,11 +19,11 @@ ls -la /home/<user>/<project>
 ```
 
 - Replace `<user>` with your deployment user (e.g., `deploy`, `ubuntu`, etc.)
-- Replace `<project>` with your project or app folder name
+- Replace `<project>` with the unique folder name for each repo (e.g., `portfolio`, `ttg-collector`).
 
 ---
 
-## Expected Layout
+## Expected Layout (per project)
 
 ```
 /home/<user>/<project>/
@@ -30,6 +32,8 @@ ls -la /home/<user>/<project>
     initial/
   shared/
 ```
+
+Repeat for each project you want to deploy. Example projects: `portfolio`, `ttg-collector`.
 
 ---
 
