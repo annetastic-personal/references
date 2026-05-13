@@ -1,17 +1,17 @@
 # Step 1 Sample: Prepare Server Directory Layout (Portfolio Project)
 
-This example shows how the directory layout step was implemented for the `portfolio` project.
+This example shows how the directory layout step was implemented for the `portfolio` project as part of a multi-repo CI/CD setup. Repeat similar steps for each additional project (e.g., `ttg-collector`).
 
 ---
 
 ## Commands Used
 
 ```bash
-mkdir -p /home/<deploy-user>/public/releases
-mkdir -p /home/<deploy-user>/public/shared
-mkdir -p /home/<deploy-user>/public/releases/initial
-ln -sfn /home/<deploy-user>/public/releases/initial /home/<deploy-user>/public/current
-ls -la /home/<deploy-user>/public
+mkdir -p /home/<deploy-user>/portfolio/releases
+mkdir -p /home/<deploy-user>/portfolio/shared
+mkdir -p /home/<deploy-user>/portfolio/releases/initial
+ln -sfn /home/<deploy-user>/portfolio/releases/initial /home/<deploy-user>/portfolio/current
+ls -la /home/<deploy-user>/portfolio
 ```
 
 ---
@@ -19,12 +19,14 @@ ls -la /home/<deploy-user>/public
 ## Actual Layout
 
 ```
-/home/<deploy-user>/public/
+/home/<deploy-user>/portfolio/
   current -> releases/initial   (symlink)
   releases/
     initial/
   shared/
 ```
+
+Repeat for each project you want to deploy (e.g., `/home/<deploy-user>/ttg-collector/`).
 
 ---
 
