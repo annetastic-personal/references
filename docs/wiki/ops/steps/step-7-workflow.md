@@ -57,4 +57,4 @@ runs-on: [self-hosted, linux, ARM64, deploy-lan]
 
 ---
 
-[← Step 6](step-6-runner-setup.md) | [← Back to Index](../cicd-index.md) | [Next: Step 8 →](step-8-deploy-and-verify.md)
+[← Step 6](https://github.com/odomaf/references/wiki/step-6-runner-setup) | [← Back to Index](../cicd-index.md) | [Next: Step 8 →](https://github.com/odomaf/references/wiki/step-8-deploy-and-verify)

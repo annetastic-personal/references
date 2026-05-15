@@ -36,4 +36,4 @@ See your project's troubleshooting guide for issues encountered during this step
 
 ---
 
-[← Step 7](step-7-workflow.md) | [← Back to Index](../cicd-index.md) | [Next: Step 9 →](step-9-rollback.md)
+[← Step 7](https://github.com/odomaf/references/wiki/step-7-workflow) | [← Back to Index](../cicd-index.md) | [Next: Step 9 →](https://github.com/odomaf/references/wiki/step-9-rollback)

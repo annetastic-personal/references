@@ -36,4 +36,4 @@ ssh-keyscan -p <port> <server>
 
 ---
 
-[← Step 4](step-4-authorized-keys.md) | [← Back to Index](../cicd-index.md) | [Next: Step 6 →](step-6-workflow.md)
+[← Step 4](https://github.com/odomaf/references/wiki/step-4-authorized-keys) | [← Back to Index](../cicd-index.md) | [Next: Step 6 →](https://github.com/odomaf/references/wiki/step-6-runner-setup)

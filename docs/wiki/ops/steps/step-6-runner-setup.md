@@ -29,4 +29,4 @@ Set up a self-hosted GitHub Actions runner on your deployment server. This runne
 
 ---
 
-[← Step 5](step-5-github-secrets.md) | [← Back to Index](../cicd-index.md) | [Next: Step 7 →](step-7-workflow.md)
+[← Step 5](https://github.com/odomaf/references/wiki/step-5-github-secrets) | [← Back to Index](../cicd-index.md) | [Next: Step 7 →](https://github.com/odomaf/references/wiki/step-7-workflow)

@@ -52,4 +52,4 @@ See your project's troubleshooting guide for common Nginx errors and fixes.
 
 ---
 
-[← Step 1](step-1-server-layout.md) | [← Back to Index](../cicd-index.md) | [Next: Step 3 →](step-3-deploy-key.md)
+[← Step 1](https://github.com/odomaf/references/wiki/step-1-server-layout) | [← Back to Index](../cicd-index.md) | [Next: Step 3 →](https://github.com/odomaf/references/wiki/step-3-deploy-key)

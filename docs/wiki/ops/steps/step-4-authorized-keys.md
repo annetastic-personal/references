@@ -30,4 +30,4 @@ ssh -i ~/.ssh/<deploy_key_name> -p <port> <user>@<server> "echo deploy-key-auth-
 
 ---
 
-[← Step 3](step-3-deploy-key.md) | [← Back to Index](../cicd-index.md) | [Next: Step 5 →](step-5-github-secrets.md)
+[← Step 3](https://github.com/odomaf/references/wiki/step-3-deploy-key) | [← Back to Index](../cicd-index.md) | [Next: Step 5 →](https://github.com/odomaf/references/wiki/step-5-github-secrets)

@@ -28,4 +28,4 @@ cat ~/.ssh/<deploy_key_name>.pub
 
 ---
 
-[← Step 2](step-2-nginx-config.md) | [← Back to Index](../cicd-index.md) | [Next: Step 4 →](step-4-authorized-keys.md)
+[← Step 2](https://github.com/odomaf/references/wiki/step-2-nginx-config) | [← Back to Index](../cicd-index.md) | [Next: Step 4 →](https://github.com/odomaf/references/wiki/step-4-authorized-keys)

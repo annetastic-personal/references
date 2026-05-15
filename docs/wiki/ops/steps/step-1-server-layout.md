@@ -37,4 +37,4 @@ Repeat for each project you want to deploy. Example projects: `portfolio`, `ttg-
 
 ---
 
-[← Back to Index](../cicd-index.md) | [Next: Step 2 →](step-2-nginx-config.md)
+[← Back to Index](../cicd-index.md) | [Next: Step 2 →](https://github.com/odomaf/references/wiki/step-2-nginx-config)
