@@ -19,12 +19,37 @@ Add all required secrets to your repository so the workflow can authenticate and
 
 ---
 
+## Where to Add These Secrets in GitHub
+
+Add each secret as a **Repository Secret** (not an Environment Secret) in your GitHub repository:
+
+1. Go to your repository on GitHub.
+2. Click **Settings**.
+3. In the left sidebar, select **Secrets and variables** > **Actions**.
+4. Click the **Repository secrets** tab.
+5. Click **New repository secret** for each secret listed above, and paste the corresponding value.
+
+> Do not add these as Environment secrets unless your workflow specifically requires environment scoping. For most CI/CD workflows, repository secrets are correct.
+
+---
+
 ## Commands
+
+To retrieve the SSH private key for use as the `SSH_PRIVATE_KEY` secret:
 
 ```bash
 cat ~/.ssh/<deploy_key_name>
+```
+
+This command outputs the contents of your SSH private key file. Copy the entire output—including the header (`-----BEGIN OPENSSH PRIVATE KEY-----`), the footer (`-----END OPENSSH PRIVATE KEY-----`), and all lines in between—exactly as shown. Use this as the value for the `SSH_PRIVATE_KEY` secret in your repository settings. This allows the CI/CD workflow to authenticate to your server securely.
+
+To retrieve the SSH host key for use as the `SERVER_KNOWN_HOSTS` secret:
+
+```bash
 ssh-keyscan -p <port> <server>
 ```
+
+This command fetches the SSH host key for your server. Copy the full output and use it as the value for the `SERVER_KNOWN_HOSTS` secret. This ensures the workflow can verify the server's identity and helps prevent man-in-the-middle attacks.
 
 ---
 
