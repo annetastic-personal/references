@@ -14,7 +14,7 @@ cat ~/.ssh/portfolio_deploy_key.pub
 After generating the key pair, copy the contents of `~/.ssh/portfolio_deploy_key.pub` and append it to the `~/.ssh/authorized_keys` file on your server. You can add a comment at the end of the line for clarity:
 
 ```
-ssh-ed25519 AAAAC3... user@host # portfolio
+ssh-ed25519 AAAAC3... annetastic@10.5.6.15 # portfolio
 ```
 
 ---
