@@ -6,6 +6,10 @@ A collection of processes, patterns, and practices I've learned and want to refe
 
 - [Organization Setup for Multi-Repo CI/CD](https://github.com/odomaf/references/wiki/Organization-Setup)
 
+### Authentication and Tokens
+
+- [PAT Instructions](https://github.com/odomaf/references/wiki/PAT-Instructions)
+- [Organization Setup for Multi-Repo CI/CD](https://github.com/odomaf/references/wiki/Organization-Setup)
 
 ### Application CI/CD
 
