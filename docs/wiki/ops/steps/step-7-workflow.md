@@ -2,7 +2,28 @@
 
 Worked example: [Step 7 Sample](https://github.com/odomaf/references/wiki/step-7-workflow-sample)
 
-Create, document, and approve the deployment workflow for your project (e.g., `.github/workflows/deploy.yml`).
+Create, document, and approve the deployment workflow script for your project. In GitHub Actions, a "workflow" is a YAML script file committed in your repo, usually at `.github/workflows/deploy.yml`.
+
+---
+
+## Step-by-Step
+
+1. In your repository root, create the workflow directories if they do not exist:
+
+   ```bash
+   mkdir -p .github/workflows
+   ```
+
+2. Create the workflow file:
+
+   ```bash
+   touch .github/workflows/deploy.yml
+   ```
+
+3. Open `.github/workflows/deploy.yml` and write your deployment workflow YAML script.
+4. Add your trigger, runner target, build steps, and deploy steps.
+5. Save and commit the file to your repository.
+6. Push your branch so GitHub Actions can run the workflow.
 
 ---
 
