@@ -64,3 +64,9 @@ Use this flow when a token stops working (for example, after repository ownershi
 
 - Do not use secret names starting with GITHUB\_ because that prefix is reserved.
 - Rotate tokens periodically and update `<TOKEN_SECRET_NAME>` whenever a token is regenerated.
+
+## Organization Transfer Note
+
+- If a repository moves to a new owner or organization, existing PAT access can stop working even when the repository remains public.
+- After transfer, ensure PAT repository access includes the new owner/repository location.
+- If wiki publish starts failing with `403`, regenerate the token and update `<TOKEN_SECRET_NAME>`.

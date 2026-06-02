@@ -28,6 +28,14 @@ Worked example: [Step 01 Sample](../wiki-automation-samples/step-01-add-required
 - [ ] Secret names match script expectations
 - [ ] Secrets are readable by workflow
 
+## Troubleshooting
+
+- If wiki publish fails with `403` after repository ownership transfer:
+  - Regenerate or re-scope the PAT so it includes the current owner/repository location.
+  - Update `<TOKEN_SECRET_NAME>` in repository secrets.
+  - Confirm `<USERNAME_SECRET_NAME>` matches the account that owns the PAT.
+  - See [PAT Instructions](../PAT-Instructions.md).
+
 ## Open Questions
 
 -

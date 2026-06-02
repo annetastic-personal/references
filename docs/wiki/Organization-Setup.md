@@ -67,6 +67,7 @@ After transfer, update each local clone to the new organization URL.
 ## Common Post-Migration Issues
 
 - `403` permission errors in CI because PAT scope/access is no longer valid for the new owner.
+  - Use [PAT Instructions](PAT-Instructions) to regenerate or re-scope tokens, then update repository/organization secrets.
 - Workflows or scripts still targeting old owner/repo URLs.
 - Local clones still using old remote URLs.
 
