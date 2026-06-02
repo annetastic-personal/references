@@ -28,6 +28,7 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFAKeFakeKeyExample1234567890abcdefg annetas
    ```bash
    echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFAKeFakeKeyExample1234567890abcdefg annetastic@portfolio # portfolio' >> ~/.ssh/authorized_keys
    chmod 600 ~/.ssh/authorized_keys
+   ```
 
 > **Note:**  
 > You only need to run the `chmod` commands if you just created the `~/.ssh` directory or the `authorized_keys` file.  
@@ -36,7 +37,6 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFAKeFakeKeyExample1234567890abcdefg annetas
 >   - `~/.ssh` should show `drwx------` (700).  
 >   - `authorized_keys` should show `-rw-------` (600).  
 > - If the permissions match, no further action is needed. If not, use the `chmod` commands as shown above.
-   ```
 
 **Note:** The SSH key above is a fake example for documentation purposes only.
 
