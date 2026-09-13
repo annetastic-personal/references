@@ -1,6 +1,10 @@
-# Step 1: Prepare Server Directory Layout
+# Step 2: Prepare Server Directory Layout
 
-Worked example: [Step 1 Sample](https://github.com/<old-org>/references/wiki/step-1-server-layout-sample)
+> **Applies to:** All deployments.
+
+Worked example: [Step 2 Sample](https://github.com/annetastic-personal/references/wiki/step-2-server-layout-sample)
+
+## Purpose
 
 For multi-repo CI/CD, repeat the following structure for each project/repo you want to deploy. Each project should have its own directory under your deployment user's home directory. This pattern supports atomic deployments and easy rollbacks for multiple apps on the same server.
 
@@ -37,4 +41,4 @@ Repeat for each project you want to deploy. Example projects: `portfolio`, `ttg-
 
 ---
 
-[← Back to Index](../cicd-index.md) | [Next: Step 2 →](https://github.com/<old-org>/references/wiki/step-2-nginx-config)
+[← Step 1](https://github.com/annetastic-personal/references/wiki/step-1-personal-ssh-access) | [← Back to Index](../cicd-index.md) | [Next: Step 3 →](https://github.com/annetastic-personal/references/wiki/step-3-nginx-config)

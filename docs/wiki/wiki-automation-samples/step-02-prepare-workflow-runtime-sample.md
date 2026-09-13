@@ -9,7 +9,7 @@ Worked example for the `references` repository.
 
 ## Context
 
-This example shows the actual runtime setup used to make the wiki scaffold script runnable in the `<old-org>/references` repository.
+This example shows the actual runtime setup used to make the wiki scaffold script runnable in the `annetastic-personal/references` repository.
 
 ## Notes
 

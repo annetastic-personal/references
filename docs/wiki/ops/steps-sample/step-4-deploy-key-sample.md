@@ -1,4 +1,4 @@
-# Step 3 Sample: Create Deployment SSH Key Pair (Portfolio Project)
+# Step 4 Sample: Create Deployment SSH Key Pair (Portfolio Project)
 
 This example shows how to generate and use a dedicated SSH key pair for the `portfolio` project, following best practices for multi-repo CI/CD deployments.
 
@@ -30,4 +30,4 @@ ssh-ed25519 AAAAC3... <deploy-user>@203.0.113.10 # portfolio
 
 ---
 
-[← Step 2 Sample](step-2-nginx-config-sample.md) | [Next: Step 4 Sample →](step-4-authorized-keys-sample.md)
+[← Step 3 Sample](step-3-nginx-config-sample.md) | [Next: Step 5 Sample →](step-5-authorized-keys-sample.md)

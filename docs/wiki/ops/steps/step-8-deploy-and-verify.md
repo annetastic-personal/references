@@ -1,6 +1,10 @@
 # Step 8: Push and Verify Deployment
 
-Worked example: [Step 8 Sample](https://github.com/<old-org>/references/wiki/step-8-deploy-and-verify-sample)
+> **Applies to:** All deployments.
+
+Worked example: [Step 8 Sample](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify-sample)
+
+## Purpose
 
 Push to your main branch, verify the workflow runs successfully, and confirm the site is live.
 
@@ -32,8 +36,8 @@ git push origin HEAD:main
 
 ## Troubleshooting
 
-See your project's troubleshooting guide for issues encountered during this step.
+See [Troubleshooting → Step 8](../troubleshooting.md#step-8) for issues encountered during this step.
 
 ---
 
-[← Step 7](https://github.com/<old-org>/references/wiki/step-7-workflow) | [← Back to Index](../cicd-index.md) | [Next: Step 9 →](https://github.com/<old-org>/references/wiki/step-9-rollback)
+[← Step 7](https://github.com/annetastic-personal/references/wiki/step-7-workflow) | [← Back to Index](../cicd-index.md) | [Next: Step 9 →](https://github.com/annetastic-personal/references/wiki/step-9-rollback)

@@ -1,4 +1,4 @@
-# Step 1 Sample: Prepare Server Directory Layout (Portfolio Project)
+# Step 2 Sample: Prepare Server Directory Layout (Portfolio Project)
 
 This example shows how the directory layout step was implemented for the `portfolio` project as part of a multi-repo CI/CD setup. Repeat similar steps for each additional project (e.g., `ttg-collector`).
 
@@ -30,4 +30,4 @@ Repeat for each project you want to deploy (e.g., `/home/<deploy-user>/ttg-colle
 
 ---
 
-[← Back to Index](../cicd-index.md) | [Next: Step 2 Sample →](step-2-nginx-config-sample.md)
+[← Step 1 Sample](step-1-personal-ssh-access-sample.md) | [← Back to Index](../cicd-index.md) | [Next: Step 3 Sample →](step-3-nginx-config-sample.md)

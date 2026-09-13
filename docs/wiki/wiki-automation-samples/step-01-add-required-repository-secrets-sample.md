@@ -9,7 +9,7 @@ Worked example for the `references` repository.
 
 ## Context
 
-This example shows the actual repository secrets used to support wiki automation for the `<old-org>/references` repository.
+This example shows the actual repository secrets used to support wiki automation for the `annetastic-personal/references` repository.
 
 ## Notes
 
@@ -22,7 +22,7 @@ This example shows the actual repository secrets used to support wiki automation
 
 ## Actions Taken
 
-1. Generated a fine-grained PAT with repository access limited to `<old-org>/references`.
+1. Generated a fine-grained PAT with repository access limited to `annetastic-personal/references`.
 2. Added repository secret `WIKI_PUSH_USERNAME` with GitHub username value.
 3. Added repository secret `WIKI_PUSH_PAT` with PAT value.
 
@@ -34,7 +34,7 @@ This example shows the actual repository secrets used to support wiki automation
 
 ## Final Chosen Values
 
-- Target repository: `<old-org>/references`
+- Target repository: `annetastic-personal/references`
 - Username secret name: `WIKI_PUSH_USERNAME`
 - Token secret name: `WIKI_PUSH_PAT`
 - PAT repository permission: `Contents: Read and write`

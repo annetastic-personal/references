@@ -1,6 +1,10 @@
-# Step 5: Add CI/CD Repository Secrets
+# Step 6: Add CI/CD Repository Secrets
 
-Worked example: [Step 5 Sample](https://github.com/<old-org>/references/wiki/step-5-github-secrets-sample)
+> **Applies to:** All deployments.
+
+Worked example: [Step 6 Sample](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets-sample)
+
+## Purpose
 
 Add all required secrets to your repository so the workflow can authenticate and deploy.
 
@@ -61,4 +65,4 @@ This command fetches the SSH host key for your server. Copy the full output and 
 
 ---
 
-[← Step 4](https://github.com/<old-org>/references/wiki/step-4-authorized-keys) | [← Back to Index](../cicd-index.md) | [Next: Step 6 →](https://github.com/<old-org>/references/wiki/step-6-runner-setup)
+[← Step 5](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys) | [← Back to Index](../cicd-index.md) | [Next: Step 7 →](https://github.com/annetastic-personal/references/wiki/step-7-workflow)

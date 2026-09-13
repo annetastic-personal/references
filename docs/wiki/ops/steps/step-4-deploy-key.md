@@ -1,6 +1,10 @@
-# Step 3: Create Deployment SSH Key Pair
+# Step 4: Create Deployment SSH Key Pair
 
-Worked example: [Step 3 Sample](https://github.com/<old-org>/references/wiki/step-3-deploy-key-sample)
+> **Applies to:** All deployments.
+
+Worked example: [Step 4 Sample](https://github.com/annetastic-personal/references/wiki/step-4-deploy-key-sample)
+
+## Purpose
 
 Generate a dedicated SSH key pair for your CI/CD system to authenticate with the server. For multi-repo setups, generate a unique key pair for each repository (e.g., portfolio, ttgcollector) and use a descriptive filename for each key (such as ~/.ssh/portfolio_deploy_key).
 
@@ -31,12 +35,11 @@ ssh-ed25519 AAAAC3... user@host # ttgcollector
 
 | File                           | Purpose                                                                          |
 | ------------------------------ | -------------------------------------------------------------------------------- |
-| `~/.ssh/<deploy_key_name>`     | Private key — store as a GitHub Actions secret (e.g., SSH_PRIVATE_KEY)           |
-| `~/.ssh/<deploy_key_name>`     | Private key — store as a GitHub Actions secret (e.g., SSH_PRIVATE_KEY) in Step 5 |
-| `~/.ssh/<deploy_key_name>.pub` | Public key — append to `~/.ssh/authorized_keys` on the server in Step 4          |
+| `~/.ssh/<deploy_key_name>`     | Private key — store as a GitHub Actions secret (e.g., SSH_PRIVATE_KEY) in Step 6 |
+| `~/.ssh/<deploy_key_name>.pub` | Public key — append to `~/.ssh/authorized_keys` on the server in Step 5          |
 
 > **Keep the private key secure. Never commit it to the repository. Only the public key should be shared with the server.**
 
 ---
 
-[← Step 2](https://github.com/<old-org>/references/wiki/step-2-nginx-config) | [← Back to Index](../cicd-index.md) | [Next: Step 4 →](https://github.com/<old-org>/references/wiki/step-4-authorized-keys)
+[← Step 3](https://github.com/annetastic-personal/references/wiki/step-3-nginx-config) | [← Back to Index](../cicd-index.md) | [Next: Step 5 →](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys)

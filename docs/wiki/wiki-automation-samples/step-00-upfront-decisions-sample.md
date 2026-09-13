@@ -9,7 +9,7 @@ Worked example for the `references` repository.
 
 ## Context
 
-This example shows the actual upfront decisions used to set up wiki automation for the `<old-org>/references` repository.
+This example shows the actual upfront decisions used to set up wiki automation for the `annetastic-personal/references` repository.
 
 ## Decision A: Trigger Scope
 
@@ -38,7 +38,7 @@ This example shows the actual upfront decisions used to set up wiki automation f
 - Chosen method: GitHub Actions authenticates to the wiki using a fine-grained PAT stored in repository secrets.
 - Token type: Fine-grained Personal Access Token used only for wiki publishing.
 - Permission scope:
-  - Repository access: only `<old-org>/references`
+  - Repository access: only `annetastic-personal/references`
   - Repository permissions: `Contents: Read and write`
 - Secret names used:
   - `WIKI_PUSH_USERNAME`

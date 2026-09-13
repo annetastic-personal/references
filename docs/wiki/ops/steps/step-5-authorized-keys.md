@@ -1,6 +1,10 @@
-# Step 4: Add Deploy Public Key to Server
+# Step 5: Add Deploy Public Key to Server
 
-Worked example: [Step 4 Sample](https://github.com/<old-org>/references/wiki/step-4-authorized-keys-sample)
+> **Applies to:** All deployments.
+
+Worked example: [Step 5 Sample](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys-sample)
+
+## Purpose
 
 Authorize the deploy public key on the server and verify SSH key-based authentication works.
 
@@ -18,7 +22,7 @@ If this is your first time setting up SSH for this user on the server, you may n
    mkdir -p ~/.ssh && chmod 700 ~/.ssh
    ```
 
-3. Append the public key generated in Step 3 to authorized_keys (do not overwrite the file):
+3. Append the public key generated in Step 4 to authorized_keys (do not overwrite the file):
    ```bash
    echo '<PASTE_PUBLIC_KEY>' >> ~/.ssh/authorized_keys
    chmod 600 ~/.ssh/authorized_keys
@@ -45,4 +49,4 @@ ssh -i ~/.ssh/<deploy_key_name> -p <port> <user>@<server> "echo deploy-key-auth-
 
 ---
 
-[← Step 3](https://github.com/<old-org>/references/wiki/step-3-deploy-key) | [← Back to Index](../cicd-index.md) | [Next: Step 5 →](https://github.com/<old-org>/references/wiki/step-5-github-secrets)
+[← Step 4](https://github.com/annetastic-personal/references/wiki/step-4-deploy-key) | [← Back to Index](../cicd-index.md) | [Next: Step 6 →](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets)

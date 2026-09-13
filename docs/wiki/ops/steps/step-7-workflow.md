@@ -1,6 +1,10 @@
 # Step 7: Create CI/CD Workflow
 
-Worked example: [Step 7 Sample](https://github.com/<old-org>/references/wiki/step-7-workflow-sample)
+> **Applies to:** All deployments.
+
+Worked example: [Step 7 Sample](https://github.com/annetastic-personal/references/wiki/step-7-workflow-sample)
+
+## Purpose
 
 Create, document, and approve the deployment workflow script for your project. In GitHub Actions, a "workflow" is a YAML script file committed in your repo, usually at `.github/workflows/deploy.yml`.
 
@@ -43,12 +47,22 @@ Create, document, and approve the deployment workflow script for your project. I
 ## Example Runner Target
 
 ```yaml
-runs-on: [self-hosted, linux, ARM64, deploy-lan]
+runs-on: ubuntu-latest
 ```
 
 ---
 
 ## Key Workflow Sections (Generalized)
+
+### Job Environment
+
+```yaml
+env:
+  SERVER_HOST: ${{ secrets.SERVER_HOST }}
+  SERVER_USER: ${{ secrets.SERVER_USER }}
+  SERVER_PORT: ${{ secrets.SERVER_PORT }}
+  SERVER_PATH: ${{ secrets.SERVER_PATH }}
+```
 
 ### Build
 
@@ -60,22 +74,77 @@ runs-on: [self-hosted, linux, ARM64, deploy-lan]
 - run: npm run build
 ```
 
+### Start SSH Agent
+
+```yaml
+- name: Start SSH agent
+  uses: webfactory/ssh-agent@v0.9.0
+  with:
+    ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+```
+
+### Add Known Hosts
+
+```yaml
+- name: Add known hosts
+  run: |
+    mkdir -p ~/.ssh
+    if [ -n "${{ secrets.SERVER_KNOWN_HOSTS }}" ]; then
+      echo "${{ secrets.SERVER_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+    else
+      ssh-keyscan -p "${{ secrets.SERVER_PORT }}" "${{ secrets.SERVER_HOST }}" >> ~/.ssh/known_hosts
+    fi
+```
+
 ### Deploy
 
 ```yaml
-- run: |
-    RELEASE_DIR="${{ env.SERVER_PATH }}/releases/release-$(date +%Y%m%d%H%M%S)"
-    rsync -az --delete dist/ ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:$RELEASE_DIR/
-    ssh ... "ln -sfn $RELEASE_DIR ${{ env.SERVER_PATH }}/current"
+- name: Deploy release
+  run: |
+    # Fail fast on errors, unset variables, or pipeline failures.
+    set -euo pipefail
+
+    RELEASE_NAME="release-$(date +%Y%m%d%H%M%S)"
+    RELEASE_DIR="$SERVER_PATH/releases/$RELEASE_NAME"
+
+    # Ensure the release directory exists on the server.
+    ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "mkdir -p '$RELEASE_DIR'"
+
+    # Sync the build output into the release directory.
+    rsync -az --delete -e "ssh -p $SERVER_PORT" dist/ "$SERVER_USER@$SERVER_HOST:$RELEASE_DIR/"
+
+    # Atomically switch the current symlink to the new release.
+    ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ln -sfn '$RELEASE_DIR' '$SERVER_PATH/current'"
+```
+
+### Deploy (Node Service)
+
+For a Node backend, sync the whole app (server code plus client build) and restart the systemd service from Step 10 instead of just swapping files in place:
+
+```yaml
+- name: Deploy release (Node service)
+  run: |
+    set -euo pipefail
+    RELEASE_NAME="release-$(date +%Y%m%d%H%M%S)"
+    RELEASE_DIR="$SERVER_PATH/releases/$RELEASE_NAME"
+
+    ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "mkdir -p '$RELEASE_DIR'"
+
+    # Sync the built app (server code plus client build).
+    rsync -az --delete -e "ssh -p $SERVER_PORT" ./ "$SERVER_USER@$SERVER_HOST:$RELEASE_DIR/"
+
+    # Repoint current, then restart the service so the new code loads.
+    ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ln -sfn '$RELEASE_DIR' '$SERVER_PATH/current' && sudo systemctl restart <service-name>"
 ```
 
 ### Prune Old Releases
 
 ```yaml
-- run: |
-    ssh ... "ls -1dt ${{ env.SERVER_PATH }}/releases/release-* | tail -n +6 | xargs rm -rf"
+- name: Prune old releases
+  run: |
+    ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ls -1dt '$SERVER_PATH'/releases/* | tail -n +6 | xargs -r rm -rf"
 ```
 
 ---
 
-[← Step 6](https://github.com/<old-org>/references/wiki/step-6-runner-setup) | [← Back to Index](../cicd-index.md) | [Next: Step 8 →](https://github.com/<old-org>/references/wiki/step-8-deploy-and-verify)
+[← Step 6](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets) | [← Back to Index](../cicd-index.md) | [Next: Step 8 →](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify)

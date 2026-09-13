@@ -9,7 +9,7 @@ Worked example for the `references` repository.
 
 ## Context
 
-This example shows the actual GitHub Actions workflow used to publish wiki updates for `<old-org>/references`.
+This example shows the actual GitHub Actions workflow used to publish wiki updates for `annetastic-personal/references`.
 
 ## Notes
 

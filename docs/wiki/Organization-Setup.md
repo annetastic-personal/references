@@ -1,13 +1,13 @@
 # Organization Setup for Multi-Repo CI/CD
 
-Set up a GitHub organization and migrate repositories into it so shared CI/CD infrastructure (for example, organization-level self-hosted runners) can be managed in one place.
+Set up a GitHub organization and migrate repositories into it so shared CI/CD configuration (for example, organization-level secrets, variables, and access policies) can be managed in one place.
 
 ---
 
 ## Why Use an Organization
 
 - Group related repositories under one owner.
-- Share organization-level self-hosted runners across multiple repos.
+- Share organization-level secrets and variables across repos.
 - Manage access and policies consistently.
 - Reduce duplicated CI/CD setup effort per repository.
 
@@ -58,7 +58,7 @@ After transfer, update each local clone to the new organization URL.
 
 ### 5) Align CI/CD With Organization Scope
 
-- Prefer organization-level self-hosted runners for multi-repo deployments.
+- Use GitHub-hosted runners for workflows (self-hosted runners are no longer used).
 - Update workflow references and documentation to use current owner/repo paths.
 - Confirm any wiki/automation scripts do not hardcode old owner names.
 
