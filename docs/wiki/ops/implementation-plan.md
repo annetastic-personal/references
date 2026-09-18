@@ -14,14 +14,14 @@ Update the CI/CD documentation in `docs/wiki/ops/steps/` and `docs/wiki/ops/step
 
 ## Review findings this plan addresses
 
-1. **Old-server-specific values** — `203.0.113.10`, user `<deploy-user>`, GitHub org `<old-org>` (in sample config URLs and in the prev/next wiki links), domain `annetasticthoughts.com` (DNS), and the `ARM64`/`deploy-lan` runner labels.
+1. **Old-server-specific values** — the old private IP, the old deploy user, the old GitHub org (in sample config URLs and in the prev/next wiki links), the old domain (DNS), and the self-hosted-runner labels (`ARM64`/`deploy-lan`).
 2. **Internal inconsistencies** — step 1 (`/portfolio/`) vs step 2 (`/public/`) path mismatch; step 3 duplicate "private key" table row; deploy-key name drift (`portfolio_deploy_key` → `github_actions_deploy` → `portfolio_key`); step 5 sample's broken secrets table; step 6 sample `linux-x64` vs steps 6/7 `ARM64`.
 3. **Broken cross-references** — the step docs link to `../cicd-index.md` and the sample links to `../troubleshooting.md`; neither file exists under `docs/wiki/ops/`.
 4. **Pitfalls** — the sample workflow omits ssh-agent + known_hosts + port handling; the self-hosted runner may no longer be necessary; TTGCollector is a Node service (not a static `dist/` deploy); no step disables password auth; no personal SSH login-key step.
 
 ## Decisions (recommended)
 
-- **Runner (confirmed):** switch to GitHub-hosted runners and remove the self-hosted-runner step. The old runner existed only because GitHub could not reach the private `203.0.113.10`; the Dreamhost VPS is publicly reachable — and the self-hosted runner was too volatile to rely on.
+- **Runner (confirmed):** switch to GitHub-hosted runners and remove the self-hosted-runner step. The old runner existed only because GitHub could not reach the old private IP; the Dreamhost VPS is publicly reachable — and the self-hosted runner was too volatile to rely on.
 - **Deploy user:** create a dedicated non-root user (for example, `deploy`); do not deploy as root.
 - **Keys:** use one personal SSH login key for interactive access, and a separate per-repo deploy key for CI/CD.
 - **New docs:** add a personal SSH login-key step and a TTGCollector (Node service) deploy step.
@@ -43,11 +43,11 @@ Update the CI/CD documentation in `docs/wiki/ops/steps/` and `docs/wiki/ops/step
 
 ### Phase B — Update old-server references
 
-- [x] **B1** — Replace `203.0.113.10` with a documentation placeholder (for example, `203.0.113.10`) in steps-sample 3, 4, and 5 — do not use the real public IP.
-- [x] **B2** — Replace `<deploy-user>` with a placeholder (for example, `<deploy-user>`).
-- [x] **B3** — Replace the `<old-org>` GitHub org with the current org (confirm with `git remote -v`) in the sample config URL and in the prev/next wiki links in the step docs.
+- [x] **B1** — Replace the old private IP with a documentation placeholder (for example, `203.0.113.10`) in steps-sample 3, 4, and 5 — do not use the real public IP.
+- [x] **B2** — Replace the old deploy username with a placeholder (for example, `<deploy-user>`).
+- [x] **B3** — Replace the old GitHub org with the current org (confirm with `git remote -v`) in the sample config URL and in the prev/next wiki links in the step docs.
 - [x] **B4** — Remove all self-hosted runner references (`ARM64` / `deploy-lan` labels; step 6 file removal is B6), since we are switching to GitHub-hosted runners.
-- [x] **B5** — Record that `annetasticthoughts.com` DNS must be repointed to the new server IP.
+- [x] **B5** — Record that the old domain's DNS must be repointed to the new server IP.
 - [x] **B6** — Archive or remove step 6 (self-hosted runner) and its sample; decide whether to renumber steps 7–9 or leave the gap and mark step 6 obsolete.
 
 ### Phase C — Fix internal inconsistencies
@@ -86,7 +86,7 @@ Update the CI/CD documentation in `docs/wiki/ops/steps/` and `docs/wiki/ops/step
 
 - [ ] **H1** — Complete SSH key setup using the corrected steps.
 - [ ] **H2** — Deploy portfolio (static) and TTGCollector (Node + PostgreSQL).
-- [ ] **H3** — Repoint `annetasticthoughts.com` DNS (A/AAAA records) to the new server IP at cutover.
+- [ ] **H3** — Repoint the domain's DNS (A/AAAA records) to the new server IP at cutover.
 
 ### Phase I — Restructure & polish (shared core + stack variants)
 
