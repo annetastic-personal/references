@@ -4,8 +4,8 @@ Worked example for the `references` repository.
 
 ## Related Template
 
-- [Generic Step 02 Template](../wiki-automation-steps/step-02-prepare-workflow-runtime.md)
-- [Back to checklist](../Wiki-Automation-Checklist.md)
+- [Generic Step 02 Template](https://github.com/annetastic-personal/references/wiki/step-02-prepare-workflow-runtime)
+- [Back to checklist](https://github.com/annetastic-personal/references/wiki/Wiki-Automation-Checklist)
 
 ## Context
 

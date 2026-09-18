@@ -4,8 +4,8 @@ Worked example for the `references` repository.
 
 ## Related Template
 
-- [Generic Step 01 Template](../wiki-automation-steps/step-01-add-required-repository-secrets.md)
-- [Back to checklist](../Wiki-Automation-Checklist.md)
+- [Generic Step 01 Template](https://github.com/annetastic-personal/references/wiki/step-01-add-required-repository-secrets)
+- [Back to checklist](https://github.com/annetastic-personal/references/wiki/Wiki-Automation-Checklist)
 
 ## Context
 

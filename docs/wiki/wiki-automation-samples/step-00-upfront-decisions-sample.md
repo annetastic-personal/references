@@ -4,8 +4,8 @@ Worked example for the `references` repository.
 
 ## Related Template
 
-- [Generic Step 00 Template](../wiki-automation-steps/step-00-upfront-decisions.md)
-- [Back to checklist](../Wiki-Automation-Checklist.md)
+- [Generic Step 00 Template](https://github.com/annetastic-personal/references/wiki/step-00-upfront-decisions)
+- [Back to checklist](https://github.com/annetastic-personal/references/wiki/Wiki-Automation-Checklist)
 
 ## Context
 
@@ -30,7 +30,7 @@ This example shows the actual upfront decisions used to set up wiki automation f
 
 ## Decision B: Authentication Method
 
-- PAT setup guide: [PAT Instructions](../PAT-Instructions.md)
+- PAT setup guide: [PAT Instructions](https://github.com/annetastic-personal/references/wiki/PAT-Instructions)
 
 ### Notes
 

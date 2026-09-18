@@ -59,4 +59,4 @@ sudo systemctl reload sshd
 
 ---
 
-[← Back to Index](../cicd-index.md) | [Next: Step 2 →](https://github.com/annetastic-personal/references/wiki/step-2-server-layout)
+[← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 2 →](https://github.com/annetastic-personal/references/wiki/step-2-server-layout)

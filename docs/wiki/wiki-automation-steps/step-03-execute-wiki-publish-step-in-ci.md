@@ -2,13 +2,13 @@
 
 ## Checklist Link
 
-- [Back to checklist](../Wiki-Automation-Checklist.md)
+- [Back to checklist](https://github.com/annetastic-personal/references/wiki/Wiki-Automation-Checklist)
 
 ## Objective
 
 Run the scaffold process in CI and push updated wiki pages.
 
-Worked example: [Step 03 Sample](../wiki-automation-samples/step-03-execute-wiki-publish-step-in-ci-sample.md)
+Worked example: [Step 03 Sample](https://github.com/annetastic-personal/references/wiki/step-03-execute-wiki-publish-step-in-ci-sample)
 
 ## Notes
 

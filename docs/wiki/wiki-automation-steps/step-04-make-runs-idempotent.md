@@ -2,13 +2,13 @@
 
 ## Checklist Link
 
-- [Back to checklist](../Wiki-Automation-Checklist.md)
+- [Back to checklist](https://github.com/annetastic-personal/references/wiki/Wiki-Automation-Checklist)
 
 ## Objective
 
 Ensure the workflow handles no-change runs safely without failing.
 
-Worked example: [Step 04 Sample](../wiki-automation-samples/step-04-make-runs-idempotent-sample.md)
+Worked example: [Step 04 Sample](https://github.com/annetastic-personal/references/wiki/step-04-make-runs-idempotent-sample)
 
 ## Notes
 

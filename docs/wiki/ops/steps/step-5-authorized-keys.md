@@ -49,4 +49,4 @@ ssh -i ~/.ssh/<deploy_key_name> -p <port> <user>@<server> "echo deploy-key-auth-
 
 ---
 
-[← Step 4](https://github.com/annetastic-personal/references/wiki/step-4-deploy-key) | [← Back to Index](../cicd-index.md) | [Next: Step 6 →](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets)
+[← Step 4](https://github.com/annetastic-personal/references/wiki/step-4-deploy-key) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 6 →](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets)

@@ -31,7 +31,7 @@ This reference documents a generalized, step-by-step process for setting up atom
 
 Use this process to publish wiki content from repository-managed markdown files under `docs/wiki/` to the GitHub wiki. The scaffold script at [docs/scaffold-wiki.js](https://github.com/annetastic-personal/references/blob/main/docs/scaffold-wiki.js) is prepared in Step 02 and executed by CI in Step 03 when relevant changes are pushed to `main`.
 
-- [Wiki Automation Checklist](Wiki-Automation-Checklist)
+- [Wiki Automation Checklist](https://github.com/annetastic-personal/references/wiki/Wiki-Automation-Checklist)
 - [Step 00: Upfront Decisions](https://github.com/annetastic-personal/references/wiki/step-00-upfront-decisions)
 - [Step 01: Add Required Repository Secrets](https://github.com/annetastic-personal/references/wiki/step-01-add-required-repository-secrets)
 - [Step 02: Prepare Workflow Runtime](https://github.com/annetastic-personal/references/wiki/step-02-prepare-workflow-runtime)

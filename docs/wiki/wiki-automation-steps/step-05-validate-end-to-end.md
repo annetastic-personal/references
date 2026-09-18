@@ -2,7 +2,7 @@
 
 ## Checklist Link
 
-- [Back to checklist](../Wiki-Automation-Checklist.md)
+- [Back to checklist](https://github.com/annetastic-personal/references/wiki/Wiki-Automation-Checklist)
 
 ## Objective
 

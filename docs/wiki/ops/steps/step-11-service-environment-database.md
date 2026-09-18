@@ -75,4 +75,4 @@ journalctl -u <service-name> -n 50
 
 ---
 
-[← Step 10](https://github.com/annetastic-personal/references/wiki/step-10-run-node-service) | [← Back to Index](../cicd-index.md)
+[← Step 10](https://github.com/annetastic-personal/references/wiki/step-10-run-node-service) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index)

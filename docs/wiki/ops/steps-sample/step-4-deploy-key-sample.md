@@ -30,4 +30,4 @@ ssh-ed25519 AAAAC3... <deploy-user>@203.0.113.10 # portfolio
 
 ---
 
-[← Step 3 Sample](step-3-nginx-config-sample.md) | [Next: Step 5 Sample →](step-5-authorized-keys-sample.md)
+[← Step 3 Sample](https://github.com/annetastic-personal/references/wiki/step-3-nginx-config-sample) | [Next: Step 5 Sample →](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys-sample)

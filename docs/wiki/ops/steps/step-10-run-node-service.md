@@ -81,4 +81,4 @@ journalctl -u <service-name> -f
 
 ---
 
-[← Back to Index](../cicd-index.md) | [Next: Step 11 →](https://github.com/annetastic-personal/references/wiki/step-11-service-environment-database)
+[← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 11 →](https://github.com/annetastic-personal/references/wiki/step-11-service-environment-database)

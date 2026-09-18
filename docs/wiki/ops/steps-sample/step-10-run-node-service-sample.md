@@ -62,4 +62,4 @@ sudo systemctl restart ttgcollector
 
 ---
 
-[← Back to Index](../cicd-index.md) | [Next: Step 11 Sample →](step-11-service-environment-database-sample.md)
+[← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 11 Sample →](https://github.com/annetastic-personal/references/wiki/step-11-service-environment-database-sample)

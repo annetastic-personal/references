@@ -77,8 +77,8 @@ server {
 
 ## Troubleshooting
 
-See [Troubleshooting → Step 3](../troubleshooting.md#step-3) for common Nginx errors and fixes.
+See [Troubleshooting → Step 3](https://github.com/annetastic-personal/references/wiki/troubleshooting#step-3) for common Nginx errors and fixes.
 
 ---
 
-[← Step 2](https://github.com/annetastic-personal/references/wiki/step-2-server-layout) | [← Back to Index](../cicd-index.md) | [Next: Step 4 →](https://github.com/annetastic-personal/references/wiki/step-4-deploy-key)
+[← Step 2](https://github.com/annetastic-personal/references/wiki/step-2-server-layout) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 4 →](https://github.com/annetastic-personal/references/wiki/step-4-deploy-key)

@@ -65,4 +65,4 @@ This command fetches the SSH host key for your server. Copy the full output and 
 
 ---
 
-[← Step 5](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys) | [← Back to Index](../cicd-index.md) | [Next: Step 7 →](https://github.com/annetastic-personal/references/wiki/step-7-workflow)
+[← Step 5](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 7 →](https://github.com/annetastic-personal/references/wiki/step-7-workflow)

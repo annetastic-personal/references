@@ -2,13 +2,13 @@
 
 ## Checklist Link
 
-- [Back to checklist](../Wiki-Automation-Checklist.md)
+- [Back to checklist](https://github.com/annetastic-personal/references/wiki/Wiki-Automation-Checklist)
 
 ## Objective
 
 Add and verify all repository secrets required by the wiki scaffold process.
 
-Worked example: [Step 01 Sample](../wiki-automation-samples/step-01-add-required-repository-secrets-sample.md)
+Worked example: [Step 01 Sample](https://github.com/annetastic-personal/references/wiki/step-01-add-required-repository-secrets-sample)
 
 ## Notes
 
@@ -34,7 +34,7 @@ Worked example: [Step 01 Sample](../wiki-automation-samples/step-01-add-required
   - Regenerate or re-scope the PAT so it includes the current owner/repository location.
   - Update `<TOKEN_SECRET_NAME>` in repository secrets.
   - Confirm `<USERNAME_SECRET_NAME>` matches the account that owns the PAT.
-  - See [PAT Instructions](../PAT-Instructions.md).
+  - See [PAT Instructions](https://github.com/annetastic-personal/references/wiki/PAT-Instructions).
 
 ## Open Questions
 

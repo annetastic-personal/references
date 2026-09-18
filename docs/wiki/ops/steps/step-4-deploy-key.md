@@ -42,4 +42,4 @@ ssh-ed25519 AAAAC3... user@host # ttgcollector
 
 ---
 
-[← Step 3](https://github.com/annetastic-personal/references/wiki/step-3-nginx-config) | [← Back to Index](../cicd-index.md) | [Next: Step 5 →](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys)
+[← Step 3](https://github.com/annetastic-personal/references/wiki/step-3-nginx-config) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 5 →](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys)

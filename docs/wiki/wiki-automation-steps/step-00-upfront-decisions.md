@@ -2,13 +2,13 @@
 
 ## Checklist Link
 
-- [Back to checklist](../Wiki-Automation-Checklist.md)
+- [Back to checklist](https://github.com/annetastic-personal/references/wiki/Wiki-Automation-Checklist)
 
 ## Objective
 
 Capture all non-action decisions before implementation starts.
 
-Worked example: [Step 00 Sample](../wiki-automation-samples/step-00-upfront-decisions-sample.md)
+Worked example: [Step 00 Sample](https://github.com/annetastic-personal/references/wiki/step-00-upfront-decisions-sample)
 
 ## Decision A: Trigger Scope
 
@@ -27,7 +27,7 @@ Worked example: [Step 00 Sample](../wiki-automation-samples/step-00-upfront-deci
 
 ## Decision B: Authentication Method
 
-PAT setup guide: [PAT Instructions](../PAT-Instructions.md)
+PAT setup guide: [PAT Instructions](https://github.com/annetastic-personal/references/wiki/PAT-Instructions)
 
 ### Notes
 

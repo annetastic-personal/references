@@ -30,4 +30,4 @@ Repeat for each project you want to deploy (e.g., `/home/<deploy-user>/ttg-colle
 
 ---
 
-[← Step 1 Sample](step-1-personal-ssh-access-sample.md) | [← Back to Index](../cicd-index.md) | [Next: Step 3 Sample →](step-3-nginx-config-sample.md)
+[← Step 1 Sample](https://github.com/annetastic-personal/references/wiki/step-1-personal-ssh-access-sample) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 3 Sample →](https://github.com/annetastic-personal/references/wiki/step-3-nginx-config-sample)

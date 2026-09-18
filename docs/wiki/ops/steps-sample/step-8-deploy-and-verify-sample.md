@@ -21,4 +21,4 @@ git push origin main
 
 ---
 
-[← Step 7 Sample](step-7-workflow-sample.md) | [← Back to Index](../cicd-index.md) | [Next: Step 9 Sample →](step-9-rollback-sample.md)
+[← Step 7 Sample](https://github.com/annetastic-personal/references/wiki/step-7-workflow-sample) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 9 Sample →](https://github.com/annetastic-personal/references/wiki/step-9-rollback-sample)

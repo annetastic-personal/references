@@ -23,4 +23,4 @@ ln -sfn /home/<deploy-user>/portfolio/releases/release-YYYYMMDDHHMMSS /home/<dep
 
 ---
 
-[← Step 8 Sample](step-8-deploy-and-verify-sample.md) | [← Back to Index](../cicd-index.md)
+[← Step 8 Sample](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify-sample) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index)

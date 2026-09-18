@@ -62,4 +62,4 @@ ln -sfn /home/<user>/<project>/releases/<latest-release-dir> /home/<user>/<proje
 
 ---
 
-[← Step 8](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify) | [← Back to Index](../cicd-index.md)
+[← Step 8](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index)

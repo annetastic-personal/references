@@ -50,4 +50,4 @@ ssh -i ~/.ssh/portfolio_deploy_key -p 22 <deploy-user>@203.0.113.10 "echo deploy
 
 ---
 
-[← Step 4 Sample](step-4-deploy-key-sample.md) | [Next: Step 6 Sample →](step-6-github-secrets-sample.md)
+[← Step 4 Sample](https://github.com/annetastic-personal/references/wiki/step-4-deploy-key-sample) | [Next: Step 6 Sample →](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets-sample)

@@ -66,8 +66,8 @@ server {
 
 ## Troubleshooting
 
-See [Troubleshooting → Step 3](../troubleshooting.md#step-3) for known syntax errors and fixes.
+See [Troubleshooting → Step 3](https://github.com/annetastic-personal/references/wiki/troubleshooting#step-3) for known syntax errors and fixes.
 
 ---
 
-[← Step 2 Sample](step-2-server-layout-sample.md) | [Next: Step 4 Sample →](step-4-deploy-key-sample.md)
+[← Step 2 Sample](https://github.com/annetastic-personal/references/wiki/step-2-server-layout-sample) | [Next: Step 4 Sample →](https://github.com/annetastic-personal/references/wiki/step-4-deploy-key-sample)

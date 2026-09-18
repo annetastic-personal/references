@@ -147,4 +147,4 @@ For a Node backend, sync the whole app (server code plus client build) and resta
 
 ---
 
-[← Step 6](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets) | [← Back to Index](../cicd-index.md) | [Next: Step 8 →](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify)
+[← Step 6](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 8 →](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify)

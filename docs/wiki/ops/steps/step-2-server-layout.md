@@ -41,4 +41,4 @@ Repeat for each project you want to deploy. Example projects: `portfolio`, `ttg-
 
 ---
 
-[← Step 1](https://github.com/annetastic-personal/references/wiki/step-1-personal-ssh-access) | [← Back to Index](../cicd-index.md) | [Next: Step 3 →](https://github.com/annetastic-personal/references/wiki/step-3-nginx-config)
+[← Step 1](https://github.com/annetastic-personal/references/wiki/step-1-personal-ssh-access) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 3 →](https://github.com/annetastic-personal/references/wiki/step-3-nginx-config)

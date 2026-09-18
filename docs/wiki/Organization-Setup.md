@@ -54,7 +54,7 @@ After transfer, update each local clone to the new organization URL.
 - Confirm your user account still has write/admin access in the organization.
 - Verify repository pushes still succeed from local clones.
 - Recreate automation PATs and update repository/organization secrets after ownership changes, because prior token scope assumptions can become invalid.
-  - Note: Follow [PAT Instructions](PAT-Instructions) to create new tokens after ownership transfer, then update repository/organization secrets with those new values.
+  - Note: Follow [PAT Instructions](https://github.com/annetastic-personal/references/wiki/PAT-Instructions) to create new tokens after ownership transfer, then update repository/organization secrets with those new values.
 
 ### 5) Align CI/CD With Organization Scope
 
@@ -67,7 +67,7 @@ After transfer, update each local clone to the new organization URL.
 ## Common Post-Migration Issues
 
 - `403` permission errors in CI because PAT scope/access is no longer valid for the new owner.
-  - Use [PAT Instructions](PAT-Instructions) to regenerate or re-scope tokens, then update repository/organization secrets.
+  - Use [PAT Instructions](https://github.com/annetastic-personal/references/wiki/PAT-Instructions) to regenerate or re-scope tokens, then update repository/organization secrets.
 - Workflows or scripts still targeting old owner/repo URLs.
 - Local clones still using old remote URLs.
 
@@ -80,4 +80,4 @@ After transfer, update each local clone to the new organization URL.
 
 ---
 
-[← Back to Home](Home)
+[← Back to Home](https://github.com/annetastic-personal/references/wiki/Home)

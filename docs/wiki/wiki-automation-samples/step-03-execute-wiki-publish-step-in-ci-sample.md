@@ -4,8 +4,8 @@ Worked example for the `references` repository.
 
 ## Related Template
 
-- [Generic Step 03 Template](../wiki-automation-steps/step-03-execute-wiki-publish-step-in-ci.md)
-- [Back to checklist](../Wiki-Automation-Checklist.md)
+- [Generic Step 03 Template](https://github.com/annetastic-personal/references/wiki/step-03-execute-wiki-publish-step-in-ci)
+- [Back to checklist](https://github.com/annetastic-personal/references/wiki/Wiki-Automation-Checklist)
 
 ## Context
 

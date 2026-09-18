@@ -53,4 +53,4 @@ database authentication or schema errors.
 
 ---
 
-[← Step 10 Sample](step-10-run-node-service-sample.md) | [← Back to Index](../cicd-index.md)
+[← Step 10 Sample](https://github.com/annetastic-personal/references/wiki/step-10-run-node-service-sample) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index)

@@ -36,8 +36,8 @@ git push origin HEAD:main
 
 ## Troubleshooting
 
-See [Troubleshooting → Step 8](../troubleshooting.md#step-8) for issues encountered during this step.
+See [Troubleshooting → Step 8](https://github.com/annetastic-personal/references/wiki/troubleshooting#step-8) for issues encountered during this step.
 
 ---
 
-[← Step 7](https://github.com/annetastic-personal/references/wiki/step-7-workflow) | [← Back to Index](../cicd-index.md) | [Next: Step 9 →](https://github.com/annetastic-personal/references/wiki/step-9-rollback)
+[← Step 7](https://github.com/annetastic-personal/references/wiki/step-7-workflow) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 9 →](https://github.com/annetastic-personal/references/wiki/step-9-rollback)

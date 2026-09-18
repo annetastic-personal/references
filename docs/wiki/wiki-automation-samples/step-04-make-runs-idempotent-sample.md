@@ -4,8 +4,8 @@ Worked example for the `references` repository.
 
 ## Related Template
 
-- [Generic Step 04 Template](../wiki-automation-steps/step-04-make-runs-idempotent.md)
-- [Back to checklist](../Wiki-Automation-Checklist.md)
+- [Generic Step 04 Template](https://github.com/annetastic-personal/references/wiki/step-04-make-runs-idempotent)
+- [Back to checklist](https://github.com/annetastic-personal/references/wiki/Wiki-Automation-Checklist)
 
 ## Context
 
