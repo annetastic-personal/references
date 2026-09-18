@@ -6,10 +6,34 @@ This example shows Nginx for a static site (`portfolio`) and a reverse-proxied N
 
 ## Commands Used
 
+Install Nginx (skip if already installed):
+
 ```bash
-sudo nano /etc/nginx/sites-available/annetasticthoughts.com
+sudo apt update
+sudo apt install -y nginx
+```
+
+Create the site config (opens an empty file in `vim`; use `nano` if you prefer):
+
+```bash
+sudo vim /etc/nginx/sites-available/annetasticthoughts.com
+```
+
+Enable the site:
+
+```bash
 sudo ln -s /etc/nginx/sites-available/annetasticthoughts.com /etc/nginx/sites-enabled/annetasticthoughts.com
+```
+
+Test the config:
+
+```bash
 sudo nginx -t
+```
+
+Reload Nginx:
+
+```bash
 sudo systemctl reload nginx
 ```
 

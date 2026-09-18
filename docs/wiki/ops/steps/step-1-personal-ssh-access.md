@@ -39,7 +39,7 @@ Expected output: `personal-key-auth-ok`.
 Only after key-based login is verified, turn off password authentication on the server.
 
 ```bash
-sudo nano /etc/ssh/sshd_config
+sudo vim /etc/ssh/sshd_config
 ```
 
 Set (or confirm) these values:
