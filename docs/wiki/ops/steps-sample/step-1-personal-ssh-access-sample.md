@@ -1,5 +1,6 @@
 # Step 1 Sample: Set Up Personal SSH Access (Portfolio Project)
 
+
 This example shows how personal, key-based SSH access was configured for the `portfolio` project server.
 
 ---
