@@ -50,17 +50,47 @@ This command outputs the contents of your SSH private key file. Copy the entire 
 To retrieve the SSH host key for use as the `SERVER_KNOWN_HOSTS` secret:
 
 ```bash
-ssh-keyscan -p <port> <server>
+ssh-keyscan -q -p <port> <server>
 ```
 
-This command fetches the SSH host key for your server. Copy the full output and use it as the value for the `SERVER_KNOWN_HOSTS` secret. This ensures the workflow can verify the server's identity and helps prevent man-in-the-middle attacks.
+### What `ssh-keyscan` does
+
+`ssh-keyscan` fetches the server's SSH **host key** — the server's public identity used to verify you are connecting to the real server (not an impostor). Capturing it into `SERVER_KNOWN_HOSTS` lets the GitHub Actions runner trust the server non-interactively, instead of hanging on the "authenticity of host ... can't be established" prompt.
+
+The `-q` flag suppresses the `# host:port SSH-2.0-...` banner/comment lines, leaving only the real host-key lines.
+
+### Expected output
+
+One line **per host-key type**, each formatted as `host key-type base64-key`. Most servers advertise two or three key types, so expect two or three lines:
+
+```
+<server> ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC...
+<server> ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAI...
+<server> ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI...
+```
+
+If you see `# ...` banner lines in the output, they are comments written to **stdout** — drop them from the secret (or use `-q` to omit them). Do not add quotes around the value.
+
+### How to know the output is correct
+
+- Every line starts with the exact address you will put in `SERVER_HOST`.
+- Each line has a non-empty base64 blob after the key type.
+- The key type is one of `ssh-ed25519`, `ecdsa-sha2-nistp256`, or `ssh-rsa`.
+
+> The keyscan target must match `SERVER_HOST`: scan the IP if `SERVER_HOST` is the IP, or the hostname if it is the hostname — otherwise the runner will not find a matching entry and host-key verification fails.
+
+To cross-check against a host you have connected to before, compare with the entry already recorded in your local known_hosts:
+
+```bash
+ssh-keygen -F <server>
+```
 
 ---
 
 ## Important Notes
 
 - All secrets must be plain values (no quotes, no extra whitespace).
-- `SERVER_KNOWN_HOSTS` must include the full `ssh-keyscan` output including the host prefix on each line.
+- `SERVER_KNOWN_HOSTS` must include the full host-key lines from `ssh-keyscan` (excluding any `#` banner/comment lines), each with the host prefix on the line.
 - If either secret is malformed, the workflow will fail with SSH errors.
 
 ---

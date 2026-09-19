@@ -24,8 +24,12 @@ This example shows the secrets used for the `portfolio` project.
 
 ```bash
 cat ~/.ssh/portfolio_deploy_key
-ssh-keyscan -p 22 203.0.113.10
+
+# Host key — capture only the non-# lines (-q suppresses the banners)
+ssh-keyscan -q -p 22 203.0.113.10
 ```
+
+`ssh-keyscan` prints one `<host> <key-type> <base64>` line per host-key type (usually `ssh-rsa`, `ecdsa-sha2-nistp256`, and `ssh-ed25519`). The `-q` flag omits the `# host:port SSH-2.0-...` banner/comment lines, so copy the remaining lines into `SERVER_KNOWN_HOSTS`.
 
 ---
 
