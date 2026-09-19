@@ -18,6 +18,8 @@ Replace password login with key-based login for your own account before configur
 ssh-keygen -t ed25519 -C "personal-login" -f ~/.ssh/id_ed25519
 ```
 
+> **Runs on:** your machine.
+
 > If `~/.ssh/id_ed25519` already exists, choose a different filename rather than overwriting it.
 
 ## Copy the Public Key to the Server
@@ -26,6 +28,8 @@ ssh-keygen -t ed25519 -C "personal-login" -f ~/.ssh/id_ed25519
 ssh-copy-id -i ~/.ssh/id_ed25519.pub -p <port> <user>@<server>
 ```
 
+> **Runs on:** your machine.
+
 This appends your public key to `~/.ssh/authorized_keys` on the server. You are prompted for the current password once.
 
 ## Verify Key-Based Login
@@ -33,6 +37,8 @@ This appends your public key to `~/.ssh/authorized_keys` on the server. You are 
 ```bash
 ssh -i ~/.ssh/id_ed25519 -p <port> <user>@<server> "echo personal-key-auth-ok"
 ```
+
+> **Runs on:** your machine (the quoted command runs on the server).
 
 Expected output: `personal-key-auth-ok`.
 
@@ -43,6 +49,8 @@ Only after key-based login is verified, turn off password authentication on the 
 ```bash
 sudo vim /etc/ssh/sshd_config
 ```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 Set (or confirm) these values:
 
@@ -56,6 +64,8 @@ Reload the SSH daemon:
 ```bash
 sudo systemctl reload sshd
 ```
+
+> **Runs on:** the server.
 
 > Keep your current session open and confirm a **new** key-based session connects before closing it, so you do not lock yourself out.
 

@@ -20,7 +20,7 @@ This example shows the secrets used for the `portfolio` project.
 
 ---
 
-## Commands Used
+## Commands Used (on your machine)
 
 ```bash
 cat ~/.ssh/portfolio_deploy_key

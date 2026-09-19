@@ -8,7 +8,7 @@ Use the comments in this sample to identify what must be changed for each reposi
 
 ## Step-by-Step Setup (Sample)
 
-1. In the repository root, create the workflow directories if they do not exist:
+1. In the repository root, create the workflow directories if they do not exist (on your machine, in the repo checkout):
 
 ```bash
 mkdir -p .github/workflows

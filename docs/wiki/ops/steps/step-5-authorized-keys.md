@@ -33,11 +33,15 @@ You can use any SSH client (e.g., PuTTY, OpenSSH, MobaXterm) to connect to your 
    mkdir -p ~/.ssh && chmod 700 ~/.ssh
    ```
 
+   > **Runs on:** the server — SSH in first, then run at the remote prompt.
+
 3. Append the public key generated in Step 4 to authorized_keys (do not overwrite the file):
    ```bash
    echo '<PASTE_PUBLIC_KEY>' >> ~/.ssh/authorized_keys
    chmod 600 ~/.ssh/authorized_keys
    ```
+
+   > **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 > **Note:**  
 > You only need to run the `chmod` commands if you just created the `~/.ssh` directory or the `authorized_keys` file.
@@ -55,6 +59,8 @@ You can use any SSH client (e.g., PuTTY, OpenSSH, MobaXterm) to connect to your 
 ```bash
 ssh -i ~/.ssh/<deploy_key_name> -p <port> <user>@<server> "echo deploy-key-auth-ok"
 ```
+
+> **Runs on:** your machine (the quoted command runs on the server).
 
 - Replace placeholders with your actual values.
 

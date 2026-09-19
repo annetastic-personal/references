@@ -4,7 +4,7 @@ This example shows how the directory layout step was implemented for the `portfo
 
 ---
 
-## Commands Used
+## Commands Used (on the server)
 
 ```bash
 mkdir -p /home/<deploy-user>/portfolio/releases

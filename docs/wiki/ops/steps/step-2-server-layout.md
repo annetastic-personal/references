@@ -22,6 +22,8 @@ ln -sfn /home/<user>/<project>/releases/initial /home/<user>/<project>/current
 ls -la /home/<user>/<project>
 ```
 
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
 - Replace `<user>` with your deployment user (e.g., `deploy`, `ubuntu`, etc.)
 - Replace `<project>` with the unique folder name for each repo (e.g., `portfolio`, `ttg-collector`).
 

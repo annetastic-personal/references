@@ -45,6 +45,8 @@ To retrieve the SSH private key for use as the `SSH_PRIVATE_KEY` secret:
 cat ~/.ssh/<deploy_key_name>
 ```
 
+> **Runs on:** your machine.
+
 This command outputs the contents of your SSH private key file. Copy the entire output—including the header (`-----BEGIN OPENSSH PRIVATE KEY-----`), the footer (`-----END OPENSSH PRIVATE KEY-----`), and all lines in between—exactly as shown. Use this as the value for the `SSH_PRIVATE_KEY` secret in your repository settings. This allows the CI/CD workflow to authenticate to your server securely.
 
 To retrieve the SSH host key for use as the `SERVER_KNOWN_HOSTS` secret:
@@ -52,6 +54,8 @@ To retrieve the SSH host key for use as the `SERVER_KNOWN_HOSTS` secret:
 ```bash
 ssh-keyscan -q -p <port> <server>
 ```
+
+> **Runs on:** your machine.
 
 ### What `ssh-keyscan` does
 

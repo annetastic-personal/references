@@ -19,6 +19,8 @@ ssh-keygen -t ed25519 -C "ci-cd-deploy" -f ~/.ssh/<deploy_key_name>
 cat ~/.ssh/<deploy_key_name>.pub
 ```
 
+> **Runs on:** your machine.
+
 - Replace `<deploy_key_name>` with a unique name for your project (e.g., `portfolio_deploy_key`, `ttgcollector_key`).
 - The -C flag adds a comment to the key for easier identification.
 

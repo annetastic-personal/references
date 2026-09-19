@@ -4,7 +4,7 @@ This example shows how to generate and use a dedicated SSH key pair for the `por
 
 ---
 
-## Commands Used
+## Commands Used (on your machine)
 
 ```bash
 ssh-keygen -t ed25519 -C "ci-cd-deploy-portfolio" -f ~/.ssh/portfolio_deploy_key

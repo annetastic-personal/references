@@ -19,20 +19,20 @@ Copy the public key to the server (prompts for the current password once):
 ssh-copy-id -i ~/.ssh/id_ed25519.pub -p 22 <deploy-user>@203.0.113.10
 ```
 
-Verify key-based login:
+Verify key-based login (from your machine):
 
 ```bash
 ssh -i ~/.ssh/id_ed25519 -p 22 <deploy-user>@203.0.113.10 "echo personal-key-auth-ok"
 ```
 
-After verification, disable password authentication in `/etc/ssh/sshd_config`:
+After verification, disable password authentication in `/etc/ssh/sshd_config` (on the server):
 
 ```
 PubkeyAuthentication yes
 PasswordAuthentication no
 ```
 
-Reload and confirm a fresh key session before closing the current one:
+Reload and confirm a fresh key session before closing the current one (on the server):
 
 ```bash
 sudo systemctl reload sshd

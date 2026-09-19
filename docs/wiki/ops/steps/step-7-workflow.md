@@ -24,6 +24,8 @@ Create, document, and approve the deployment workflow script for your project. I
    touch .github/workflows/deploy.yml
    ```
 
+> **Runs on:** your machine (in the repository checkout).
+
 3. Open `.github/workflows/deploy.yml` and write your deployment workflow YAML script.
 4. Add your trigger, runner target, build steps, and deploy steps.
 5. Save and commit the file to your repository.
@@ -53,6 +55,8 @@ runs-on: ubuntu-latest
 ---
 
 ## Key Workflow Sections (Generalized)
+
+> **Runs on:** the GitHub Actions runner — CI, not your machine or the destination server. You write this YAML once and commit it; the runner executes it on every run.
 
 ### Job Environment
 

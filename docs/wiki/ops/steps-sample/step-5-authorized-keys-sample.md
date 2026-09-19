@@ -12,7 +12,7 @@ Suppose your deployment user is `<deploy-user>` and your server address is `203.
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFAKeFakeKeyExample1234567890abcdefg <deploy-user>@portfolio
 ```
 
-### Steps
+### Steps (on the server — SSH in first)
 
 1. Connect to your server using your preferred SSH client (e.g., PuTTY, OpenSSH, MobaXterm):
    - Host: 203.0.113.10
@@ -42,7 +42,7 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFAKeFakeKeyExample1234567890abcdefg <deploy
 
 ---
 
-## Verification
+## Verification (from your machine)
 
 ```bash
 ssh -i ~/.ssh/portfolio_deploy_key -p 22 <deploy-user>@203.0.113.10 "echo deploy-key-auth-ok"
