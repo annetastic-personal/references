@@ -8,7 +8,16 @@ Worked example: [Step 5 Sample](https://github.com/annetastic-personal/reference
 
 Authorize the deploy public key on the server and verify SSH key-based authentication works.
 
-If this is your first time setting up SSH for this user on the server, you may need to create the ~/.ssh directory. For additional deployments (other repos), this directory and the authorized_keys file will already exist—just append the new public key. You can use any SSH client (e.g., PuTTY, OpenSSH, MobaXterm) to connect to your server.
+## About `authorized_keys`
+
+`~/.ssh/authorized_keys` is a file on the **server** (in the deploy user's home directory) that lists every public key allowed to log into that account, one key per line. This step creates or updates that file — it lives on the server, not on your local machine.
+
+- **First deployment:** the `~/.ssh` directory and `authorized_keys` do not exist yet; create both here.
+- **Additional deployments:** `authorized_keys` already exists; just append a new line.
+
+Each key is identified by the `-C` comment set when it was generated in Step 4, so you can tell which repo a line belongs to after several deployments.
+
+You can use any SSH client (e.g., PuTTY, OpenSSH, MobaXterm) to connect to your server.
 
 > **Connection problems?** See [SSH Troubleshooting](https://github.com/annetastic-personal/references/wiki/ssh-troubleshooting) for timeouts, refused connections, and firewall or fail2ban issues.
 

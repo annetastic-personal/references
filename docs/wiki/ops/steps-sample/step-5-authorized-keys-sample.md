@@ -9,7 +9,7 @@ This example shows how the deploy public key was authorized for the `portfolio` 
 Suppose your deployment user is `<deploy-user>` and your server address is `203.0.113.10`. Your public key (from Step 4) might look like this (example only, do not use this key):
 
 ```
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFAKeFakeKeyExample1234567890abcdefg <deploy-user>@portfolio # portfolio
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFAKeFakeKeyExample1234567890abcdefg <deploy-user>@portfolio
 ```
 
 ### Steps
@@ -26,7 +26,7 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFAKeFakeKeyExample1234567890abcdefg <deploy
 
 3. Append the public key to authorized_keys (do not overwrite the file):
    ```bash
-   echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFAKeFakeKeyExample1234567890abcdefg <deploy-user>@portfolio # portfolio' >> ~/.ssh/authorized_keys
+   echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFAKeFakeKeyExample1234567890abcdefg <deploy-user>@portfolio' >> ~/.ssh/authorized_keys
    chmod 600 ~/.ssh/authorized_keys
    ```
 

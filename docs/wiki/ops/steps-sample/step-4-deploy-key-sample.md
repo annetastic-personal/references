@@ -11,11 +11,7 @@ ssh-keygen -t ed25519 -C "ci-cd-deploy-portfolio" -f ~/.ssh/portfolio_deploy_key
 cat ~/.ssh/portfolio_deploy_key.pub
 ```
 
-After generating the key pair, copy the contents of `~/.ssh/portfolio_deploy_key.pub` and append it to the `~/.ssh/authorized_keys` file on your server. You can add a comment at the end of the line for clarity:
-
-```
-ssh-ed25519 AAAAC3... <deploy-user>@203.0.113.10 # portfolio
-```
+After generating the key pair, install the public key on the server — creating or editing `~/.ssh/authorized_keys` — which is covered in the [Step 5 Sample](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys-sample).
 
 ---
 
