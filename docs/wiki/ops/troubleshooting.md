@@ -2,6 +2,8 @@
 
 Common issues encountered while configuring CI/CD deployments, grouped by step.
 
+For SSH connectivity problems (timeouts, refused connections, firewalls, fail2ban), see [SSH Troubleshooting](https://github.com/annetastic-personal/references/wiki/ssh-troubleshooting).
+
 ## Step 3
 
 Nginx configuration errors and fixes:

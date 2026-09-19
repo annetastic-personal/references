@@ -43,6 +43,12 @@ Use this process to publish wiki content from repository-managed markdown files 
 
 ---
 
+## Troubleshooting
+
+- [SSH Troubleshooting](https://github.com/annetastic-personal/references/wiki/ssh-troubleshooting)
+
+---
+
 ## Unit Testing
 
 - [xUnit Unit Testing in .NET](https://github.com/annetastic-personal/references/wiki/xunit-unit-testing-dotnet)

@@ -8,6 +8,8 @@ Worked example: [Step 1 Sample](https://github.com/annetastic-personal/reference
 
 Replace password login with key-based login for your own account before configuring the server. Do not deploy over password or as root.
 
+> **Connection problems?** See [SSH Troubleshooting](https://github.com/annetastic-personal/references/wiki/ssh-troubleshooting) for timeouts, refused connections, and firewall or fail2ban issues.
+
 ---
 
 ## Generate a Personal Key Locally

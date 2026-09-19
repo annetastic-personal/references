@@ -10,6 +10,8 @@ Authorize the deploy public key on the server and verify SSH key-based authentic
 
 If this is your first time setting up SSH for this user on the server, you may need to create the ~/.ssh directory. For additional deployments (other repos), this directory and the authorized_keys file will already exist—just append the new public key. You can use any SSH client (e.g., PuTTY, OpenSSH, MobaXterm) to connect to your server.
 
+> **Connection problems?** See [SSH Troubleshooting](https://github.com/annetastic-personal/references/wiki/ssh-troubleshooting) for timeouts, refused connections, and firewall or fail2ban issues.
+
 ---
 
 ## Commands (Generalized)

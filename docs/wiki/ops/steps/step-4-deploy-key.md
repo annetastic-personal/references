@@ -8,6 +8,8 @@ Worked example: [Step 4 Sample](https://github.com/annetastic-personal/reference
 
 Generate a dedicated SSH key pair for your CI/CD system to authenticate with the server. For multi-repo setups, generate a unique key pair for each repository (e.g., portfolio, ttgcollector) and use a descriptive filename for each key (such as ~/.ssh/portfolio_deploy_key).
 
+> **Connection problems?** See [SSH Troubleshooting](https://github.com/annetastic-personal/references/wiki/ssh-troubleshooting) for timeouts, refused connections, and firewall or fail2ban issues.
+
 ---
 
 ## Commands (Generalized)
