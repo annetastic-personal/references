@@ -91,6 +91,37 @@ out while other networks connect, the block is at the hosting provider's edge �
 for example, a provider panel firewall or an automatic abuse/DDoS block. Clear
 it from the provider's control panel, not the server shell.
 
+## Deployment is up but the site won't load
+
+A server that SSH works fine with can still be unreachable over the web. If DNS
+points at it but the browser times out, walk these in order:
+
+1. **DNS** — `nslookup <domain>` resolves to the server IP.
+2. **Nginx is listening on the web ports** —
+
+   ```bash
+   ss -tlnp | grep -E ':80|:443'
+   ```
+
+   A listener on `8002` (or nothing on 80/443) means the site config still uses a
+   non-standard port.
+3. **The firewall allows the web ports** —
+
+   ```bash
+   sudo ufw status numbered
+   ```
+
+   If only SSH (22) is allowed, ufw is silently dropping 80/443. Open them:
+
+   ```bash
+   sudo ufw allow 80/tcp
+   sudo ufw allow 443/tcp
+   ```
+
+A `curl -I http://127.0.0.1` that returns `200 OK` from the server itself while
+the browser still times out from outside is the classic signature of this web-
+port firewall block.
+
 ## Server-side checks (via provider console)
 
 If SSH fails from every network, use the provider's web/emergency console to
@@ -117,3 +148,4 @@ sudo journalctl -u ssh --no-pager -n 50
 | Timeout from every network | Provider console | sshd stopped, wrong port, host firewall | start sshd; confirm a listener on 22 |
 | Connection refused | From another network | nothing listening on 22 | start sshd |
 | `iptables -L` empty but still blocked | `ufw status verbose` | Debian nftables backend | read ufw/nftables, not iptables |
+| Site won't load, but SSH works | `curl -I http://127.0.0.1` + `ufw status numbered` | web ports (80/443) blocked by firewall | `ufw allow 80/tcp` and `ufw allow 443/tcp` |
