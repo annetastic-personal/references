@@ -45,6 +45,7 @@ Use this process to publish wiki content from repository-managed markdown files 
 
 ## Troubleshooting
 
+- [Deployment Troubleshooting](https://github.com/annetastic-personal/references/wiki/troubleshooting)
 - [SSH Troubleshooting](https://github.com/annetastic-personal/references/wiki/ssh-troubleshooting)
 
 ---

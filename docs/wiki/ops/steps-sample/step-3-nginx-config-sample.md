@@ -43,11 +43,11 @@ sudo systemctl reload nginx
 
 ```nginx
 server {
-    listen 8002;
-    listen [::]:8002;
+    listen 80;
+    listen [::]:80;
     server_name annetasticthoughts.com www.annetasticthoughts.com;
 
-    root /home/<deploy-user>/portfolio/current;
+    root /var/www/portfolio/current;
     index index.html;
 
     location / {

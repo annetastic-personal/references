@@ -80,11 +80,11 @@ sudo systemctl reload nginx
 
 ```nginx
 server {
-    listen <port>;
-    listen [::]:<port>;
+    listen 80;
+    listen [::]:80;
     server_name <your-domain> <optional-www>;
 
-    root /home/<user>/<project>/current;
+    root /var/www/<project>/current;
     index index.html;
 
     location / {
@@ -100,6 +100,7 @@ server {
 ```
 
 - Replace placeholders with your actual values.
+- Serve on the standard `listen 80` (and later `443` once TLS is set up), **not** a custom port like `8002` — a custom port was only needed on the old private server behind an upstream proxy.
 
 ---
 
@@ -109,8 +110,8 @@ For a Node backend (PERN or MERN), Nginx forwards traffic to the service running
 
 ```nginx
 server {
-    listen <port>;
-    listen [::]:<port>;
+    listen 80;
+    listen [::]:80;
     server_name <your-domain>;
 
     location / {
@@ -124,7 +125,7 @@ server {
 }
 ```
 
-- Replace `<port>` with the public listen port and `<app-port>` with the Node service port set in Step 10.
+- Replace `<app-port>` with the Node service port set in Step 10.
 
 ---
 

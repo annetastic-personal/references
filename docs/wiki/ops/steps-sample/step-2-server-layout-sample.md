@@ -7,11 +7,16 @@ This example shows how the directory layout step was implemented for the `portfo
 ## Commands Used (on the server)
 
 ```bash
-mkdir -p /home/<deploy-user>/portfolio/releases
-mkdir -p /home/<deploy-user>/portfolio/shared
-mkdir -p /home/<deploy-user>/portfolio/releases/initial
-ln -sfn /home/<deploy-user>/portfolio/releases/initial /home/<deploy-user>/portfolio/current
-ls -la /home/<deploy-user>/portfolio
+sudo mkdir -p /var/www/portfolio/releases
+sudo mkdir -p /var/www/portfolio/shared
+sudo mkdir -p /var/www/portfolio/releases/initial
+sudo ln -sfn /var/www/portfolio/releases/initial /var/www/portfolio/current
+
+sudo chown -R <deploy-user>:www-data /var/www/portfolio
+sudo find /var/www/portfolio -type d -exec chmod 2755 {} \;
+sudo find /var/www/portfolio -type f -exec chmod 644 {} \;
+
+ls -la /var/www/portfolio
 ```
 
 ---
@@ -19,14 +24,14 @@ ls -la /home/<deploy-user>/portfolio
 ## Actual Layout
 
 ```
-/home/<deploy-user>/portfolio/
+/var/www/portfolio/
   current -> releases/initial   (symlink)
   releases/
     initial/
   shared/
 ```
 
-Repeat for each project you want to deploy (e.g., `/home/<deploy-user>/ttg-collector/`).
+Repeat for each project you want to deploy (e.g., `/var/www/ttg-collector/`).
 
 ---
 

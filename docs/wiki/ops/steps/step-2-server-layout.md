@@ -6,7 +6,7 @@ Worked example: [Step 2 Sample](https://github.com/annetastic-personal/reference
 
 ## Purpose
 
-For multi-repo CI/CD, repeat the following structure for each project/repo you want to deploy. Each project should have its own directory under your deployment user's home directory. This pattern supports atomic deployments and easy rollbacks for multiple apps on the same server.
+For multi-repo CI/CD, repeat the following structure for each project/repo you want to deploy. Each project gets its own directory under `/var/www` — the conventional, web-readable location — rather than a `700` user home directory (which blocks Nginx). This pattern supports atomic deployments and easy rollbacks for multiple apps on the same server.
 
 ---
 
@@ -15,24 +15,37 @@ For multi-repo CI/CD, repeat the following structure for each project/repo you w
 Repeat these commands for each project (e.g., portfolio, TTG Collector):
 
 ```bash
-mkdir -p /home/<user>/<project>/releases
-mkdir -p /home/<user>/<project>/shared
-mkdir -p /home/<user>/<project>/releases/initial
-ln -sfn /home/<user>/<project>/releases/initial /home/<user>/<project>/current
-ls -la /home/<user>/<project>
+sudo mkdir -p /var/www/<project>/releases
+sudo mkdir -p /var/www/<project>/shared
+sudo mkdir -p /var/www/<project>/releases/initial
+sudo ln -sfn /var/www/<project>/releases/initial /var/www/<project>/current
+ls -la /var/www/<project>
 ```
 
 > **Runs on:** the server — SSH in first, then run at the remote prompt.
 
-- Replace `<user>` with your deployment user (e.g., `deploy`, `ubuntu`, etc.)
 - Replace `<project>` with the unique folder name for each repo (e.g., `portfolio`, `ttg-collector`).
+
+---
+
+## Set Ownership and Permissions
+
+Give the deploy user ownership (so `rsync` can write new releases) and let Nginx (`www-data`) read via the shared group. The `2755` setgid bit on directories makes new files inherit the `www-data` group automatically, so each deployment stays group-readable without a manual `chmod`:
+
+```bash
+sudo chown -R <deploy-user>:www-data /var/www/<project>
+sudo find /var/www/<project> -type d -exec chmod 2755 {} \;
+sudo find /var/www/<project> -type f -exec chmod 644 {} \;
+```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 ---
 
 ## Expected Layout (per project)
 
 ```
-/home/<user>/<project>/
+/var/www/<project>/
   current -> releases/initial   (symlink)
   releases/
     initial/

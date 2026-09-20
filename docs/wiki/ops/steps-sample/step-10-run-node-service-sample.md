@@ -23,12 +23,12 @@ After=network.target postgresql.service
 Type=simple
 User=<deploy-user>
 Group=<deploy-user>
-WorkingDirectory=/home/<deploy-user>/ttgcollector/current
+WorkingDirectory=/var/www/ttgcollector/current
 ExecStart=/usr/bin/node server/server.js
 Restart=on-failure
 RestartSec=5
 Environment=NODE_ENV=production
-EnvironmentFile=/home/<deploy-user>/ttgcollector/current/server/.env
+EnvironmentFile=/var/www/ttgcollector/current/server/.env
 
 [Install]
 WantedBy=multi-user.target

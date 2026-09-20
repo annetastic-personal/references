@@ -7,7 +7,7 @@ A generalized, step-by-step reference for deploying web applications with GitHub
 Each step's commands run in one of these places:
 
 - **Your machine** — `ssh-keygen`, `ssh-copy-id`, `cat`, and `ssh-keyscan` run in your own terminal.
-- **The server** — bare remote paths (`/home/...`, `/etc/...`) and `sudo` / `systemctl` commands must be run *inside* an SSH session on the server. SSH in first, then run them at the remote prompt.
+- **The server** — bare remote paths (`/var/www/...`, `/etc/...`) and `sudo` / `systemctl` commands must be run *inside* an SSH session on the server. SSH in first, then run them at the remote prompt.
 - **A line starting `ssh <user>@<server> "..."`** — typed on your machine, but the quoted part executes on the server.
 - **The GitHub runner** — steps inside a workflow YAML run in CI, not on your machine or the destination server.
 
@@ -50,5 +50,6 @@ Individual steps label each command block as **Local**, **Server**, or **GitHub 
 
 ## Reference
 
-- [Troubleshooting](https://github.com/annetastic-personal/references/wiki/troubleshooting)
+- [Deployment Troubleshooting](https://github.com/annetastic-personal/references/wiki/troubleshooting) — diagnose deployment problems by symptom.
+- [SSH Troubleshooting](https://github.com/annetastic-personal/references/wiki/ssh-troubleshooting) — diagnose connectivity (timeout/refused/firewall).
 

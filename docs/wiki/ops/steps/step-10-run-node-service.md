@@ -31,12 +31,12 @@ After=network.target
 Type=simple
 User=<deploy-user>
 Group=<deploy-user>
-WorkingDirectory=/home/<deploy-user>/<project>/current
+WorkingDirectory=/var/www/<project>/current
 ExecStart=/usr/bin/node <entry-point>
 Restart=on-failure
 RestartSec=5
 Environment=NODE_ENV=production
-EnvironmentFile=/home/<deploy-user>/<project>/current/.env
+EnvironmentFile=/var/www/<project>/current/.env
 
 [Install]
 WantedBy=multi-user.target

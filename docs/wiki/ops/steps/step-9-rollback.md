@@ -22,13 +22,13 @@ Validate that rolling back to a previous release works correctly by switching th
 ### 1. List available releases
 
 ```bash
-ls -lt /home/<user>/<project>/releases/
+ls -lt /var/www/<project>/releases/
 ```
 
 ### 2. Switch `current` to a previous release
 
 ```bash
-ln -sfn /home/<user>/<project>/releases/<previous-release-dir> /home/<user>/<project>/current
+ln -sfn /var/www/<project>/releases/<previous-release-dir> /var/www/<project>/current
 ```
 
 Replace `<previous-release-dir>` with the target release directory name (e.g. `release-YYYYMMDDHHMMSS`).
@@ -36,7 +36,7 @@ Replace `<previous-release-dir>` with the target release directory name (e.g. `r
 ### 3. Verify the change
 
 ```bash
-ls -la /home/<user>/<project>/current
+ls -la /var/www/<project>/current
 ```
 
 ### 4. Confirm the site reflects the rollback
@@ -50,7 +50,7 @@ Check the domain to confirm the previous version is live.
 ### 5. Roll forward (restore latest release)
 
 ```bash
-ln -sfn /home/<user>/<project>/releases/<latest-release-dir> /home/<user>/<project>/current
+ln -sfn /var/www/<project>/releases/<latest-release-dir> /var/www/<project>/current
 ```
 
 ---

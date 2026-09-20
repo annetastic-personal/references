@@ -7,12 +7,12 @@ This example shows how to roll back to a previous release for the `portfolio` pr
 ## Commands Used
 
 ```bash
-ls -lt /home/<deploy-user>/portfolio/releases/
-ln -sfn /home/<deploy-user>/portfolio/releases/release-YYYYMMDDHHMMSS /home/<deploy-user>/portfolio/current
-ls -la /home/<deploy-user>/portfolio/current
+ls -lt /var/www/portfolio/releases/
+ln -sfn /var/www/portfolio/releases/release-YYYYMMDDHHMMSS /var/www/portfolio/current
+ls -la /var/www/portfolio/current
 curl -I http://yourdomain.com
 # To roll forward again:
-ln -sfn /home/<deploy-user>/portfolio/releases/release-YYYYMMDDHHMMSS /home/<deploy-user>/portfolio/current
+ln -sfn /var/www/portfolio/releases/release-YYYYMMDDHHMMSS /var/www/portfolio/current
 ```
 
 ---

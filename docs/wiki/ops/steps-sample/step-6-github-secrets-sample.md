@@ -11,12 +11,12 @@ This example shows the secrets used for the `portfolio` project.
 | `SERVER_HOST` | `203.0.113.10`                  | Destination server address                               |
 | `SERVER_USER` | `<deploy-user>`                 | SSH username for deployment                              |
 | `SERVER_PORT` | `22`                         | SSH port                                                 |
-| `SERVER_PATH` | `/home/<deploy-user>/portfolio` | Server path containing `releases/` and `current` symlink |
+| `SERVER_PATH` | `/var/www/portfolio` | Server path containing `releases/` and `current` symlink |
 | `SSH_PRIVATE_KEY`    | Contents of `~/.ssh/portfolio_deploy_key`  | Private key for SSH auth                                 |
 | `SERVER_KNOWN_HOSTS` | Output of `ssh-keyscan -p 22 203.0.113.10` | Pinned host keys to prevent MITM                         |
 
 > **Multi-repo note:**
-> For multiple repositories, use a unique subfolder for each repo, e.g., `/home/<deploy-user>/<repo-name>`. This keeps deployments isolated and organized per project.
+> For multiple repositories, use a unique subfolder for each repo, e.g., `/var/www/<repo-name>`. This keeps deployments isolated and organized per project.
 
 ---
 
