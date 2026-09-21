@@ -40,6 +40,41 @@ sudo find /var/www/<project> -type f -exec chmod 644 {} \;
 
 > **Runs on:** the server — SSH in first, then run at the remote prompt.
 
+### Why these flags matter
+
+Permissions are split into owner, group, and everyone-else, each with read (`r`), write (`w`), and execute (`x`). For directories, `x` means "traverse into it" — Nginx must be able to traverse every directory in the path to reach your files. (This is why a `700` home directory causes a `500 Permission denied`.)
+
+**`chown -R <deploy-user>:www-data <path>`**
+
+- `chown` = change owner. `<deploy-user>:www-data` sets owner *and* group at once.
+- `<deploy-user>` becomes the owner, so `rsync` can write new releases.
+- `www-data` becomes the group, so Nginx (which runs as `www-data`) can read via that group.
+- `-R` = recursive — applies to the directory and everything already inside it.
+
+**`find <path> -type d -exec chmod 2755 {} \;`**
+
+This is three tools chained together:
+
+- `find <path> -type d` — list every **d**irectory under the path.
+- `-exec <cmd> {} \;` — run `<cmd>` for each result, with `{}` standing in for the current item (`\;` ends the `-exec`; the backslash stops the shell from interpreting `;`).
+- `chmod 2755` — set permissions and the setgid bit.
+
+Decoding `2755`:
+
+- The leading `2` is the **setgid** bit — the important part.
+- `755` = `rwxr-xr-x`: owner can read/write/execute; group and others can read and execute (but not write).
+
+The setgid bit means new files and directories created *inside* this directory inherit its **group** (`www-data`) instead of the creator's group. So every release `rsync` writes is automatically group-readable by Nginx — no per-deploy `chmod` needed. That is what makes this a one-time setup.
+
+**`find <path> -type f -exec chmod 644 {} \;`**
+
+Same `find … -exec` pattern, but for **f**iles (not directories):
+
+- `chmod 644` = `rw-r--r--`: owner can read+write; group and others can read.
+- No setgid `2` needed here — files just need to be group-readable.
+
+Run `chown` first, then directories, then files.
+
 ---
 
 ## Expected Layout (per project)
