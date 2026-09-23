@@ -36,7 +36,7 @@ ExecStart=/usr/bin/node <entry-point>
 Restart=on-failure
 RestartSec=5
 Environment=NODE_ENV=production
-EnvironmentFile=/var/www/<project>/current/.env
+EnvironmentFile=/var/www/<project>/shared/.env
 
 [Install]
 WantedBy=multi-user.target
@@ -44,7 +44,8 @@ WantedBy=multi-user.target
 
 - Replace `<service-name>`, `<deploy-user>`, `<project>`, and `<entry-point>` with your values.
 - `WorkingDirectory` runs the process from the `current` symlink, so you deploy to a new release directory and restart without editing the unit.
-- `EnvironmentFile` points at the app's `.env`; keep it out of git and owned only by the deploy user (`chmod 600`).
+- `EnvironmentFile` points at `/var/www/<project>/shared/.env` — the `shared/` directory created in Step 2. Unlike `current/`, which is rebuilt from the repository on every deploy, `shared/` persists across releases, so the file survives each `rsync --delete` deploy.
+- Keep `.env` out of git and owned only by the deploy user (`chmod 600`).
 - If the app depends on a database, add its service to `After=` (for example, `postgresql.service`) so the database is up first.
 
 ## 2. Enable and start

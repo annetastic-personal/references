@@ -28,7 +28,7 @@ ExecStart=/usr/bin/node server/server.js
 Restart=on-failure
 RestartSec=5
 Environment=NODE_ENV=production
-EnvironmentFile=/var/www/ttgcollector/current/server/.env
+EnvironmentFile=/var/www/ttgcollector/shared/.env
 
 [Install]
 WantedBy=multi-user.target
@@ -57,7 +57,8 @@ sudo systemctl restart ttgcollector
 ## Notes
 
 - The entry point is `server/server.js`, run from the `current` symlink so deployments stay atomic.
-- `EnvironmentFile` injects `server/.env` (database credentials, `SESSION_SECRET`, `PORT`, `BGG_API_TOKEN`). Keep that file out of git and owned by the deploy user (`chmod 600`).
+- `EnvironmentFile` injects `shared/.env` (database credentials, `SESSION_SECRET`, `PORT`, `BGG_API_TOKEN`). Placing it in `shared/` — not `current/server/` — keeps it out of the path the workflow rebuilds with `rsync --delete`. Keep it out of git and owned by the deploy user (`chmod 600`).
+- TTGCollector's own `dotenv` load of `server/.env` is harmless in production: systemd has already set those variables, and `dotenv` does not overwrite existing values.
 - The `client/` build output (`client/dist`) is served by the same Express process in production, so no separate static-site step is needed.
 
 ---

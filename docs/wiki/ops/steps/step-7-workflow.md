@@ -123,7 +123,7 @@ env:
 
 ### Deploy (Node Service)
 
-For a Node backend, sync the whole app (server code plus client build) and restart the systemd service from Step 10 instead of just swapping files in place:
+For a Node backend, sync the whole app (server code plus client build) and restart the systemd service from Step 10 instead of just swapping files in place. `--delete` only affects the new release directory, never `shared/` — secrets such as `.env` live in `shared/` (see Step 11), so they survive every deploy without needing an `--exclude`:
 
 ```yaml
 - name: Deploy release (Node service)

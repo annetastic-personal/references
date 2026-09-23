@@ -37,8 +37,9 @@ db.createUser({
 
 ## 2. Write the environment file
 
-Create `.env` at the path referenced by the systemd `EnvironmentFile` from
-Step 10, and fill in the values you just created:
+Create the environment file at `/var/www/<project>/shared/.env` — the path
+referenced by the systemd `EnvironmentFile` from Step 10 — and fill in the
+values you just created:
 
 ```env
 NODE_ENV=production
@@ -50,8 +51,11 @@ DB_URL=postgres://<app-user>:<app-password>@localhost:5432/<app-db>
 # MONGODB_URI=mongodb://<app-user>:<app-password>@localhost:27017/<app-db>
 ```
 
+- Keep the file in `shared/`, not in the `current/` release tree. `current/`
+  is rebuilt from the repository on every deploy (`rsync --delete`), so a file
+  placed there would be deleted. `shared/` persists across releases.
 - Never commit `.env` — add it to `.gitignore`.
-- Restrict it to the deploy user: `chmod 600 .env`.
+- Restrict it to the deploy user: `chmod 600 /var/www/<project>/shared/.env`.
 
 ## 3. Set up the schema
 

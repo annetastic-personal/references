@@ -5,9 +5,9 @@
 ## Purpose
 
 `ttgcollector` stores its data in PostgreSQL and reads its configuration from
-`server/.env`. This example creates the database and the environment file the
-service loads on startup, so credentials and the session secret stay off disk
-and out of git.
+an environment file. This example creates the database and the `shared/.env`
+file the service loads on startup, so credentials and the session secret stay
+off disk and out of git.
 
 ## 1. Create the PostgreSQL database
 
@@ -18,7 +18,8 @@ sudo -u postgres psql -c "CREATE DATABASE ttgcollector OWNER <app-user>;"
 
 ## 2. Write the environment file
 
-`server/.env` (referenced by the systemd `EnvironmentFile` from Step 10):
+`/var/www/ttgcollector/shared/.env` (referenced by the systemd
+`EnvironmentFile` from Step 10):
 
 ```env
 NODE_ENV=production
@@ -34,6 +35,10 @@ BGG_API_TOKEN=<your-boardgamegeek-token>
 
 > TTGCollector's `config/connection.js` accepts either a single `DB_URL` or the
 > discrete `DB_NAME` / `DB_USER` / `DB_PASSWORD` values shown here.
+
+Write the file to `shared/`, not `current/server/`, so the workflow's
+`rsync --delete` does not remove it on the next deploy. Restrict it to the
+deploy user with `chmod 600`.
 
 ## 3. Schema
 
