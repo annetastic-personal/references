@@ -7,7 +7,7 @@ configured the cause. Each entry names the fixing step so you can jump back to
 it.
 
 For general SSH *connectivity* (timeouts, refused connections, firewalls,
-fail2ban), see [SSH Troubleshooting](https://github.com/annetastic-personal/references/wiki/ssh-troubleshooting) — that page covers
+fail2ban), see [Connectivity Troubleshooting](https://github.com/annetastic-personal/references/wiki/connectivity-troubleshooting) — that page covers
 "can I reach the server at all", while this page covers "the deploy is failing".
 
 ## Symptoms

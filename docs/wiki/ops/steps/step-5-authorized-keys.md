@@ -19,7 +19,7 @@ Each key is identified by the `-C` comment set when it was generated in Step 4, 
 
 You can use any SSH client (e.g., PuTTY, OpenSSH, MobaXterm) to connect to your server.
 
-> **Connection problems?** See [SSH Troubleshooting](https://github.com/annetastic-personal/references/wiki/ssh-troubleshooting) for timeouts, refused connections, and firewall or fail2ban issues.
+> **Connection problems?** See [Connectivity Troubleshooting](https://github.com/annetastic-personal/references/wiki/connectivity-troubleshooting) for timeouts, refused connections, and firewall or fail2ban issues.
 
 ---
 

@@ -51,5 +51,5 @@ Individual steps label each command block as **Local**, **Server**, or **GitHub 
 ## Reference
 
 - [Deployment Troubleshooting](https://github.com/annetastic-personal/references/wiki/troubleshooting) — diagnose deployment problems by symptom.
-- [SSH Troubleshooting](https://github.com/annetastic-personal/references/wiki/ssh-troubleshooting) — diagnose connectivity (timeout/refused/firewall).
+- [Connectivity Troubleshooting](https://github.com/annetastic-personal/references/wiki/connectivity-troubleshooting) — diagnose connectivity (timeout/refused/firewall).
 

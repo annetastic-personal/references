@@ -1,6 +1,6 @@
-# SSH Troubleshooting
+# Connectivity Troubleshooting
 
-A general reference for diagnosing SSH connection problems — whether for
+A general reference for diagnosing connectivity problems — whether for
 housekeeping, setting up CI/CD access, or deployment. "Connection timed out" and
 "Connection refused" are different signals: a timeout means packets were
 silently dropped somewhere along the path; a refusal means the host answered
