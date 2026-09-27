@@ -6,7 +6,7 @@ housekeeping, setting up CI/CD access, or deployment. "Connection timed out" and
 silently dropped somewhere along the path; a refusal means the host answered
 that nothing is listening on that port.
 
-## Decide where the problem is
+## Start here
 
 1. **Is the server reachable at all?**
 
@@ -20,20 +20,19 @@ that nothing is listening on that port.
      provider console.
 
 2. **Is it your IP, or the whole server?** Connect from a different network —
-   a phone hotspot is the quickest test:
+   a phone hotspot is the quickest test. The same test works for the web:
 
    ```bash
-   ssh -v <user>@<server-ip>
+   ssh -v <user>@<server-ip>   # SSH
+   curl -I http://<domain>     # web
    ```
 
    - Works from the hotspot → the block is specific to your usual source IP;
      continue to the firewall checks below.
-   - Fails from everywhere → the problem is on the server (sshd stopped, wrong
-     port, or a host-wide firewall); recover via the provider console.
+   - Fails from everywhere → the problem is on the server (a stopped daemon,
+     wrong port, or a host-wide firewall); recover via the provider console.
 
-## Check the firewall
-
-### ufw (Uncomplicated Firewall)
+### Reading the firewall (ufw)
 
 ufw is Debian/Ubuntu's friendly front end to the firewall. On Debian 12+
 (including Debian 13) ufw uses the nftables backend, so rules do **not** appear
@@ -46,7 +45,9 @@ sudo ufw status numbered
 sudo systemctl status ufw --no-pager
 ```
 
-### "Connection timed out" from one IP: the ufw LIMIT rule
+## SSH (port 22)
+
+### Connection timed out from one IP (ufw LIMIT rule)
 
 A `22/tcp  LIMIT IN` rule allows a small burst of new SSH connections per
 source IP and then silently drops the rest. Once your IP exceeds that burst,
@@ -65,7 +66,7 @@ https://api.ipify.org .
 > Do not run `ufw disable` or `ufw reset` while locked out; prefer targeted
 > `ufw allow` / `ufw insert allow` rules.
 
-### fail2ban
+### Banned after repeated failures (fail2ban)
 
 fail2ban also bans source IPs after repeated failures and, like ufw, produces a
 timeout. Check and unban:
@@ -84,66 +85,7 @@ To keep a trusted IP out of jail permanently, add an `ignoreip` line under
 sudo systemctl reload fail2ban
 ```
 
-## Beyond the server
-
-If the server firewall (ufw / fail2ban) is clean but your usual IP still times
-out while other networks connect, the block is at the hosting provider's edge —
-for example, a provider panel firewall or an automatic abuse/DDoS block. Clear
-it from the provider's control panel, not the server shell.
-
-## Deployment is up but the site won't load
-
-A server that SSH works fine with can still be unreachable over the web. If DNS
-points at it but the browser times out, walk these in order:
-
-1. **DNS** — `nslookup <domain>` resolves to the server IP.
-2. **Nginx is listening on the web ports** —
-
-   ```bash
-   ss -tlnp | grep -E ':80|:443'
-   ```
-
-   A listener on `8002` (or nothing on 80/443) means the site config still uses a
-   non-standard port.
-3. **The firewall allows the web ports** —
-
-   ```bash
-   sudo ufw status numbered
-   ```
-
-   If only SSH (22) is allowed, ufw is silently dropping 80/443. Open them:
-
-   ```bash
-   sudo ufw allow 80/tcp
-   sudo ufw allow 443/tcp
-   ```
-
-A `curl -I http://127.0.0.1` that returns `200 OK` from the server itself while
-the browser still times out from outside is the classic signature of this web-
-port firewall block.
-
-## Browser: "Unable to connect" but HTTP works (no HTTPS)
-
-A site that loads over `http://` but shows "Unable to connect" in the browser is usually the browser auto-upgrading to `https://` while nothing listens on 443.
-
-1. Confirm HTTP works and HTTPS does not, from your own machine:
-
-   ```bash
-   curl -I http://<domain>   # 200 OK
-   curl -I https://<domain>  # (7) Failed to connect ... port 443
-   ```
-
-2. Confirm nothing is listening on 443:
-
-   ```bash
-   ss -tlnp | grep -E ':80|:443'
-   ```
-
-   Only `:80` lines (no `:443`) means the site is HTTP-only — no TLS listener.
-
-3. Fix by enabling HTTPS with a TLS certificate — see [Step 12: Enable HTTPS with Let's Encrypt](https://github.com/annetastic-personal/references/wiki/step-12-enable-https). Quick workaround until then: visit `http://<domain>` explicitly (type the `http://`), or turn off the browser's HTTPS-Only mode.
-
-## Server-side checks (via provider console)
+### SSH daemon not running
 
 If SSH fails from every network, use the provider's web/emergency console to
 confirm the daemon is running and listening:
@@ -161,13 +103,79 @@ sudo systemctl enable --now ssh
 sudo journalctl -u ssh --no-pager -n 50
 ```
 
+## Web (ports 80/443)
+
+### Site won't load over HTTP
+
+A server that SSH works fine with can still be unreachable over the web. If DNS
+points at it but the browser times out, walk these in order:
+
+1. **DNS** — `nslookup <domain>` resolves to the server IP.
+2. **Nginx is listening on the web ports** —
+
+   ```bash
+   ss -tlnp | grep -E ':80|:443'
+   ```
+
+   A listener on `8002` (or nothing on 80/443) means the site config still uses a
+   non-standard port.
+3. **The firewall allows the web ports** — check with ufw (see **Reading the
+   firewall** above):
+
+   ```bash
+   sudo ufw status numbered
+   ```
+
+   If only SSH (22) is allowed, ufw is silently dropping 80/443. Open them:
+
+   ```bash
+   sudo ufw allow 80/tcp
+   sudo ufw allow 443/tcp
+   ```
+
+A `curl -I http://127.0.0.1` that returns `200 OK` from the server itself while
+the browser still times out from outside is the classic signature of this web-
+port firewall block.
+
+### Browser "Unable to connect" but HTTP works
+
+A site that loads over `http://` but shows "Unable to connect" in the browser is
+usually the browser auto-upgrading to `https://` while nothing listens on 443.
+
+1. Confirm HTTP works and HTTPS does not, from your own machine:
+
+   ```bash
+   curl -I http://<domain>   # 200 OK
+   curl -I https://<domain>  # (7) Failed to connect ... port 443
+   ```
+
+2. Confirm nothing is listening on 443:
+
+   ```bash
+   ss -tlnp | grep -E ':80|:443'
+   ```
+
+   Only `:80` lines (no `:443`) means the site is HTTP-only — no TLS listener.
+
+3. Fix by enabling HTTPS with a TLS certificate — see
+   [Step 12: Enable HTTPS with Let's Encrypt](https://github.com/annetastic-personal/references/wiki/step-12-enable-https).
+   Quick workaround until then: visit `http://<domain>` explicitly (type the
+   `http://`), or turn off the browser's HTTPS-Only mode.
+
+## Beyond the server
+
+If the server firewall (ufw / fail2ban) is clean but your usual IP still times
+out while other networks connect, the block is at the hosting provider's edge —
+for example, a provider panel firewall or an automatic abuse/DDoS block. Clear
+it from the provider's control panel, not the server shell.
+
 ## Quick reference
 
-| Symptom | Test | Likely cause | Fix |
-| --- | --- | --- | --- |
-| Timeout, but host pings | Connect from a hotspot | ufw `LIMIT` or fail2ban banned your IP | `ufw insert 1 allow from <IP> …` or `fail2ban-client set sshd unbanip <IP>` |
-| Timeout from every network | Provider console | sshd stopped, wrong port, host firewall | start sshd; confirm a listener on 22 |
-| Connection refused | From another network | nothing listening on 22 | start sshd |
-| `iptables -L` empty but still blocked | `ufw status verbose` | Debian nftables backend | read ufw/nftables, not iptables |
-| Site won't load, but SSH works | `curl -I http://127.0.0.1` + `ufw status numbered` | web ports (80/443) blocked by firewall | `ufw allow 80/tcp` and `ufw allow 443/tcp` |
-| Browser "Unable to connect", but `http://` works | `curl -I https://<domain>` | no TLS listener on 443 (browser auto-upgraded to HTTPS) | enable HTTPS (certbot) or use `http://` explicitly |
+| Type | Symptom | Test | Likely cause | Fix |
+| --- | --- | --- | --- | --- |
+| SSH | Timeout, but host pings | Connect from a hotspot | ufw `LIMIT` or fail2ban banned your IP | `ufw insert 1 allow from <IP> …` or `fail2ban-client set sshd unbanip <IP>` |
+| SSH | Timeout from every network | Provider console | sshd stopped, wrong port, host firewall | start sshd; confirm a listener on 22 |
+| SSH | Connection refused | From another network | nothing listening on 22 | start sshd |
+| Both | `iptables -L` empty but still blocked | `ufw status verbose` | Debian nftables backend | read ufw/nftables, not iptables |
+| Web | Site won't load, but SSH works | `curl -I http://127.0.0.1` + `ufw status numbered` | web ports (80/443) blocked by firewall | `ufw allow 80/tcp` and `ufw allow 443/tcp` |
+| Web | Browser "Unable to connect", but `http://` works | `curl -I https://<domain>` | no TLS listener on 443 (browser auto-upgraded to HTTPS) | enable HTTPS (certbot) or use `http://` explicitly |
