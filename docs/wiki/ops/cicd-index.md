@@ -26,6 +26,7 @@ Individual steps label each command block as **Local**, **Server**, or **GitHub 
 | [Step 7: Create CI/CD Workflow](https://github.com/annetastic-personal/references/wiki/step-7-workflow) | All (static or service deploy) |
 | [Step 8: Push and Verify Deployment](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify) | All |
 | [Step 9: Confirm Rollback Procedure](https://github.com/annetastic-personal/references/wiki/step-9-rollback) | All |
+| [Step 12: Enable HTTPS with Let's Encrypt](https://github.com/annetastic-personal/references/wiki/step-12-enable-https) | All |
 
 ## Node service additions (PERN / MERN)
 

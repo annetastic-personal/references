@@ -122,6 +122,27 @@ A `curl -I http://127.0.0.1` that returns `200 OK` from the server itself while
 the browser still times out from outside is the classic signature of this web-
 port firewall block.
 
+## Browser: "Unable to connect" but HTTP works (no HTTPS)
+
+A site that loads over `http://` but shows "Unable to connect" in the browser is usually the browser auto-upgrading to `https://` while nothing listens on 443.
+
+1. Confirm HTTP works and HTTPS does not, from your own machine:
+
+   ```bash
+   curl -I http://<domain>   # 200 OK
+   curl -I https://<domain>  # (7) Failed to connect ... port 443
+   ```
+
+2. Confirm nothing is listening on 443:
+
+   ```bash
+   ss -tlnp | grep -E ':80|:443'
+   ```
+
+   Only `:80` lines (no `:443`) means the site is HTTP-only — no TLS listener.
+
+3. Fix by enabling HTTPS with a TLS certificate — see [Step 12: Enable HTTPS with Let's Encrypt](https://github.com/annetastic-personal/references/wiki/step-12-enable-https). Quick workaround until then: visit `http://<domain>` explicitly (type the `http://`), or turn off the browser's HTTPS-Only mode.
+
 ## Server-side checks (via provider console)
 
 If SSH fails from every network, use the provider's web/emergency console to
@@ -149,3 +170,4 @@ sudo journalctl -u ssh --no-pager -n 50
 | Connection refused | From another network | nothing listening on 22 | start sshd |
 | `iptables -L` empty but still blocked | `ufw status verbose` | Debian nftables backend | read ufw/nftables, not iptables |
 | Site won't load, but SSH works | `curl -I http://127.0.0.1` + `ufw status numbered` | web ports (80/443) blocked by firewall | `ufw allow 80/tcp` and `ufw allow 443/tcp` |
+| Browser "Unable to connect", but `http://` works | `curl -I https://<domain>` | no TLS listener on 443 (browser auto-upgraded to HTTPS) | enable HTTPS (certbot) or use `http://` explicitly |

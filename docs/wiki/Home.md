@@ -26,6 +26,7 @@ This reference documents a generalized, step-by-step process for setting up atom
 - [Step 9: Confirm Rollback Procedure](https://github.com/annetastic-personal/references/wiki/step-9-rollback)
 - [Step 10: Run a Node Service (systemd)](https://github.com/annetastic-personal/references/wiki/step-10-run-node-service)
 - [Step 11: Service Environment & Database](https://github.com/annetastic-personal/references/wiki/step-11-service-environment-database)
+- [Step 12: Enable HTTPS with Let's Encrypt](https://github.com/annetastic-personal/references/wiki/step-12-enable-https)
 
 ### Wiki CI/CD with Scaffolding
 
