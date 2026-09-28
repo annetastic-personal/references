@@ -2,7 +2,7 @@
 
 > **Applies to:** All deployments.
 
-Worked example: [Step 7 Sample](https://github.com/annetastic-personal/references/wiki/step-7-workflow-sample)
+Worked examples: [Static site](https://github.com/annetastic-personal/references/wiki/step-7-workflow-sample-static) · [Node service](https://github.com/annetastic-personal/references/wiki/step-7-workflow-sample-node-service)
 
 ## Purpose
 
@@ -46,108 +46,138 @@ Create, document, and approve the deployment workflow script for your project. I
 
 ---
 
-## Example Runner Target
+## The Full Workflow File
+
+Paste this into `.github/workflows/deploy.yml`, then replace every `<...>` placeholder. The `Deploy release` step is intentionally left as a marker — pick **one** of the two deploy options in the next section and paste it in its place.
+
+> **Runs on:** the GitHub Actions runner — CI, not your machine or the destination server. You write this YAML once and commit it; the runner executes it on every run. The `runs-on` value below uses GitHub's hosted Linux runner.
 
 ```yaml
-runs-on: ubuntu-latest
+# Deploy workflow. Replace every <...> placeholder for your project.
+name: <workflow-name>
+
+# Trigger on pushes to main and allow manual runs from the Actions tab.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Minimal permissions: this workflow only needs repository read access.
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    # GitHub-hosted Linux runner.
+    runs-on: ubuntu-latest
+
+    steps:
+      # Pull repository contents into the runner workspace.
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Install Node.js and enable the npm dependency cache.
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: <node-version>
+          cache: npm
+
+      # Install dependencies from package-lock.json for reproducible builds.
+      - name: Install dependencies
+        run: npm ci
+
+      # Build your app. Note the output folder; the deploy step below uses it.
+      - name: Build
+        run: <build-command>   # e.g. npm run build
+
+      # Load the deploy private key from GitHub Secrets for SSH auth.
+      - name: Start SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # Trust the server's host key (pinned secret, or ssh-keyscan fallback).
+      - name: Add known hosts
+        run: |
+          mkdir -p ~/.ssh
+          if [ -n "${{ secrets.SERVER_KNOWN_HOSTS }}" ]; then
+            echo "${{ secrets.SERVER_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+          else
+            ssh-keyscan -p "${{ secrets.SERVER_PORT }}" "${{ secrets.SERVER_HOST }}" >> ~/.ssh/known_hosts
+          fi
+
+      # ------------------------------------------------------------------
+      # DEPLOY STEP — INSERT ONE OF THE TWO OPTIONS BELOW (Static site or
+      # Node service). Do not paste both.
+      # ------------------------------------------------------------------
 ```
 
----
+## Choose Your Deploy Step
 
-## Key Workflow Sections (Generalized)
+Pick the option that matches your project and paste it where the marker is above. Each option is a complete `Deploy release` step.
 
-> **Runs on:** the GitHub Actions runner — CI, not your machine or the destination server. You write this YAML once and commit it; the runner executes it on every run.
+### Static site
 
-### Job Environment
+Serve the built files directly and atomically swap the `current` symlink. No service restart. Replace `<build-output-dir>` with your build's output folder (e.g. `dist`), and `<keep-count>` with the release retention (see the note below).
 
 ```yaml
-env:
-  SERVER_HOST: ${{ secrets.SERVER_HOST }}
-  SERVER_USER: ${{ secrets.SERVER_USER }}
-  SERVER_PORT: ${{ secrets.SERVER_PORT }}
-  SERVER_PATH: ${{ secrets.SERVER_PATH }}
+      - name: Deploy release
+        env:
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          SERVER_PORT: ${{ secrets.SERVER_PORT }}
+          SERVER_PATH: ${{ secrets.SERVER_PATH }}
+        run: |
+          # Fail fast on errors, unset variables, or pipeline failures.
+          set -euo pipefail
+
+          RELEASE_NAME="release-$(date +%Y%m%d%H%M%S)"
+          RELEASE_DIR="$SERVER_PATH/releases/$RELEASE_NAME"
+
+          # Ensure the release directory exists on the server.
+          ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "mkdir -p '$RELEASE_DIR'"
+
+          # Sync the build output into the release directory.
+          rsync -az --delete -e "ssh -p $SERVER_PORT" <build-output-dir>/ "$SERVER_USER@$SERVER_HOST:$RELEASE_DIR/"
+
+          # Atomically switch the current symlink to the new release.
+          ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ln -sfn '$RELEASE_DIR' '$SERVER_PATH/current'"
+
+          # Prune old releases (see retention note below).
+          ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ls -1dt '$SERVER_PATH'/releases/* | tail -n +<keep-count> | xargs -r rm -rf"
 ```
 
-### Build
+### Node service
+
+Sync the whole app (server code plus client build) and restart the systemd service from Step 10. Replace `<service-name>` with the systemd unit name and `<keep-count>` with the release retention. `--delete` only touches the new release directory, never `shared/` — secrets such as `.env` live in `shared/` (see Step 11), so they survive every deploy.
 
 ```yaml
-- uses: actions/setup-node@v4
-  with:
-    node-version: "<node-version>"
-- run: npm ci
-- run: npm run build
+      - name: Deploy release
+        env:
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          SERVER_PORT: ${{ secrets.SERVER_PORT }}
+          SERVER_PATH: ${{ secrets.SERVER_PATH }}
+        run: |
+          # Fail fast on errors, unset variables, or pipeline failures.
+          set -euo pipefail
+
+          RELEASE_NAME="release-$(date +%Y%m%d%H%M%S)"
+          RELEASE_DIR="$SERVER_PATH/releases/$RELEASE_NAME"
+
+          # Ensure the release directory exists on the server.
+          ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "mkdir -p '$RELEASE_DIR'"
+
+          # Sync the built app (server code plus client build).
+          rsync -az --delete -e "ssh -p $SERVER_PORT" ./ "$SERVER_USER@$SERVER_HOST:$RELEASE_DIR/"
+
+          # Repoint current, restart the service so the new code loads, then prune.
+          ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ln -sfn '$RELEASE_DIR' '$SERVER_PATH/current' && sudo systemctl restart <service-name>"
+          ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ls -1dt '$SERVER_PATH'/releases/* | tail -n +<keep-count> | xargs -r rm -rf"
 ```
 
-### Start SSH Agent
-
-```yaml
-- name: Start SSH agent
-  uses: webfactory/ssh-agent@v0.9.0
-  with:
-    ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-```
-
-### Add Known Hosts
-
-```yaml
-- name: Add known hosts
-  run: |
-    mkdir -p ~/.ssh
-    if [ -n "${{ secrets.SERVER_KNOWN_HOSTS }}" ]; then
-      echo "${{ secrets.SERVER_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
-    else
-      ssh-keyscan -p "${{ secrets.SERVER_PORT }}" "${{ secrets.SERVER_HOST }}" >> ~/.ssh/known_hosts
-    fi
-```
-
-### Deploy
-
-```yaml
-- name: Deploy release
-  run: |
-    # Fail fast on errors, unset variables, or pipeline failures.
-    set -euo pipefail
-
-    RELEASE_NAME="release-$(date +%Y%m%d%H%M%S)"
-    RELEASE_DIR="$SERVER_PATH/releases/$RELEASE_NAME"
-
-    # Ensure the release directory exists on the server.
-    ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "mkdir -p '$RELEASE_DIR'"
-
-    # Sync the build output into the release directory.
-    rsync -az --delete -e "ssh -p $SERVER_PORT" dist/ "$SERVER_USER@$SERVER_HOST:$RELEASE_DIR/"
-
-    # Atomically switch the current symlink to the new release.
-    ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ln -sfn '$RELEASE_DIR' '$SERVER_PATH/current'"
-```
-
-### Deploy (Node Service)
-
-For a Node backend, sync the whole app (server code plus client build) and restart the systemd service from Step 10 instead of just swapping files in place. `--delete` only affects the new release directory, never `shared/` — secrets such as `.env` live in `shared/` (see Step 11), so they survive every deploy without needing an `--exclude`:
-
-```yaml
-- name: Deploy release (Node service)
-  run: |
-    set -euo pipefail
-    RELEASE_NAME="release-$(date +%Y%m%d%H%M%S)"
-    RELEASE_DIR="$SERVER_PATH/releases/$RELEASE_NAME"
-
-    ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "mkdir -p '$RELEASE_DIR'"
-
-    # Sync the built app (server code plus client build).
-    rsync -az --delete -e "ssh -p $SERVER_PORT" ./ "$SERVER_USER@$SERVER_HOST:$RELEASE_DIR/"
-
-    # Repoint current, then restart the service so the new code loads.
-    ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ln -sfn '$RELEASE_DIR' '$SERVER_PATH/current' && sudo systemctl restart <service-name>"
-```
-
-### Prune Old Releases
-
-```yaml
-- name: Prune old releases
-  run: |
-    ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ls -1dt '$SERVER_PATH'/releases/* | tail -n +6 | xargs -r rm -rf"
-```
+> **Release retention:** `tail -n +<keep-count>` deletes every release except the most recent `<keep-count> - 1`. For example, `tail -n +6` keeps the 5 most recent releases (`6 = 5 + 1`).
 
 ---
 

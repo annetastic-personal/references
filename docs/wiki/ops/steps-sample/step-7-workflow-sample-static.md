@@ -1,6 +1,6 @@
-# Step 7 Sample: Create GitHub Actions Workflow (Portfolio Project)
+# Step 7 Sample: Create GitHub Actions Workflow (Static Site — Portfolio)
 
-This example shows the workflow file used for the `portfolio` project.
+This example shows the static-site workflow file used for the `portfolio` project. For a Node service, see the [Node service sample](https://github.com/annetastic-personal/references/wiki/step-7-workflow-sample-node-service).
 
 Use the comments in this sample to identify what must be changed for each repository.
 
@@ -129,4 +129,4 @@ jobs:
 
 ---
 
-[← Step 6 Sample](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets-sample) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 8 Sample →](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify-sample)
+[← Step 6 Sample](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets-sample) | [Node service sample](https://github.com/annetastic-personal/references/wiki/step-7-workflow-sample-node-service) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 8 Sample →](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify-sample)

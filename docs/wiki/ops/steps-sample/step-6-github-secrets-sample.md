@@ -33,4 +33,4 @@ ssh-keyscan -q -p 22 203.0.113.10
 
 ---
 
-[← Step 5 Sample](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys-sample) | [Next: Step 7 Sample →](https://github.com/annetastic-personal/references/wiki/step-7-workflow-sample)
+[← Step 5 Sample](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys-sample) | [Next: Step 7 Sample →](https://github.com/annetastic-personal/references/wiki/step-7-workflow-sample-static)
