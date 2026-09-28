@@ -33,7 +33,7 @@ name: Deploy To Personal Server
 
 # How to adapt this workflow for another project:
 # 1) Change trigger branch under on.push.branches.
-# 2) Change build command if needed (currently: npm run build).
+# 2) Change build command if needed (currently: cd client && npm run build).
 # 3) Update required secrets for target server:
 #    - SERVER_HOST
 #    - SERVER_USER
@@ -69,16 +69,17 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 20.x
           cache: npm
+          cache-dependency-path: client/package-lock.json
 
       # Install dependencies from package-lock.json for reproducible builds.
       - name: Install dependencies
-        run: npm ci
+        run: cd client && npm ci
 
       # Build the client (Vite outputs to client/dist).
       - name: Build
-        run: npm run build
+        run: cd client && npm run build
 
       # Load private SSH key from GitHub Secrets for server authentication.
       - name: Start SSH agent
