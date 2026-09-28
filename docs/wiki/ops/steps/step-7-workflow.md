@@ -161,6 +161,8 @@ jobs:
 > **Picking `<app-dir>` when there are several `package.json` files:** choose the folder the running service starts from — the one containing the entry-point file you run with `node`. For TTGCollector that is `server/`, which holds `server/server.js` and the backend's `package-lock.json`; do not pick the repo-root `package.json` (which only holds dev/run scripts) or a `client/` build.
 >
 > `<service-name>` in the restart line is a short name you choose for the running service (e.g. `ttgcollector`); it becomes the systemd unit name in Step 10, so use the same string in both places.
+>
+> **Separate `client/` package (PERN/MERN):** the template's `npm ci` and `npm run build` run at the repo root, which is correct for a single-package app. If your repo has a separate `client/` package (its own `package.json` and lockfile), run both steps in that folder instead — the server's dependencies are installed on the server by the `<app-dir>` `npm ci --omit=dev` line, and only the client needs its dependencies on the runner to produce the static build. Use `cd client && npm ci` then `cd client && npm run build` (or `--prefix client`).
 
 > **Release retention:** `tail -n +<keep-count>` deletes every release except the most recent `<keep-count> - 1`. For example, `tail -n +6` keeps the 5 most recent releases (`6 = 5 + 1`).
 
