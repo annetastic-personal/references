@@ -1,8 +1,8 @@
-# Step 11: Configure a Node Service: Environment and Database
+# Step 10: Configure a Node Service: Environment and Database
 
 > **Applies to:** Node service deployments (PERN, MERN).
 
-Worked example: [Step 11 Sample](https://github.com/annetastic-personal/references/wiki/step-11-service-environment-database-sample)
+Worked example: [Step 10 Sample](https://github.com/annetastic-personal/references/wiki/step-10-service-environment-database-sample)
 
 ## Purpose
 
@@ -38,7 +38,7 @@ db.createUser({
 ## 2. Write the environment file
 
 Create the environment file at `/var/www/<project>/shared/.env` — the path
-referenced by the systemd `EnvironmentFile` from Step 10 — and fill in the
+referenced by the systemd `EnvironmentFile` from Step 9 — and fill in the
 values you just created:
 
 ```env
@@ -79,4 +79,4 @@ journalctl -u <service-name> -n 50
 
 ---
 
-[← Step 10](https://github.com/annetastic-personal/references/wiki/step-10-run-node-service) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index)
+[← Step 9](https://github.com/annetastic-personal/references/wiki/step-9-run-node-service) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 11 →](https://github.com/annetastic-personal/references/wiki/step-11-deploy-and-verify)

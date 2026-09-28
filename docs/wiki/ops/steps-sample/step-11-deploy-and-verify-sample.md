@@ -1,4 +1,4 @@
-# Step 8 Sample: Push and Verify Deployment (Portfolio Project)
+# Step 11 Sample: Push and Verify Deployment (Portfolio Project)
 
 This example shows how to push and verify a deployment for the `portfolio` project.
 
@@ -21,4 +21,4 @@ git push origin main
 
 ---
 
-[← Step 7 Sample](https://github.com/annetastic-personal/references/wiki/step-7-workflow-sample-static) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 9 Sample →](https://github.com/annetastic-personal/references/wiki/step-9-rollback-sample)
+[← Step 7 Sample](https://github.com/annetastic-personal/references/wiki/step-7-workflow-sample-static) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 12 Sample →](https://github.com/annetastic-personal/references/wiki/step-12-rollback-sample)

@@ -1,8 +1,8 @@
-# Step 9: Confirm Rollback Procedure
+# Step 12: Confirm Rollback Procedure
 
 > **Applies to:** All deployments.
 
-Worked example: [Step 9 Sample](https://github.com/annetastic-personal/references/wiki/step-9-rollback-sample)
+Worked example: [Step 12 Sample](https://github.com/annetastic-personal/references/wiki/step-12-rollback-sample)
 
 ## Purpose
 
@@ -62,4 +62,4 @@ ln -sfn /var/www/<project>/releases/<latest-release-dir> /var/www/<project>/curr
 
 ---
 
-[← Step 8](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index)
+[← Step 11](https://github.com/annetastic-personal/references/wiki/step-11-deploy-and-verify) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 13 →](https://github.com/annetastic-personal/references/wiki/step-13-enable-https)

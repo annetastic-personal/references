@@ -1,4 +1,4 @@
-# Step 11 Sample: Environment and Database (TTGCollector Project)
+# Step 10 Sample: Environment and Database (TTGCollector Project)
 
 > **Applies to:** Node service deployments (PERN).
 
@@ -19,7 +19,7 @@ sudo -u postgres psql -c "CREATE DATABASE ttgcollector OWNER <app-user>;"
 ## 2. Write the environment file
 
 `/var/www/ttgcollector/shared/.env` (referenced by the systemd
-`EnvironmentFile` from Step 10):
+`EnvironmentFile` from Step 9):
 
 ```env
 NODE_ENV=production
@@ -58,4 +58,4 @@ database authentication or schema errors.
 
 ---
 
-[← Step 10 Sample](https://github.com/annetastic-personal/references/wiki/step-10-run-node-service-sample) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index)
+[← Step 9 Sample](https://github.com/annetastic-personal/references/wiki/step-9-run-node-service-sample) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index)

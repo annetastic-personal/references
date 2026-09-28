@@ -22,11 +22,12 @@ This reference documents a generalized, step-by-step process for setting up atom
 - [Step 5: Add Deploy Public Key to Server](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys)
 - [Step 6: Add CI/CD Repository Secrets](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets)
 - [Step 7: Create CI/CD Workflow](https://github.com/annetastic-personal/references/wiki/step-7-workflow)
-- [Step 8: Push and Verify Deployment](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify)
-- [Step 9: Confirm Rollback Procedure](https://github.com/annetastic-personal/references/wiki/step-9-rollback)
-- [Step 10: Run a Node Service (systemd)](https://github.com/annetastic-personal/references/wiki/step-10-run-node-service)
-- [Step 11: Service Environment & Database](https://github.com/annetastic-personal/references/wiki/step-11-service-environment-database)
-- [Step 12: Enable HTTPS with Let's Encrypt](https://github.com/annetastic-personal/references/wiki/step-12-enable-https)
+- [Step 8: Install Node.js Runtime](https://github.com/annetastic-personal/references/wiki/step-8-install-node-runtime)
+- [Step 9: Run a Node Service (systemd)](https://github.com/annetastic-personal/references/wiki/step-9-run-node-service)
+- [Step 10: Service Environment & Database](https://github.com/annetastic-personal/references/wiki/step-10-service-environment-database)
+- [Step 11: Push and Verify Deployment](https://github.com/annetastic-personal/references/wiki/step-11-deploy-and-verify)
+- [Step 12: Confirm Rollback Procedure](https://github.com/annetastic-personal/references/wiki/step-12-rollback)
+- [Step 13: Enable HTTPS with Let's Encrypt](https://github.com/annetastic-personal/references/wiki/step-13-enable-https)
 
 ### Wiki CI/CD with Scaffolding
 

@@ -129,4 +129,4 @@ jobs:
 
 ---
 
-[← Step 6 Sample](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets-sample) | [Node service sample](https://github.com/annetastic-personal/references/wiki/step-7-workflow-sample-node-service) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 8 Sample →](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify-sample)
+[← Step 6 Sample](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets-sample) | [Node service sample](https://github.com/annetastic-personal/references/wiki/step-7-workflow-sample-node-service) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 11 Sample →](https://github.com/annetastic-personal/references/wiki/step-11-deploy-and-verify-sample)

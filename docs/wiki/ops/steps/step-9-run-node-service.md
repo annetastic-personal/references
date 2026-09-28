@@ -1,8 +1,8 @@
-# Step 10: Run a Node Service (systemd)
+# Step 9: Run a Node Service (systemd)
 
 > **Applies to:** Node service deployments (PERN, MERN).
 
-Worked example: [Step 10 Sample](https://github.com/annetastic-personal/references/wiki/step-10-run-node-service-sample)
+Worked example: [Step 9 Sample](https://github.com/annetastic-personal/references/wiki/step-9-run-node-service-sample)
 
 ## Purpose
 
@@ -83,4 +83,4 @@ journalctl -u <service-name> -f
 
 ---
 
-[← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 11 →](https://github.com/annetastic-personal/references/wiki/step-11-service-environment-database)
+[← Step 8](https://github.com/annetastic-personal/references/wiki/step-8-install-node-runtime) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 10 →](https://github.com/annetastic-personal/references/wiki/step-10-service-environment-database)

@@ -1,4 +1,4 @@
-# Step 9 Sample: Confirm Rollback Procedure (Portfolio Project)
+# Step 12 Sample: Confirm Rollback Procedure (Portfolio Project)
 
 This example shows how to roll back to a previous release for the `portfolio` project.
 
@@ -23,4 +23,4 @@ ln -sfn /var/www/portfolio/releases/release-YYYYMMDDHHMMSS /var/www/portfolio/cu
 
 ---
 
-[← Step 8 Sample](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify-sample) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index)
+[← Step 11 Sample](https://github.com/annetastic-personal/references/wiki/step-11-deploy-and-verify-sample) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index)

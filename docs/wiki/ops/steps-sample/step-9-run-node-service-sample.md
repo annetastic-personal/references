@@ -1,4 +1,4 @@
-# Step 10 Sample: Run a Node Service with systemd (TTGCollector Project)
+# Step 9 Sample: Run a Node Service with systemd (TTGCollector Project)
 
 > **Applies to:** Node service deployments (PERN).
 
@@ -63,4 +63,4 @@ sudo systemctl restart ttgcollector
 
 ---
 
-[← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 11 Sample →](https://github.com/annetastic-personal/references/wiki/step-11-service-environment-database-sample)
+[← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 10 Sample →](https://github.com/annetastic-personal/references/wiki/step-10-service-environment-database-sample)

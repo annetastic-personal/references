@@ -122,7 +122,7 @@ browser still times out is the signature of a web-port firewall block.
 Confirm the new release directory exists, `current` points to it, and Nginx has
 been reloaded.
 
-*Fixing step: [Step 8](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify).*
+*Fixing step: [Step 11](https://github.com/annetastic-personal/references/wiki/step-11-deploy-and-verify).*
 
 ### `sudo nginx -t` reports a syntax error
 

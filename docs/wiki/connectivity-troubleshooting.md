@@ -158,7 +158,7 @@ usually the browser auto-upgrading to `https://` while nothing listens on 443.
    Only `:80` lines (no `:443`) means the site is HTTP-only — no TLS listener.
 
 3. Fix by enabling HTTPS with a TLS certificate — see
-   [Step 12: Enable HTTPS with Let's Encrypt](https://github.com/annetastic-personal/references/wiki/step-12-enable-https).
+   [Step 13: Enable HTTPS with Let's Encrypt](https://github.com/annetastic-personal/references/wiki/step-13-enable-https).
    Quick workaround until then: visit `http://<domain>` explicitly (type the
    `http://`), or turn off the browser's HTTPS-Only mode.
 

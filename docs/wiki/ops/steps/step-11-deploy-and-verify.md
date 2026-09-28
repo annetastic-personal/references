@@ -1,8 +1,8 @@
-# Step 8: Push and Verify Deployment
+# Step 11: Push and Verify Deployment
 
 > **Applies to:** All deployments.
 
-Worked example: [Step 8 Sample](https://github.com/annetastic-personal/references/wiki/step-8-deploy-and-verify-sample)
+Worked example: [Step 11 Sample](https://github.com/annetastic-personal/references/wiki/step-11-deploy-and-verify-sample)
 
 ## Purpose
 
@@ -36,8 +36,8 @@ git push origin HEAD:main
 
 ## Troubleshooting
 
-See [Troubleshooting → Step 8](https://github.com/annetastic-personal/references/wiki/troubleshooting#step-8) for issues encountered during this step.
+See [Troubleshooting → Step 11](https://github.com/annetastic-personal/references/wiki/troubleshooting#step-11) for issues encountered during this step.
 
 ---
 
-[← Step 7](https://github.com/annetastic-personal/references/wiki/step-7-workflow) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 9 →](https://github.com/annetastic-personal/references/wiki/step-9-rollback)
+[← Step 10](https://github.com/annetastic-personal/references/wiki/step-10-service-environment-database) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 12 →](https://github.com/annetastic-personal/references/wiki/step-12-rollback)

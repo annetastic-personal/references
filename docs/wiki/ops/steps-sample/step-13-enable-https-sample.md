@@ -1,4 +1,4 @@
-# Step 12 Sample: Enable HTTPS (portfolio)
+# Step 13 Sample: Enable HTTPS (portfolio)
 
 This example enables HTTPS for `portfolio` at `annetasticthoughts.com` and `www.annetasticthoughts.com`.
 
@@ -29,4 +29,4 @@ See [Connectivity Troubleshooting](https://github.com/annetastic-personal/refere
 
 ---
 
-[← Step 11 Sample](https://github.com/annetastic-personal/references/wiki/step-11-service-environment-database-sample) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index)
+[← Step 12 Sample](https://github.com/annetastic-personal/references/wiki/step-12-rollback-sample) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index)

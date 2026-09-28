@@ -1,8 +1,8 @@
-# Step 12: Enable HTTPS with Let's Encrypt
+# Step 13: Enable HTTPS with Let's Encrypt
 
 > **Applies to:** All deployments.
 
-Worked example: [Step 12 Sample](https://github.com/annetastic-personal/references/wiki/step-12-enable-https-sample)
+Worked example: [Step 13 Sample](https://github.com/annetastic-personal/references/wiki/step-13-enable-https-sample)
 
 ## Purpose
 
@@ -79,4 +79,4 @@ See [Connectivity Troubleshooting](https://github.com/annetastic-personal/refere
 
 ---
 
-[← Step 11](https://github.com/annetastic-personal/references/wiki/step-11-service-environment-database) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index)
+[← Step 12](https://github.com/annetastic-personal/references/wiki/step-12-rollback) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index)
