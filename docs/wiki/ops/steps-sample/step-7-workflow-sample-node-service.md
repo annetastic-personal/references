@@ -97,8 +97,9 @@ jobs:
             ssh-keyscan -p "${{ secrets.SERVER_PORT }}" "${{ secrets.SERVER_HOST }}" >> ~/.ssh/known_hosts
           fi
 
-      # Create a timestamped release, sync the whole app, switch the current
-      # symlink, restart the systemd service, and prune old releases.
+      # Create a timestamped release, sync the whole app, install runtime
+      # dependencies on the server, switch the current symlink, restart the
+      # systemd service, and prune old releases.
       - name: Deploy release
         env:
           # Deployment target values are provided via repository secrets.
@@ -117,10 +118,14 @@ jobs:
           # Ensure release directory exists on the server.
           ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "mkdir -p '$RELEASE_DIR'"
 
-          # Sync the built app (server code plus client build).
-          # --delete only affects the new release directory, never shared/,
-          # so .env in shared/ survives every deploy.
-          rsync -az --delete -e "ssh -p $SERVER_PORT" ./ "$SERVER_USER@$SERVER_HOST:$RELEASE_DIR/"
+          # Sync the built app (server code plus client build), skipping .git
+          # and node_modules. --delete only affects the new release directory,
+          # never shared/, so .env in shared/ survives every deploy.
+          rsync -az --delete --exclude '.git' --exclude 'node_modules' -e "ssh -p $SERVER_PORT" ./ "$SERVER_USER@$SERVER_HOST:$RELEASE_DIR/"
+
+          # Install the server's runtime dependencies fresh from the lockfile
+          # before switching the symlink (server/ holds the Node package.json).
+          ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "cd '$RELEASE_DIR/server' && npm ci --omit=dev"
 
           # Atomically point current -> new release, restart the service so the
           # new code loads, then prune old releases (keep the 5 most recent).

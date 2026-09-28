@@ -45,6 +45,7 @@ WantedBy=multi-user.target
 - Replace `<service-name>`, `<deploy-user>`, `<project>`, and `<entry-point>` with your values.
 - `WorkingDirectory` runs the process from the `current` symlink, so you deploy to a new release directory and restart without editing the unit.
 - `EnvironmentFile` points at `/var/www/<project>/shared/.env` — the `shared/` directory created in Step 2. Unlike `current/`, which is rebuilt from the repository on every deploy, `shared/` persists across releases, so the file survives each `rsync --delete` deploy.
+- The process needs its runtime dependencies installed on the server, in the folder holding the app's `package.json` (for example, `server/node_modules` for a PERN app). The deploy step installs these fresh from the committed lockfile with `npm ci --omit=dev` (see Step 7) — do not install them once and forget, or a later dependency change leaves the service running stale modules.
 - Keep `.env` out of git and owned only by the deploy user (`chmod 600`).
 - If the app depends on a database, add its service to `After=` (for example, `postgresql.service`) so the database is up first.
 
@@ -64,7 +65,7 @@ sudo systemctl status <service-name>
 curl -I http://127.0.0.1:<port>
 ```
 
-Replace `<port>` with the app's port (for example, the `PORT` value in `.env`).
+Replace `<port>` with the app's port (for example, the `PORT` value in `.env`, e.g. `3001`). This is the app's **HTTP** port — unrelated to the SSH port used for deployment (`SERVER_PORT` in Step 6).
 
 ## 4. Redeploy by restarting
 

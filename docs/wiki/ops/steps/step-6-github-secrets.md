@@ -23,6 +23,8 @@ Add all required secrets to your repository so the workflow can authenticate and
 
 ---
 
+> **`SERVER_PORT` is the SSH port, not your app's HTTP port.** SSH listens on it (almost always port `22`). The app's HTTP port — `<app-port>` in Step 3 and `PORT` in the `.env` file (Step 11), e.g. `3001` — is a different value used by Nginx and the service, and it is **not** a GitHub secret. Only the SSH port (`SERVER_PORT`) becomes a secret.
+
 ## Where to Add These Secrets in GitHub
 
 Add each secret as a **Repository Secret** (not an Environment Secret) in your GitHub repository:

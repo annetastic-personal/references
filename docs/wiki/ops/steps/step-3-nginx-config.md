@@ -125,7 +125,8 @@ server {
 }
 ```
 
-- Replace `<app-port>` with the Node service port set in Step 10.
+- Replace `<app-port>` with the Node service port set in Step 10 (the `PORT` value in `.env`, e.g. `3001`).
+- `<app-port>` is the app's **HTTP** port — unrelated to the SSH port used for deployment (`SERVER_PORT` in Step 6).
 
 ---
 
