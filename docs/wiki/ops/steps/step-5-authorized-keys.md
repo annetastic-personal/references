@@ -43,6 +43,8 @@ You can use any SSH client (e.g., PuTTY, OpenSSH, MobaXterm) to connect to your 
 
    > **Runs on:** the server — SSH in first, then run at the remote prompt.
 
+> **Paste the full public key:** each line in `authorized_keys` must be a complete key on one line — `ssh-ed25519 <base64-blob> <comment>`. The `ssh-ed25519 ` type prefix is the easiest part to drop (e.g. copying only the base64 blob); without it sshd ignores the line and the key silently fails to authenticate. Paste the full output of `cat ~/.ssh/<deploy_key_name>.pub`.
+
 > **Note:**  
 > You only need to run the `chmod` commands if you just created the `~/.ssh` directory or the `authorized_keys` file.
 >
