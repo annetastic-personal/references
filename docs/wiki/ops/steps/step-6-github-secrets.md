@@ -19,7 +19,7 @@ Add all required secrets to your repository so the workflow can authenticate and
 | `SERVER_PORT`        | `<ssh-port>`                               | SSH port                                                 |
 | `SERVER_PATH`        | `<deploy-path>`                            | Server path containing `releases/` and `current` symlink |
 | `SSH_PRIVATE_KEY`    | Contents of `~/.ssh/<deploy_key_name>`     | Private key for SSH auth                                 |
-| `SERVER_KNOWN_HOSTS` | Output of `ssh-keyscan -p <port> <server>` | Pinned host keys to prevent MITM                         |
+| `SERVER_KNOWN_HOSTS` | Output of `ssh-keyscan -q -p <port> <server>` | Pinned host keys to prevent MITM                         |
 
 ---
 

@@ -48,7 +48,7 @@ Create, document, and approve the deployment workflow script for your project. I
 
 ## The Full Workflow File
 
-Paste this into `.github/workflows/deploy.yml`, then replace every `<...>` placeholder. The `Deploy release` step is intentionally left as a marker — pick **one** of the two deploy options in the next section and paste it in its place.
+Paste this into `.github/workflows/deploy.yml`, then replace every `<...>` placeholder. The `Deploy release` step contains the full script; the only lines that differ between a Static site and a Node service are shown inline as commented alternatives — uncomment the one that matches your project and delete the other.
 
 > **Runs on:** the GitHub Actions runner — CI, not your machine or the destination server. You write this YAML once and commit it; the runner executes it on every run. The `runs-on` value below uses GitHub's hosted Linux runner.
 
@@ -107,21 +107,10 @@ jobs:
             ssh-keyscan -p "${{ secrets.SERVER_PORT }}" "${{ secrets.SERVER_HOST }}" >> ~/.ssh/known_hosts
           fi
 
-      # ------------------------------------------------------------------
-      # DEPLOY STEP — INSERT ONE OF THE TWO OPTIONS BELOW (Static site or
-      # Node service). Do not paste both.
-      # ------------------------------------------------------------------
-```
-
-## Choose Your Deploy Step
-
-Pick the option that matches your project and paste it where the marker is above. Each option is a complete `Deploy release` step.
-
-### Static site
-
-Serve the built files directly and atomically swap the `current` symlink. No service restart. Replace `<build-output-dir>` with your build's output folder (e.g. `dist`), and `<keep-count>` with the release retention (see the note below).
-
-```yaml
+      # Upload, repoint, and (for a Node service) restart. The two rsync lines
+      # and the two "repoint" ssh lines below are the ONLY lines that differ
+      # between a Static site and a Node service. Uncomment the one that
+      # matches your project and delete the other.
       - name: Deploy release
         env:
           SERVER_HOST: ${{ secrets.SERVER_HOST }}
@@ -138,44 +127,27 @@ Serve the built files directly and atomically swap the `current` symlink. No ser
           # Ensure the release directory exists on the server.
           ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "mkdir -p '$RELEASE_DIR'"
 
-          # Sync the build output into the release directory.
-          rsync -az --delete -e "ssh -p $SERVER_PORT" <build-output-dir>/ "$SERVER_USER@$SERVER_HOST:$RELEASE_DIR/"
+          # Upload the app — uncomment ONE of the two rsync lines:
+          #   Static site → sync only the built files (e.g. dist/):
+          # rsync -az --delete -e "ssh -p $SERVER_PORT" <build-output-dir>/ "$SERVER_USER@$SERVER_HOST:$RELEASE_DIR/"
+          #   Node service → sync the whole app (server code + client build):
+          # rsync -az --delete -e "ssh -p $SERVER_PORT" ./ "$SERVER_USER@$SERVER_HOST:$RELEASE_DIR/"
 
-          # Atomically switch the current symlink to the new release.
-          ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ln -sfn '$RELEASE_DIR' '$SERVER_PATH/current'"
+          # Repoint current — uncomment ONE of the two ssh lines:
+          #   Static site → swap the symlink only:
+          # ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ln -sfn '$RELEASE_DIR' '$SERVER_PATH/current'"
+          #   Node service → swap the symlink AND restart the service:
+          # ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ln -sfn '$RELEASE_DIR' '$SERVER_PATH/current' && sudo systemctl restart <service-name>"
 
           # Prune old releases (see retention note below).
           ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ls -1dt '$SERVER_PATH'/releases/* | tail -n +<keep-count> | xargs -r rm -rf"
 ```
 
-### Node service
-
-Sync the whole app (server code plus client build) and restart the systemd service from Step 10. Replace `<service-name>` with the systemd unit name and `<keep-count>` with the release retention. `--delete` only touches the new release directory, never `shared/` — secrets such as `.env` live in `shared/` (see Step 11), so they survive every deploy.
-
-```yaml
-      - name: Deploy release
-        env:
-          SERVER_HOST: ${{ secrets.SERVER_HOST }}
-          SERVER_USER: ${{ secrets.SERVER_USER }}
-          SERVER_PORT: ${{ secrets.SERVER_PORT }}
-          SERVER_PATH: ${{ secrets.SERVER_PATH }}
-        run: |
-          # Fail fast on errors, unset variables, or pipeline failures.
-          set -euo pipefail
-
-          RELEASE_NAME="release-$(date +%Y%m%d%H%M%S)"
-          RELEASE_DIR="$SERVER_PATH/releases/$RELEASE_NAME"
-
-          # Ensure the release directory exists on the server.
-          ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "mkdir -p '$RELEASE_DIR'"
-
-          # Sync the built app (server code plus client build).
-          rsync -az --delete -e "ssh -p $SERVER_PORT" ./ "$SERVER_USER@$SERVER_HOST:$RELEASE_DIR/"
-
-          # Repoint current, restart the service so the new code loads, then prune.
-          ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ln -sfn '$RELEASE_DIR' '$SERVER_PATH/current' && sudo systemctl restart <service-name>"
-          ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ls -1dt '$SERVER_PATH'/releases/* | tail -n +<keep-count> | xargs -r rm -rf"
-```
+> **Which lines to keep:**
+> - **Static site** — uncomment the `<build-output-dir>/` rsync line and the plain `ln -sfn` line (no restart).
+> - **Node service** — uncomment the `./` rsync line and the `ln -sfn ... && sudo systemctl restart <service-name>` line.
+>
+> Delete the two lines that do not apply to your project.
 
 > **Release retention:** `tail -n +<keep-count>` deletes every release except the most recent `<keep-count> - 1`. For example, `tail -n +6` keeps the 5 most recent releases (`6 = 5 + 1`).
 
