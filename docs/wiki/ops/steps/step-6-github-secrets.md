@@ -96,6 +96,7 @@ ssh-keygen -F <server>
 ## Important Notes
 
 - All secrets must be plain values (no quotes, no extra whitespace).
+- Watch for a **trailing newline**: if a pasted value ends with a line break, that `\n` becomes part of the secret and corrupts paths/ports that interpolate it (e.g. `SERVER_PATH` makes `mkdir` fail with "Permission denied" on a nonexistent directory). Re-enter single-line secrets (`SERVER_HOST`, `SERVER_USER`, `SERVER_PORT`, `SERVER_PATH`) with no trailing newline or spaces.
 - `SERVER_KNOWN_HOSTS` must include the full host-key lines from `ssh-keyscan` (excluding any `#` banner/comment lines), each with the host prefix on the line.
 - If either secret is malformed, the workflow will fail with SSH errors.
 

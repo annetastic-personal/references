@@ -47,6 +47,37 @@ The runner does not trust the server.
 
 *Fixing steps: [Step 4](https://github.com/annetastic-personal/references/wiki/step-4-deploy-key) and [Step 5](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys).*
 
+### `Too many authentication failures` (exit 255)
+
+Public-key auth is failing, so the runner falls back to other methods (a
+`Permission denied, please try again.` password prompt) and the server
+eventually disconnects.
+
+- Confirm each line in the server's `~/.ssh/authorized_keys` is a complete key
+  on one line: `ssh-ed25519 <base64-blob> <comment>`. A line missing the
+  `ssh-ed25519 ` type prefix (a paste of only the base64 blob) is ignored.
+- Confirm the `SSH_PRIVATE_KEY` secret's private key matches a line in
+  `authorized_keys`: `ssh-keygen -y -f <key>` should equal that line.
+- Test the key directly:
+  `ssh -i <key> -p <port> <user>@<server> -o IdentitiesOnly=yes "echo ok"`.
+
+*Fixing steps: [Step 5](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys) and [Step 6](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets).*
+
+### A path or flag has a stray `\n` (secret ends in a newline)
+
+A secret was pasted with a trailing newline (or spaces), which becomes part of
+the value. GitHub preserves whitespace in secrets, so the stray character flows
+into the deploy script and corrupts whatever uses it.
+
+- Symptom examples: `mkdir: cannot create directory '...\n': Permission denied`
+  (a nonexistent directory with a newline under `/var/www`), or `ssh`/`rsync`
+  errors pointing at a host/port/path that no longer looks right.
+- Fix: re-enter the affected secret with no trailing newline or spaces — most
+  often `SERVER_PATH` (`/var/www/<project>`), but also check `SERVER_HOST`,
+  `SERVER_USER`, and `SERVER_PORT`.
+
+*Fixing step: [Step 6](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets).*
+
 ### `500 Internal Server Error` / `stat() ... (13: Permission denied)`
 
 Nginx (`www-data`) cannot read the files. This is the classic symptom when the
