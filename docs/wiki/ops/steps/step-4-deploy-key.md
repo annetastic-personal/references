@@ -15,14 +15,15 @@ Generate a dedicated SSH key pair for your CI/CD system to authenticate with the
 ## Commands (Generalized)
 
 ```bash
-ssh-keygen -t ed25519 -C "ci-cd-deploy" -f ~/.ssh/<deploy_key_name>
+ssh-keygen -t ed25519 -C "<comment_key_name>" -f ~/.ssh/<deploy_key_name>
 cat ~/.ssh/<deploy_key_name>.pub
 ```
 
 > **Runs on:** your machine.
 
-- Replace `<deploy_key_name>` with a unique name for your project (e.g., `portfolio_deploy_key`, `ttgcollector_key`).
-- The -C flag adds a comment to the key for easier identification.
+- Replace `<comment_key_name>` with a short, unique identifier for this deployment (e.g., `ci-cd-deploy-ttgcollector`).
+- Replace `<deploy_key_name>` with a unique name for your project (e.g., `portfolio_deploy_key`, `ttgcollector_deploy_key`).
+- The -C flag adds the comment to the key for easier identification.
 
 **Note:** `ssh-keygen` only creates the key files on this machine. Installing the public key on the server — creating or editing `~/.ssh/authorized_keys` — is covered in [Step 5](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys).
 
