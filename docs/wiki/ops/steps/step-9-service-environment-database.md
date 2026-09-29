@@ -56,6 +56,23 @@ DB_URL=postgres://<app-user>:<app-password>@localhost:5432/<app-db>
 
 > **Runs on:** the server — SSH in first, then create the file at the remote prompt.
 
+What each value means:
+
+- `NODE_ENV=production` — runs the app in production mode.
+- `PORT` — the HTTP port the app listens on (for example `3001`); Nginx
+  reverse-proxies to it (Step 3).
+- `SESSION_SECRET` — a long random string `express-session` uses to sign session
+  cookies. Generate one with `openssl rand -hex 32` and paste the output. Keep it
+  secret and stable (changing it logs everyone out); a weak or leaked value lets
+  someone forge session cookies.
+- The database connection can be a single `DB_URL` string *or* the discrete
+  `DB_NAME` / `DB_USER` / `DB_PASSWORD` values — which one your app reads depends
+  on its connection code (the sample uses the discrete form). For MERN, use
+  `MONGODB_URI` instead.
+- Add any app-specific secrets here too (for example `BGG_API_TOKEN`).
+
+Where to put it:
+
 - Keep the file in `shared/`, not in the `current/` release tree. `current/`
   is rebuilt from the repository on every deploy (`rsync --delete`), so a file
   placed there would be deleted. `shared/` persists across releases.
