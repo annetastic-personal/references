@@ -33,8 +33,8 @@ Individual steps label each command block as **Local**, **Server**, or **GitHub 
 | Step | Applies to |
 |------|-----------|
 | [Step 8: Install Node.js Runtime](https://github.com/annetastic-personal/references/wiki/step-8-install-node-runtime) | Node service |
-| [Step 9: Run a Node Service (systemd)](https://github.com/annetastic-personal/references/wiki/step-9-run-node-service) | Node service |
-| [Step 10: Service Environment & Database](https://github.com/annetastic-personal/references/wiki/step-10-service-environment-database) | Node service (PostgreSQL / MongoDB) |
+| [Step 9: Service Environment & Database](https://github.com/annetastic-personal/references/wiki/step-9-service-environment-database) | Node service (PostgreSQL / MongoDB) |
+| [Step 10: Run a Node Service (systemd)](https://github.com/annetastic-personal/references/wiki/step-10-run-node-service) | Node service |
 
 ## Which steps do I need?
 
@@ -45,8 +45,8 @@ Individual steps label each command block as **Local**, **Server**, or **GitHub 
   [Step 7](https://github.com/annetastic-personal/references/wiki/step-7-workflow)
   use the static deploy body (`rsync dist/` + symlink swap).
 - **Node service** (PERN/MERN, e.g., `ttgcollector`): follow steps 1–10, then
-  11–13. Complete Steps 8–10 (install Node, run the service, environment &
-  database) **before** Step 11 (deploy) — the deploy runs `npm ci --omit=dev`
+  11–13. Complete Steps 8–10 (install Node, environment & database, run the
+  service) **before** Step 11 (deploy) — the deploy runs `npm ci --omit=dev`
   and `systemctl restart` on the server. In
   [Step 3](https://github.com/annetastic-personal/references/wiki/step-3-nginx-config)
   reverse-proxy to the Node process (`proxy_pass`); in

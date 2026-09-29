@@ -29,4 +29,4 @@ which node
 
 ---
 
-[← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 9 Sample →](https://github.com/annetastic-personal/references/wiki/step-9-run-node-service-sample)
+[← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 9 Sample →](https://github.com/annetastic-personal/references/wiki/step-9-service-environment-database-sample)

@@ -145,7 +145,7 @@ jobs:
           #   Static site → swap the symlink only:
           # ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ln -sfn '$RELEASE_DIR' '$SERVER_PATH/current'"
           #   Node service → swap the symlink AND restart the service (pick a
-          #   short <service-name> now, e.g. `ttgcollector`; reuse it in Step 9):
+          #   short <service-name> now, e.g. `ttgcollector`; reuse it in Step 10):
           # ssh -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" "ln -sfn '$RELEASE_DIR' '$SERVER_PATH/current' && sudo systemctl restart <service-name>"
 
           # Prune old releases (see retention note below).
@@ -160,7 +160,7 @@ jobs:
 >
 > **Picking `<app-dir>` when there are several `package.json` files:** choose the folder the running service starts from — the one containing the entry-point file you run with `node`. For TTGCollector that is `server/`, which holds `server/server.js` and the backend's `package-lock.json`; do not pick the repo-root `package.json` (which only holds dev/run scripts) or a `client/` build.
 >
-> `<service-name>` in the restart line is a short name you choose for the running service (e.g. `ttgcollector`); it becomes the systemd unit name in Step 9, so use the same string in both places.
+> `<service-name>` in the restart line is a short name you choose for the running service (e.g. `ttgcollector`); it becomes the systemd unit name in Step 10, so use the same string in both places.
 >
 > **Separate `client/` package (PERN/MERN):** the template's `npm ci` and `npm run build` run at the repo root, which is correct for a single-package app. If your repo has a separate `client/` package (its own `package.json` and lockfile), run both steps in that folder instead — the server's dependencies are installed on the server by the `<app-dir>` `npm ci --omit=dev` line, and only the client needs its dependencies on the runner to produce the static build. Use `cd client && npm ci` then `cd client && npm run build` (or `--prefix client`).
 

@@ -1,8 +1,8 @@
-# Step 10: Configure a Node Service: Environment and Database
+# Step 9: Configure a Node Service: Environment and Database
 
 > **Applies to:** Node service deployments (PERN, MERN).
 
-Worked example: [Step 10 Sample](https://github.com/annetastic-personal/references/wiki/step-10-service-environment-database-sample)
+Worked example: [Step 9 Sample](https://github.com/annetastic-personal/references/wiki/step-9-service-environment-database-sample)
 
 ## Purpose
 
@@ -42,8 +42,7 @@ db.createUser({
 ## 2. Write the environment file
 
 Create the environment file at `/var/www/<project>/shared/.env` — the path
-referenced by the systemd `EnvironmentFile` from Step 9 — and fill in the
-values you just created:
+the service loads at startup — and fill in the values you just created:
 
 ```env
 NODE_ENV=production
@@ -63,6 +62,11 @@ DB_URL=postgres://<app-user>:<app-password>@localhost:5432/<app-db>
 - Never commit `.env` — add it to `.gitignore`.
 - Restrict it to the deploy user: `chmod 600 /var/www/<project>/shared/.env`.
 
+These runtime values are separate from the GitHub secrets in Step 6 (the SSH
+key, host, user, and port the deploy runner uses). The running app reads this
+`.env` file on the server — GitHub secrets are not available to the running
+process.
+
 ## 3. Set up the schema
 
 Most ORMs create the schema automatically from their model definitions:
@@ -73,18 +77,20 @@ Most ORMs create the schema automatically from their model definitions:
 If your app requires raw SQL migrations or a `schema.sql`, run those instead
 (for example, `psql -U <app-user> -d <app-db> -f schema.sql`).
 
-## 4. Verify
+## 4. Verify the database
 
-Start (or restart) the service and confirm it reaches the database with no
-authentication or schema errors:
+Confirm the database is reachable with the credentials from `.env`:
 
 ```bash
-sudo systemctl restart <service-name>
-journalctl -u <service-name> -n 50
+psql -U <app-user> -d <app-db> -c "SELECT 1"
 ```
 
 > **Runs on:** the server — SSH in first, then run at the remote prompt.
 
+Expected: `psql` connects and prints a single `1` row with no authentication
+error. For MongoDB, run `mongosh` and confirm the `use <app-db>` command
+succeeds. The service itself does not start until the Step 11 deploy.
+
 ---
 
-[← Step 9](https://github.com/annetastic-personal/references/wiki/step-9-run-node-service) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 11 →](https://github.com/annetastic-personal/references/wiki/step-11-deploy-and-verify)
+[← Step 8](https://github.com/annetastic-personal/references/wiki/step-8-install-node-runtime) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 10 →](https://github.com/annetastic-personal/references/wiki/step-10-run-node-service)

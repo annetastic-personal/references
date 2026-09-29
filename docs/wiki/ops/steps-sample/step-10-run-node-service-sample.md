@@ -1,4 +1,4 @@
-# Step 9 Sample: Run a Node Service with systemd (TTGCollector Project)
+# Step 10 Sample: Run a Node Service with systemd (TTGCollector Project)
 
 > **Applies to:** Node service deployments (PERN).
 
@@ -36,16 +36,18 @@ WantedBy=multi-user.target
 
 > **Runs on:** the server — SSH in first, then create the file at the remote prompt.
 
-## Install and Start
+## Install and Enable
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable --now ttgcollector
+sudo systemctl enable ttgcollector
 ```
 
 > **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 ## Verify
+
+After the Step 11 deploy has started the service, confirm it is running:
 
 ```bash
 sudo systemctl status ttgcollector
@@ -71,4 +73,4 @@ sudo systemctl restart ttgcollector
 
 ---
 
-[← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 10 Sample →](https://github.com/annetastic-personal/references/wiki/step-10-service-environment-database-sample)
+[← Step 9 Sample](https://github.com/annetastic-personal/references/wiki/step-9-service-environment-database-sample) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 11 Sample →](https://github.com/annetastic-personal/references/wiki/step-11-deploy-and-verify-sample)

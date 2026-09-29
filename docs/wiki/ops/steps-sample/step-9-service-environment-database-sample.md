@@ -1,4 +1,4 @@
-# Step 10 Sample: Environment and Database (TTGCollector Project)
+# Step 9 Sample: Environment and Database (TTGCollector Project)
 
 > **Applies to:** Node service deployments (PERN).
 
@@ -20,8 +20,8 @@ sudo -u postgres psql -c "CREATE DATABASE ttgcollector OWNER <app-user>;"
 
 ## 2. Write the environment file
 
-`/var/www/ttgcollector/shared/.env` (referenced by the systemd
-`EnvironmentFile` from Step 9):
+`/var/www/ttgcollector/shared/.env` (loaded by the systemd unit's
+`EnvironmentFile` in the next step):
 
 ```env
 NODE_ENV=production
@@ -50,18 +50,17 @@ deploy user with `chmod 600`.
 automatically from the Sequelize models on the first run. No manual SQL is
 needed (the repo's `server/db/schema.sql` is a development-only reference).
 
-## 4. Verify
+## 4. Verify the database
 
 ```bash
-sudo systemctl restart ttgcollector
-journalctl -u ttgcollector -n 50
+psql -U <app-user> -d ttgcollector -c "SELECT 1"
 ```
 
 > **Runs on:** the server — SSH in first, then run at the remote prompt.
 
-Confirm the log shows `Server running on http://localhost:3001` with no
-database authentication or schema errors.
+Expected: `psql` connects and prints a single `1` row with no authentication
+error. The service itself does not start until the Step 11 deploy.
 
 ---
 
-[← Step 9 Sample](https://github.com/annetastic-personal/references/wiki/step-9-run-node-service-sample) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index)
+[← Step 8 Sample](https://github.com/annetastic-personal/references/wiki/step-8-install-node-runtime-sample) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 10 Sample →](https://github.com/annetastic-personal/references/wiki/step-10-run-node-service-sample)

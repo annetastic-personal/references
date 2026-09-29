@@ -7,7 +7,7 @@ Worked example: [Step 8 Sample](https://github.com/annetastic-personal/reference
 ## Purpose
 
 The deploy workflow runs `npm ci --omit=dev` on the server, and the systemd
-unit (Step 9) launches the app with `/usr/bin/node`. Both require Node.js (and
+unit (Step 10) launches the app with `/usr/bin/node`. Both require Node.js (and
 npm) to be installed **on the server** — not just on the GitHub runner. Install
 it before the first deploy (Step 11).
 
@@ -60,4 +60,4 @@ version without `command not found`.
 
 ---
 
-[← Step 7](https://github.com/annetastic-personal/references/wiki/step-7-workflow) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 9 →](https://github.com/annetastic-personal/references/wiki/step-9-run-node-service)
+[← Step 7](https://github.com/annetastic-personal/references/wiki/step-7-workflow) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 9 →](https://github.com/annetastic-personal/references/wiki/step-9-service-environment-database)

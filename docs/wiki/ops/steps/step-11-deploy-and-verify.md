@@ -44,4 +44,4 @@ See [Troubleshooting → Step 11](https://github.com/annetastic-personal/referen
 
 ---
 
-[← Step 10](https://github.com/annetastic-personal/references/wiki/step-10-service-environment-database) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 12 →](https://github.com/annetastic-personal/references/wiki/step-12-rollback)
+[← Step 10](https://github.com/annetastic-personal/references/wiki/step-10-run-node-service) | [← Back to Index](https://github.com/annetastic-personal/references/wiki/cicd-index) | [Next: Step 12 →](https://github.com/annetastic-personal/references/wiki/step-12-rollback)
