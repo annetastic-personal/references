@@ -6,6 +6,8 @@ This example shows Nginx for a static site (`portfolio`) and a reverse-proxied N
 
 ## Commands Used
 
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
 Install Nginx (skip if already installed):
 
 ```bash

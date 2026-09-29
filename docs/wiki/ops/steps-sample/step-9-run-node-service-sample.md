@@ -34,12 +34,16 @@ EnvironmentFile=/var/www/ttgcollector/shared/.env
 WantedBy=multi-user.target
 ```
 
+> **Runs on:** the server — SSH in first, then create the file at the remote prompt.
+
 ## Install and Start
 
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable --now ttgcollector
 ```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 ## Verify
 
@@ -48,11 +52,15 @@ sudo systemctl status ttgcollector
 curl -I http://127.0.0.1:3001
 ```
 
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
 ## Restart After Deploy
 
 ```bash
 sudo systemctl restart ttgcollector
 ```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 ## Notes
 

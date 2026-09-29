@@ -12,8 +12,15 @@ sudo apt install -y certbot python3-certbot-nginx
 sudo certbot --nginx -d annetasticthoughts.com -d www.annetasticthoughts.com
 sudo nginx -t
 sudo systemctl reload nginx
+```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
+```bash
 curl -I https://annetasticthoughts.com
 ```
+
+> **Runs on:** your machine.
 
 ---
 

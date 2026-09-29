@@ -16,11 +16,15 @@ Push to your main branch, verify the workflow runs successfully, and confirm the
 git push origin main
 ```
 
+> **Runs on:** your machine (in the repository checkout).
+
 Or, if pushing from a feature branch:
 
 ```bash
 git push origin HEAD:main
 ```
+
+> **Runs on:** your machine (in the repository checkout).
 
 ---
 

@@ -10,6 +10,8 @@ This example shows how to push and verify a deployment for the `portfolio` proje
 git push origin main
 ```
 
+> **Runs on:** your machine (in the repository checkout).
+
 ---
 
 ## Verification

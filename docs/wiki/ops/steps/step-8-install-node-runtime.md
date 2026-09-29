@@ -36,15 +36,24 @@ sudo apt-get install -y nodejs
 
 ## Verify
 
-Confirm the version, the install location, and that a non-interactive SSH
-session — the same kind the workflow uses — can see it:
+Confirm the version and install location on the server:
 
 ```bash
 node -v
 npm -v
 which node
+```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
+Then confirm that a non-interactive SSH session — the same kind the workflow
+uses — can see it too:
+
+```bash
 ssh <user>@<server> -p <port> "command -v npm && node -v && npm -v"
 ```
+
+> **Runs on:** your machine (the quoted command runs on the server).
 
 Expected: `which node` prints `/usr/bin/node`, and the last command prints a
 version without `command not found`.

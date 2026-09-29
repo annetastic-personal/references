@@ -17,18 +17,30 @@ sudo apt update
 sudo apt install -y certbot python3-certbot-nginx
 ```
 
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
 - `certbot` requests and renews certificates; `python3-certbot-nginx` is the plugin that edits your Nginx config automatically.
 
 ---
 
 ## Confirm prerequisites
 
-Confirm the domain resolves to the server and port 80 is reachable (Let's Encrypt validates over HTTP), and that 443 is allowed through the firewall:
+Confirm the domain resolves to the server:
 
 ```bash
 nslookup <your-domain>
+```
+
+> **Runs on:** your machine.
+
+Then confirm port 80 is reachable (Let's Encrypt validates over HTTP) and that
+443 is allowed through the firewall:
+
+```bash
 sudo ufw status numbered
 ```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 ---
 
@@ -37,6 +49,8 @@ sudo ufw status numbered
 ```bash
 sudo certbot --nginx -d <your-domain>
 ```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 - certbot reads `sites-enabled`, finds the `server_name <your-domain>` block, obtains the certificate, and rewrites that block to `listen 443 ssl;` with the certificate paths.
 - Add `-d www.<your-domain>` only if you have a `www` A record and want it covered.
@@ -51,6 +65,8 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
 ---
 
 ## Verify
@@ -58,6 +74,8 @@ sudo systemctl reload nginx
 ```bash
 curl -I https://<your-domain>
 ```
+
+> **Runs on:** your machine.
 
 Expected: `HTTP/2 200` (or `HTTP/1.1 200 OK`).
 
@@ -70,6 +88,8 @@ certbot installs a systemd timer that renews certificates automatically. Confirm
 ```bash
 sudo systemctl status certbot.timer
 ```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 ---
 

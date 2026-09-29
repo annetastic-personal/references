@@ -10,10 +10,22 @@ This example shows how to roll back to a previous release for the `portfolio` pr
 ls -lt /var/www/portfolio/releases/
 ln -sfn /var/www/portfolio/releases/release-YYYYMMDDHHMMSS /var/www/portfolio/current
 ls -la /var/www/portfolio/current
+```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
+```bash
 curl -I http://yourdomain.com
+```
+
+> **Runs on:** your machine.
+
+```bash
 # To roll forward again:
 ln -sfn /var/www/portfolio/releases/release-YYYYMMDDHHMMSS /var/www/portfolio/current
 ```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 ---
 

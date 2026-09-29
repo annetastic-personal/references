@@ -25,11 +25,15 @@ Validate that rolling back to a previous release works correctly by switching th
 ls -lt /var/www/<project>/releases/
 ```
 
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
 ### 2. Switch `current` to a previous release
 
 ```bash
 ln -sfn /var/www/<project>/releases/<previous-release-dir> /var/www/<project>/current
 ```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 Replace `<previous-release-dir>` with the target release directory name (e.g. `release-YYYYMMDDHHMMSS`).
 
@@ -39,11 +43,15 @@ Replace `<previous-release-dir>` with the target release directory name (e.g. `r
 ls -la /var/www/<project>/current
 ```
 
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
 ### 4. Confirm the site reflects the rollback
 
 ```bash
 curl -I http://<server>
 ```
+
+> **Runs on:** your machine.
 
 Check the domain to confirm the previous version is live.
 
@@ -52,6 +60,8 @@ Check the domain to confirm the previous version is live.
 ```bash
 ln -sfn /var/www/<project>/releases/<latest-release-dir> /var/www/<project>/current
 ```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 ---
 

@@ -42,6 +42,8 @@ EnvironmentFile=/var/www/<project>/shared/.env
 WantedBy=multi-user.target
 ```
 
+> **Runs on:** the server — SSH in first, then create the file at the remote prompt.
+
 - Replace `<service-name>`, `<deploy-user>`, `<project>`, and `<entry-point>` with your values.
 - `WorkingDirectory` runs the process from the `current` symlink, so you deploy to a new release directory and restart without editing the unit.
 - `EnvironmentFile` points at `/var/www/<project>/shared/.env` — the `shared/` directory created in Step 2. Unlike `current/`, which is rebuilt from the repository on every deploy, `shared/` persists across releases, so the file survives each `rsync --delete` deploy.
@@ -56,6 +58,8 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now <service-name>
 ```
 
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
 `--now` enables the service (start on boot) *and* starts it in one step.
 
 ## 3. Verify it is running
@@ -64,6 +68,8 @@ sudo systemctl enable --now <service-name>
 sudo systemctl status <service-name>
 curl -I http://127.0.0.1:<port>
 ```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 Replace `<port>` with the app's port (for example, the `PORT` value in `.env`, e.g. `3001`). This is the app's **HTTP** port — unrelated to the SSH port used for deployment (`SERVER_PORT` in Step 6).
 
@@ -75,11 +81,15 @@ Deploy new code to a new release directory, repoint `current`, then restart:
 sudo systemctl restart <service-name>
 ```
 
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
 ## 5. View logs
 
 ```bash
 journalctl -u <service-name> -f
 ```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 ---
 

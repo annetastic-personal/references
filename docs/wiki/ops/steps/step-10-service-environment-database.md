@@ -20,11 +20,15 @@ sudo -u postgres psql -c "CREATE ROLE <app-user> WITH LOGIN PASSWORD '<app-passw
 sudo -u postgres psql -c "CREATE DATABASE <app-db> OWNER <app-user>;"
 ```
 
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
 ### MongoDB (MERN)
 
 ```bash
 mongosh
 ```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 ```js
 use <app-db>
@@ -51,6 +55,8 @@ DB_URL=postgres://<app-user>:<app-password>@localhost:5432/<app-db>
 # MONGODB_URI=mongodb://<app-user>:<app-password>@localhost:27017/<app-db>
 ```
 
+> **Runs on:** the server — SSH in first, then create the file at the remote prompt.
+
 - Keep the file in `shared/`, not in the `current/` release tree. `current/`
   is rebuilt from the repository on every deploy (`rsync --delete`), so a file
   placed there would be deleted. `shared/` persists across releases.
@@ -76,6 +82,8 @@ authentication or schema errors:
 sudo systemctl restart <service-name>
 journalctl -u <service-name> -n 50
 ```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 ---
 

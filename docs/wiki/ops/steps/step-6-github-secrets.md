@@ -91,6 +91,8 @@ To cross-check against a host you have connected to before, compare with the ent
 ssh-keygen -F <server>
 ```
 
+> **Runs on:** your machine.
+
 ---
 
 ## Important Notes

@@ -16,6 +16,8 @@ sudo -u postgres psql -c "CREATE ROLE <app-user> WITH LOGIN PASSWORD '<app-passw
 sudo -u postgres psql -c "CREATE DATABASE ttgcollector OWNER <app-user>;"
 ```
 
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
 ## 2. Write the environment file
 
 `/var/www/ttgcollector/shared/.env` (referenced by the systemd
@@ -32,6 +34,8 @@ DB_PASSWORD=<app-password>
 
 BGG_API_TOKEN=<your-boardgamegeek-token>
 ```
+
+> **Runs on:** the server — SSH in first, then create the file at the remote prompt.
 
 > TTGCollector's `config/connection.js` accepts either a single `DB_URL` or the
 > discrete `DB_NAME` / `DB_USER` / `DB_PASSWORD` values shown here.
@@ -52,6 +56,8 @@ needed (the repo's `server/db/schema.sql` is a development-only reference).
 sudo systemctl restart ttgcollector
 journalctl -u ttgcollector -n 50
 ```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 Confirm the log shows `Server running on http://localhost:3001` with no
 database authentication or schema errors.
