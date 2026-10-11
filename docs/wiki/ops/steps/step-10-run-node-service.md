@@ -87,39 +87,33 @@ sudo systemctl enable <service-name>
 > **Runs on:** the server — SSH in first, then run at the remote prompt.
 
 This registers the service to start on boot, but does not start it now — there
-is no code, config, or database to run yet. The first actual start happens
-during the Step 11 deploy, which restarts the service after copying the code.
+is no code to run yet. Step 9 created the database and `.env`, but the `current`
+symlink still points at the empty `releases/initial/` from Step 2, so there is
+nothing for the service to start. The first actual start happens during the
+Step 11 deploy, which restarts the service after copying the code.
 
-## 3. Verify it is running
-
-After the Step 11 deploy has started the service, confirm it is running:
+## 3. Confirm the service is registered
 
 ```bash
-sudo systemctl status <service-name>
-curl -I http://127.0.0.1:<port>
+sudo systemctl is-enabled <service-name>
 ```
 
 > **Runs on:** the server — SSH in first, then run at the remote prompt.
 
-Replace `<port>` with the app's port (for example, the `PORT` value in `.env`, e.g. `3001`). This is the app's **HTTP** port — unrelated to the SSH port used for deployment (`SERVER_PORT` in Step 6).
+Expected: `enabled`. This confirms the unit file is valid and registered to
+start on boot. `systemctl status <service-name>` still reports
+`inactive (dead)` at this point — that is expected, because the service has not
+been started yet. The first start happens during the Step 11 deploy.
 
-## 4. Redeploy by restarting
-
-Deploy new code to a new release directory, repoint `current`, then restart:
+To validate the unit file itself, run:
 
 ```bash
-sudo systemctl restart <service-name>
+sudo systemd-analyze verify /etc/systemd/system/<service-name>.service
 ```
 
 > **Runs on:** the server — SSH in first, then run at the remote prompt.
 
-## 5. View logs
-
-```bash
-journalctl -u <service-name> -f
-```
-
-> **Runs on:** the server — SSH in first, then run at the remote prompt.
+No output means the unit is syntactically valid.
 
 ---
 

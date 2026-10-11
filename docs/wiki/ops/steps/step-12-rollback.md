@@ -37,6 +37,16 @@ ln -sfn /var/www/<project>/releases/<previous-release-dir> /var/www/<project>/cu
 
 Replace `<previous-release-dir>` with the target release directory name (e.g. `release-YYYYMMDDHHMMSS`).
 
+**Node service (PERN/MERN):** swapping the symlink does not restart the running
+Node process, so it keeps serving the old code. Restart the service after the
+swap:
+
+```bash
+sudo systemctl restart <service-name>
+```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
 ### 3. Verify the change
 
 ```bash
@@ -59,6 +69,14 @@ Check the domain to confirm the previous version is live.
 
 ```bash
 ln -sfn /var/www/<project>/releases/<latest-release-dir> /var/www/<project>/current
+```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
+**Node service (PERN/MERN):** restart the service after rolling forward too:
+
+```bash
+sudo systemctl restart <service-name>
 ```
 
 > **Runs on:** the server — SSH in first, then run at the remote prompt.

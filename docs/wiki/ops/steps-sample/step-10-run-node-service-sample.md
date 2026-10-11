@@ -45,24 +45,17 @@ sudo systemctl enable ttgcollector
 
 > **Runs on:** the server — SSH in first, then run at the remote prompt.
 
-## Verify
-
-After the Step 11 deploy has started the service, confirm it is running:
+## Confirm Registered
 
 ```bash
-sudo systemctl status ttgcollector
-curl -I http://127.0.0.1:3001
+sudo systemctl is-enabled ttgcollector
 ```
 
 > **Runs on:** the server — SSH in first, then run at the remote prompt.
 
-## Restart After Deploy
-
-```bash
-sudo systemctl restart ttgcollector
-```
-
-> **Runs on:** the server — SSH in first, then run at the remote prompt.
+Expected: `enabled`. `systemctl status ttgcollector` still reports
+`inactive (dead)` — expected, since the first start happens in the Step 11
+deploy.
 
 ## Notes
 

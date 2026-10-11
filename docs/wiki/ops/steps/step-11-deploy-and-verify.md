@@ -36,6 +36,26 @@ git push origin HEAD:main
 4. `curl -I http://<server>:<port>` returns `HTTP/1.1 200 OK`.
 5. Your domain loads the deployed app.
 
+## Node Service Verification (PERN / MERN)
+
+If this is a Node service deployment, also confirm on the server:
+
+```bash
+sudo systemctl status <service-name>
+```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
+Expected: `active (running)`. Then check the logs for startup errors:
+
+```bash
+journalctl -u <service-name>
+```
+
+> **Runs on:** the server — SSH in first, then run at the remote prompt.
+
+Add `-f` to follow the logs live: `journalctl -u <service-name> -f`.
+
 ---
 
 ## Troubleshooting
