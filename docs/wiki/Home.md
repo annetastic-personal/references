@@ -13,21 +13,7 @@ A collection of processes, patterns, and practices I've learned and want to refe
 
 ### Application CI/CD
 
-This reference documents a generalized, step-by-step process for setting up atomic, rollback-friendly CI/CD for web applications using GitHub Actions and a versioned release directory structure. Each step links to a detailed guide and a worked example.
-
-- [Step 1: Set Up Personal SSH Access](https://github.com/annetastic-personal/references/wiki/step-1-personal-ssh-access)
-- [Step 2: Prepare Server Directory Layout](https://github.com/annetastic-personal/references/wiki/step-2-server-layout)
-- [Step 3: Configure Nginx Site](https://github.com/annetastic-personal/references/wiki/step-3-nginx-config)
-- [Step 4: Create Deployment SSH Key Pair](https://github.com/annetastic-personal/references/wiki/step-4-deploy-key)
-- [Step 5: Add Deploy Public Key to Server](https://github.com/annetastic-personal/references/wiki/step-5-authorized-keys)
-- [Step 6: Add CI/CD Repository Secrets](https://github.com/annetastic-personal/references/wiki/step-6-github-secrets)
-- [Step 7: Create CI/CD Workflow](https://github.com/annetastic-personal/references/wiki/step-7-workflow)
-- [Step 8: Install Node.js Runtime](https://github.com/annetastic-personal/references/wiki/step-8-install-node-runtime)
-- [Step 9: Run a Node Service (systemd)](https://github.com/annetastic-personal/references/wiki/step-9-run-node-service)
-- [Step 10: Service Environment & Database](https://github.com/annetastic-personal/references/wiki/step-10-service-environment-database)
-- [Step 11: Push and Verify Deployment](https://github.com/annetastic-personal/references/wiki/step-11-deploy-and-verify)
-- [Step 12: Confirm Rollback Procedure](https://github.com/annetastic-personal/references/wiki/step-12-rollback)
-- [Step 13: Enable HTTPS with Let's Encrypt](https://github.com/annetastic-personal/references/wiki/step-13-enable-https)
+- [CI/CD Setup Index](https://github.com/annetastic-personal/references/wiki/cicd-index)
 
 ### Wiki CI/CD with Scaffolding
 
