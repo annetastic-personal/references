@@ -81,6 +81,26 @@ Expected: `HTTP/2 200` (or `HTTP/1.1 200 OK`).
 
 ---
 
+## Node service: Secure cookies behind the proxy
+
+If your Node app sets a **Secure** session cookie in production (for example
+`express-session` with `cookie.secure: true`), Express must be told to trust the
+nginx reverse proxy — otherwise it sees nginx's HTTP connection, treats the
+request as insecure, and silently drops the Secure session cookie, so users
+cannot stay logged in.
+
+Add this in your Express app's entry point (for example `server/server.js`),
+right after `const app = express();` and before the session middleware:
+
+```js
+const app = express();
+
+// Trust the nginx reverse proxy so Express recognizes HTTPS requests.
+app.set("trust proxy", 1);
+```
+
+---
+
 ## Renewal
 
 certbot installs a systemd timer that renews certificates automatically. Confirm it is active:

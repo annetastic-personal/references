@@ -146,6 +146,24 @@ and stop it, or change the `listen` port.
 
 *Fixing step: [Step 3](https://github.com/annetastic-personal/references/wiki/step-3-nginx-config).*
 
+### Logged in but bounced straight back to the login page
+
+For a Node service (PERN/MERN) with a Secure session cookie, this appears right
+after enabling HTTPS: the site serves over TLS, but nginx reverse-proxies to the
+Node process over plain HTTP. If the app does not trust the proxy, Express sees
+an HTTP request and silently drops the Secure session cookie — so login/signup
+succeeds, but every follow-up `/api` call returns `401`.
+
+- Confirm the login/signup response contains `Set-Cookie: connect.sid=…`. If it
+  is missing (even though the request returned `201`/`200`), this is the cause.
+- In your Express app's entry point (for example `server/server.js`), right
+  after `const app = express();` and before the session middleware, add
+  `app.set("trust proxy", 1);` (or your framework's equivalent).
+- Confirm nginx forwards the scheme in the `location /` block:
+  `proxy_set_header X-Forwarded-Proto $scheme;`.
+
+*Fixing step: [Step 13](https://github.com/annetastic-personal/references/wiki/step-13-enable-https) (plus the app's `trust proxy` setting).*
+
 ---
 
 ## Web root location
