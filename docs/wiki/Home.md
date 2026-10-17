@@ -15,6 +15,11 @@ A collection of processes, patterns, and practices I've learned and want to refe
 
 - [CI/CD Setup Index](https://github.com/annetastic-personal/references/wiki/cicd-index)
 
+### GitHub CLI & Projects
+
+- [GitHub CLI Setup](https://github.com/annetastic-personal/references/wiki/github-cli-setup)
+- [Auto-Add Issues to a Project](https://github.com/annetastic-personal/references/wiki/auto-add-issues-to-project)
+
 ### Wiki CI/CD with Scaffolding
 
 Use this process to publish wiki content from repository-managed markdown files under `docs/wiki/` to the GitHub wiki. The scaffold script at [docs/scaffold-wiki.js](https://github.com/annetastic-personal/references/blob/main/docs/scaffold-wiki.js) is prepared in Step 02 and executed by CI in Step 03 when relevant changes are pushed to `main`.

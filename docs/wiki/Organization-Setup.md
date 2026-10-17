@@ -55,6 +55,7 @@ After transfer, update each local clone to the new organization URL.
 - Verify repository pushes still succeed from local clones.
 - Recreate automation PATs and update repository/organization secrets after ownership changes, because prior token scope assumptions can become invalid.
   - Note: Follow [PAT Instructions](https://github.com/annetastic-personal/references/wiki/PAT-Instructions) to create new tokens after ownership transfer, then update repository/organization secrets with those new values.
+- The org-level `ADD_TO_PROJECT_PAT` (a classic PAT with `repo` + `project` scopes) also needs re-creating or re-scoping after migration — see [PAT Instructions](https://github.com/annetastic-personal/references/wiki/PAT-Instructions).
 
 ### 5) Align CI/CD With Organization Scope
 

@@ -1,6 +1,6 @@
 # PAT Instructions
 
-Use these steps to create a fine-grained Personal Access Token (PAT) for wiki automation.
+Use these steps to create Personal Access Tokens (PATs) — a fine-grained token for wiki automation, and a classic token for project automation.
 
 This guide is intentionally repository-agnostic so you can reuse it across projects.
 
@@ -70,3 +70,39 @@ Use this flow when a token stops working (for example, after repository ownershi
 - If a repository moves to a new owner or organization, existing PAT access can stop working even when the repository remains public.
 - After transfer, ensure PAT repository access includes the new owner/repository location.
 - If wiki publish starts failing with `403`, regenerate the token and update `<TOKEN_SECRET_NAME>`.
+
+## Classic PAT for Project Automation (repo + project scopes)
+
+Some workflows need a **classic** PAT rather than a fine-grained one. The primary reason here is project automation on behalf of an AI assistant — letting the assistant manage GitHub Projects (adding or removing issues from a project) requires the `project` scope.
+
+Fine-grained tokens cannot grant project-level access for this purpose: the `project` scope is only available on classic PATs, so a classic PAT is required.
+
+The `actions/add-to-project` action is the concrete consumer of this token; it needs the `repo` and `project` scopes.
+
+### Create the token
+
+1. Open **Settings → Developer settings → Personal access tokens → Tokens (classic)**.
+2. Click **Generate new token → Generate new token (classic)**.
+3. Give it a name (for example, `add-to-project-token`).
+4. Set an expiration.
+5. Select scopes:
+   - `repo` — full control of repositories
+   - `project` — full control of organization projects
+6. Click **Generate token** and copy it immediately.
+
+### Store as an organization secret
+
+Store the token as an **organization secret** so every repository can use it (for example, `ADD_TO_PROJECT_PAT`):
+
+- Open the organization → **Settings → Secrets and variables → Actions**.
+- Add the secret with the token value.
+- For an organization project, the token's account must also have access to the project.
+
+### Notes
+
+- `read:project` is **not** enough — the action needs the full `project` scope. A missing or insufficient scope surfaces as `Cannot read properties of null (reading 'id')`.
+- This token is separate from the fine-grained wiki-publish token above; each serves a different purpose.
+
+### Related
+
+- [Auto-Add Issues to a Project](https://github.com/annetastic-personal/references/wiki/auto-add-issues-to-project)
